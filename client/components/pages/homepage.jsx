@@ -1,20 +1,22 @@
 import React from 'react';
-import '../../resources/styles/styles.css'
+import { useNavigate } from 'react-router-dom';
+import '../../resources/styles/styles.css';
+import logo from '../../resources/images/kpmg_logo.png';
 
 export function Homepage() {
+    const navigate = useNavigate();
+
     return (
         <div className="container">
-            <header>
-                <h1>Header</h1>
+            <header className="header">
+                <img src={logo} alt="KPMG Logo" className="logo" />
+                <h1 className="title">LIGHTBEAM</h1>
             </header>
-            <main>
-                <div>
-                    <h2>Main Content</h2>
-                    <p>This is the main content area.</p>
-                </div>
+            <main className="main-content">
+                <button onClick={() => navigate('/projects')}>Go to Projects</button>
             </main>
-            <footer>
-                <p>Footer</p>
+            <footer className="footer">
+                <p>by Team Cygnus</p>
             </footer>
         </div>
     );
