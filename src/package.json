@@ -3,14 +3,14 @@
     "version": "1.0.0",
     "scripts": {
       "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
-      "dev:client": "cd client && npm run dev",
-      "dev:server": "cd server && npm run dev",
+      "dev:client": "cd src/client && npm run dev",
+      "dev:server": "cd src/server && npm run dev",
       "postinstall": "npm run install:client && npm run install:server",
-      "install:client": "cd client && npm install",
-      "install:server": "cd server && npm install",
+      "install:client": "cd src/client && npm install",
+      "install:server": "cd src/server && npm install",
       "build": "npm run build:client",
-      "build:client": "cd client && npm run build",
-      "start": "cd server && npm start"
+      "build:client": "cd src/client && npm run build",
+      "start": "cd src/server && npm start"
     },
     "devDependencies": {
       "concurrently": "^7.0.0"
