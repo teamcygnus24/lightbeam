@@ -8,7 +8,7 @@ export function Projects() {
     return (
         <div className={styles.container}>
             <h1>Projects</h1>
-            <button onClick={() => navigate(-1)}>Back</button>
+            <button onClick={() => navigate('/')}>Back</button>
             <div className={styles.projects}>
                 <div className={styles['project-card']}>
                     <div className={styles['project-header']} style={{ backgroundColor: '#20B2AA' }}>Project 1</div>
