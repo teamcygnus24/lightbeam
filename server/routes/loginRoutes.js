@@ -10,7 +10,7 @@ const router = express.Router();
 router.post("/", loginPOST)
 
 //Login GET
-router.get("/", loginGET)
+router.get("/:password", loginGET)
 
 //Login DELETE
 

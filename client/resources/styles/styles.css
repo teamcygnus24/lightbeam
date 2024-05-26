@@ -71,7 +71,7 @@ body {
 
 .login-div {
     height: 100%;
-    width: 100%;
+    width: 15vw;
     display: grid;
     justify-items: center;
     align-items: center;
@@ -92,6 +92,10 @@ body {
     width: 100%;
     border-radius: 5px;
     border: lightgrey solid 1px;
+    text-align: center;
+}
+
+.login-info {
     text-align: center;
 }
 

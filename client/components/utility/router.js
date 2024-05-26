@@ -15,7 +15,7 @@ export function AppRouter() {
                 <Route path="/" element={<Homepage />} />
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/display" element={<Display/> } />
+                <Route path="/display" element={<Display/>} />
             </Routes>
         </Router>
     );

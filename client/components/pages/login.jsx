@@ -7,14 +7,15 @@ export function Login() {
     const navigate = useNavigate();
 
     const [password, setPassword] = useState("");
-    const [message, setMessage] = useState("");
+    const [validation, setValidation] = useState("");
+    const [message, setMessage] = useState("Skriv inn passordet for å komme deg videre");
 
     const loginPOST = async () => {
 
         try {
             const postCookies = await fetch("/api/login", {
                 method: "POST",
-                body: JSON.stringify({ password }),
+                body: JSON.stringify({ validation }),
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -51,7 +52,15 @@ export function Login() {
                 console.log(`Validation: ${JSON.stringify(adminValidation.validation)}`)
 
                 if (adminValidation.validation === "successful") {
+                    setValidation("successful")
+                    await loginPOST()
+                    setMessage(null)
+                    navigate("/");
+                }
 
+                if (adminValidation.validation === "failed") {
+                    setPassword("")
+                    setMessage("Ugyldig passord, prøv igjen")
                 }
             };
 
@@ -71,7 +80,7 @@ export function Login() {
                 <div className="login-div">
                     <form action="" className="login-form" onSubmit={handleLogin}>
                         <h4 className="login-header">Logg inn</h4>
-                        <p className="login-info">Skriv inn passordet for å komme deg videre</p>
+                        <p className="login-info">{message}</p>
                         <input className="login-input" placeholder="Passord" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                         <button className="login-btn">Logg inn</button>
                     </form>
