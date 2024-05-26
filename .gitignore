@@ -1,4 +1,10 @@
-.parcel-cache
-dist
-node_modules
-.idea/
+/.idea/
+/.parcel-cache/
+/dist/
+/node_modules/
+/.env
+client/.parcel-cache/
+client/dist/
+client/node_modules/
+server/node_modules/
+**/.DS_Store
