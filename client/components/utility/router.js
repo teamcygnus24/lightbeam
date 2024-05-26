@@ -4,7 +4,7 @@ import { Homepage } from "../pages/homepage"
 import { Projects } from '../pages/projectpage';
 import '../../resources/styles/styles.css';
 
-export function Router() {
+export function AppRouter() {
     return (
         <Router>
             <Routes>
