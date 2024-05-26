@@ -7,4 +7,6 @@ import { AppRouter } from "./components/utility/router.js";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 //root.render(<Homepage/>);
-root.render(<AppRouter/>);
+root.render(
+    <AppRouter/>
+);

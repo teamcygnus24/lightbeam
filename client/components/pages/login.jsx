@@ -1,13 +1,14 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../resources/styles/styles.css';
 import kpmg_logo from '../../resources/images/kpmg_logo.png';
+import { Context } from "../utility/router";
 
 export function Login() {
     const navigate = useNavigate();
+    const [validation, setValidation] = useContext(Context)
 
     const [password, setPassword] = useState("");
-    const [validation, setValidation] = useState("");
     const [message, setMessage] = useState("Skriv inn passordet for å komme deg videre");
 
     const loginPOST = async () => {
@@ -52,7 +53,8 @@ export function Login() {
                 console.log(`Validation: ${JSON.stringify(adminValidation.validation)}`)
 
                 if (adminValidation.validation === "successful") {
-                    setValidation("successful")
+                    setValidation(true)
+                    console.log("Validation(2): " + validation)
                     await loginPOST()
                     setMessage(null)
                     navigate("/");
