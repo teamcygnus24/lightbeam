@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import kpmg_logo from '../../resources/images/kpmg_logo.png';
 import '../../resources/styles/dashboard.css';
 
 export function Dashboard() {
-    const [events, setEvents] = useState(['Sprint meeting']);
-    const [deadlines, setDeadlines] = useState(['Weekly reports']);
-    const [weather, setWeather] = useState(null);
-    const [location, setLocation] = useState('');
-    const [weatherIcon, setWeatherIcon] = useState('');
-    const [scale, setScale] = useState(1);
-    const [position, setPosition] = useState({ x: 0, y: 0 });
-    const [logo, setLogo] = useState(kpmg_logo);
+    const location = useLocation();
+    const locationState = location.state || {};
+    const [events, setEvents] = useState(locationState.events || ['Sprint meeting']);
+    const [deadlines, setDeadlines] = useState(locationState.deadlines || ['Weekly reports']);
+    const [weather, setWeather] = useState(locationState.weather || null);
+    const [loc, setLoc] = useState(locationState.location || '');
+    const [weatherIcon, setWeatherIcon] = useState(locationState.weatherIcon || '');
+    const [scale, setScale] = useState(locationState.scale || 1);
+    const [position, setPosition] = useState(locationState.position || { x: 0, y: 0 });
+    const [logo, setLogo] = useState(locationState.logo || kpmg_logo);
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetchWeatherData();
+        if (!locationState.weather) {
+            fetchWeatherData();
+        }
     }, []);
 
     const fetchWeatherData = async () => {
@@ -27,7 +31,7 @@ export function Dashboard() {
             const weatherCondition = data.properties.timeseries[0].data.next_1_hours.summary.symbol_code;
 
             setWeather(`Temperature: ${temperature}°C`);
-            setLocation('Oslo, Norway');
+            setLoc('Oslo, Norway');
             setWeatherIcon(getWeatherIconUrl(weatherCondition));
         } catch (error) {
             console.error('Error fetching weather data:', error);
@@ -35,8 +39,7 @@ export function Dashboard() {
     };
 
     const getWeatherIconUrl = (condition) => {
-        return `https://raw.githubusercontent.com/metno/weathericons/89e3173756248b4696b9b10677b66c4ef435db53/weather/svg/${condition}.svg`
-        //return `https://raw.githubusercontent.com/metno/weathericons/master/svg/${condition}.svg`;
+        return `https://raw.githubusercontent.com/metno/weathericons/89e3173756248b4696b9b10677b66c4ef435db53/weather/svg/${condition}.svg`;
     };
 
     const handleEventChange = (index, event) => {
@@ -72,8 +75,9 @@ export function Dashboard() {
     };
 
     const handleUpdateClick = () => {
-        navigate('/display', {
-            state: { weather, location, weatherIcon, events, deadlines, scale, position, logo }
+        const state = { weather, location: loc, weatherIcon, events, deadlines, scale, position, logo };
+        navigate(`/display`, {
+            state: state
         });
     };
 
@@ -132,7 +136,7 @@ export function Dashboard() {
                         style={{ transform: `scale(${scale})`, position: 'absolute', left: `${position.x}px`, top: `${position.y}px` }}
                     />
                     <div>
-                        {location && <div>{location}</div>}
+                        {loc && <div>{loc}</div>}
                         {weatherIcon && <img src={weatherIcon} alt="Weather Icon" />}
                         {weather ? weather : 'Loading weather data...'}
                     </div>
