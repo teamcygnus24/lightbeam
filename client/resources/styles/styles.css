@@ -66,3 +66,39 @@ body {
     position: fixed;
     bottom: 0;
 }
+
+/* Login Page */
+
+.login-div {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-rows: 40% 60%;
+}
+
+.login-form {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-rows: 20% 20% 45% 20%;
+}
+
+.login-input {
+    height: 35%;
+    width: 100%;
+    border-radius: 5px;
+    border: lightgrey solid 1px;
+    text-align: center;
+}
+
+.login-btn {
+    width: 100%;
+}
+
+.login-trademark {
+    font-size: small;
+}
