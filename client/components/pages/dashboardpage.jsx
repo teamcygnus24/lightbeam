@@ -45,7 +45,7 @@ export function Dashboard() {
     };
 
     const moveImage = (direction) => {
-        const step = 10;
+        const step = 20;
         switch (direction) {
             case 'up':
                 setPosition((prev) => ({ ...prev, y: prev.y - step }));
@@ -94,8 +94,8 @@ export function Dashboard() {
                     <h3>Image Size</h3>
                     <input
                         type="range"
-                        min="0.5"
-                        max="2"
+                        min="1"
+                        max="10"
                         step="0.1"
                         value={scale}
                         onChange={(e) => setScale(e.target.value)}
