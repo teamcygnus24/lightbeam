@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../resources/styles/styles.css';
 import kpmg_logo from '../../resources/images/kpmg_logo.png';
@@ -6,12 +6,54 @@ import kpmg_logo from '../../resources/images/kpmg_logo.png';
 export function Login() {
     const navigate = useNavigate();
 
+    const [password, setPassword] = useState("");
+    const [message, setMessage] = useState("");
+
+    const loginPOST = async () => {
+
+        try {
+            const postCookies = await fetch("/api/login", {
+                method: "POST",
+                body: JSON.stringify({ password }),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            if(postCookies.ok) {
+                console.log("Login cookies posted");
+            }
+
+            if (!postCookies.ok) {
+                console.log(
+                    `Error posting login cookies ${postCookies.status} ${postCookies.statusText}`
+                )
+            }
+        } catch (error) {
+            console.log(`Error in loginPOST: ${error}`);
+        }
+    }
+
     const handleLogin = async (e) => {
         e.preventDefault()
 
         try {
+            const adminFetch = await fetch(`/api/login/${password}`)
+            const adminValidation = await adminFetch.json();
 
-            navigate("/")
+            if (!adminFetch.ok) {
+                console.log(
+                    `Something went wrong while validating ${adminFetch.status} ${adminFetch.statusText}`
+                )
+            }
+
+            if (adminFetch.ok) {
+                console.log(`Validation: ${JSON.stringify(adminValidation.validation)}`)
+
+                if (adminValidation.validation === "successful") {
+
+                }
+            };
 
         } catch (error) {
             console.log(`Error in loginPost ${error}`)
@@ -30,7 +72,7 @@ export function Login() {
                     <form action="" className="login-form" onSubmit={handleLogin}>
                         <h4 className="login-header">Logg inn</h4>
                         <p className="login-info">Skriv inn passordet for å komme deg videre</p>
-                        <input className="login-input" placeholder="Passord" type="password"/>
+                        <input className="login-input" placeholder="Passord" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                         <button className="login-btn">Logg inn</button>
                     </form>
                     <p className="login-trademark">SMIDIG PRO202 <b>SPRING 2024</b></p>
