@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from '../../resources/styles/project.module.css';
-
+import * as styles from "../../resources/styles/project.module.css";
 export function Projects() {
     const navigate = useNavigate();
 
