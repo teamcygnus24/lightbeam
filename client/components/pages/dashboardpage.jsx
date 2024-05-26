@@ -11,7 +11,7 @@ export function Dashboard() {
     const [weatherIcon, setWeatherIcon] = useState('');
     const [scale, setScale] = useState(1);
     const [position, setPosition] = useState({ x: 0, y: 0 });
-
+    const [logo, setLogo] = useState(kpmg_logo);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -24,12 +24,19 @@ export function Dashboard() {
             const data = await response.json();
             const weatherDetails = data.properties.timeseries[0].data.instant.details;
             const temperature = weatherDetails.air_temperature;
+            const weatherCondition = data.properties.timeseries[0].data.next_1_hours.summary.symbol_code;
+
             setWeather(`Temperature: ${temperature}°C`);
             setLocation('Oslo, Norway');
-            setWeatherIcon('https://www.weatherbit.io/static/img/icons/c01d.png');
+            setWeatherIcon(getWeatherIconUrl(weatherCondition));
         } catch (error) {
             console.error('Error fetching weather data:', error);
         }
+    };
+
+    const getWeatherIconUrl = (condition) => {
+        return `https://raw.githubusercontent.com/metno/weathericons/89e3173756248b4696b9b10677b66c4ef435db53/weather/svg/${condition}.svg`
+        //return `https://raw.githubusercontent.com/metno/weathericons/master/svg/${condition}.svg`;
     };
 
     const handleEventChange = (index, event) => {
@@ -66,7 +73,7 @@ export function Dashboard() {
 
     const handleUpdateClick = () => {
         navigate('/display', {
-            state: { weather, location, weatherIcon, events, deadlines, scale, position, logo: kpmg_logo }
+            state: { weather, location, weatherIcon, events, deadlines, scale, position, logo }
         });
     };
 
@@ -114,14 +121,14 @@ export function Dashboard() {
                 </div>
                 <div className="buttons">
                     <button className="move-button" onClick={handleUpdateClick}>Update</button>
-                    <button className="move-button">Open Display</button>
+                    <button className="move-button" onClick={handleUpdateClick}>Open Display</button>
                 </div>
             </div>
             <div className="preview">
                 <div className="weather">
                     <img
-                        src={kpmg_logo}
-                        alt="KPMG Logo"
+                        src={logo}
+                        alt="Logo"
                         style={{ transform: `scale(${scale})`, position: 'absolute', left: `${position.x}px`, top: `${position.y}px` }}
                     />
                     <div>
