@@ -11,6 +11,8 @@ export function Login() {
 
         try {
 
+            navigate("/")
+
         } catch (error) {
             console.log(`Error in loginPost ${error}`)
         }
