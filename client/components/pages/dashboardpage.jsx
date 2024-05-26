@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import kpmg_logo from '../../resources/images/kpmg_logo.png';
 import '../../resources/styles/dashboard.css';
 
 export function Dashboard() {
     const [events, setEvents] = useState(['Sprint meeting']);
     const [deadlines, setDeadlines] = useState(['Weekly reports']);
-    const [weather, setWeather] = useState(null); // State to store weather data
-    const [location, setLocation] = useState(''); // State to store location
-    const [weatherIcon, setWeatherIcon] = useState(''); // State to store weather icon
+    const [weather, setWeather] = useState(null);
+    const [location, setLocation] = useState('');
+    const [weatherIcon, setWeatherIcon] = useState('');
     const [scale, setScale] = useState(1);
     const [position, setPosition] = useState({ x: 0, y: 0 });
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchWeatherData();
@@ -19,12 +22,11 @@ export function Dashboard() {
         try {
             const response = await fetch('https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=59.93&lon=10.72&altitude=90');
             const data = await response.json();
-            // Extract relevant weather data
             const weatherDetails = data.properties.timeseries[0].data.instant.details;
             const temperature = weatherDetails.air_temperature;
             setWeather(`Temperature: ${temperature}°C`);
-            setLocation('Oslo, Norway'); // Hardcoded for simplicity; use a reverse geocoding API for dynamic location
-            setWeatherIcon('https://www.weatherbit.io/static/img/icons/c01d.png'); // Example icon URL
+            setLocation('Oslo, Norway');
+            setWeatherIcon('https://www.weatherbit.io/static/img/icons/c01d.png');
         } catch (error) {
             console.error('Error fetching weather data:', error);
         }
@@ -43,7 +45,7 @@ export function Dashboard() {
     };
 
     const moveImage = (direction) => {
-        const step = 10; // Adjust this value to change the movement step size
+        const step = 10;
         switch (direction) {
             case 'up':
                 setPosition((prev) => ({ ...prev, y: prev.y - step }));
@@ -60,6 +62,12 @@ export function Dashboard() {
             default:
                 break;
         }
+    };
+
+    const handleUpdateClick = () => {
+        navigate('/display', {
+            state: { weather, location, weatherIcon, events, deadlines, scale, position, logo: kpmg_logo }
+        });
     };
 
     return (
@@ -86,8 +94,8 @@ export function Dashboard() {
                     <h3>Image Size</h3>
                     <input
                         type="range"
-                        min="1"
-                        max="10"
+                        min="0.5"
+                        max="2"
                         step="0.1"
                         value={scale}
                         onChange={(e) => setScale(e.target.value)}
@@ -105,7 +113,7 @@ export function Dashboard() {
                     </div>
                 </div>
                 <div className="buttons">
-                    <button className="move-button">Update</button>
+                    <button className="move-button" onClick={handleUpdateClick}>Update</button>
                     <button className="move-button">Open Display</button>
                 </div>
             </div>
