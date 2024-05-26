@@ -4,19 +4,19 @@ import { useLocation } from 'react-router-dom';
 export function Display() {
     const location = useLocation();
     const state = location.state;
-    
+
     if (!state) {
         return <div>No data available</div>;
     }
 
-    const { weather, location: loc, weatherIcon, events, deadlines, scale, position } = state;
+    const { weather, location: loc, weatherIcon, events, deadlines, scale, position, logo } = state;
 
     return (
         <div className="preview">
             <div className="weather">
                 <img
-                    src={weatherIcon}
-                    alt="Weather Icon"
+                    src={logo}
+                    alt="Logo"
                     style={{ transform: `scale(${scale})`, position: 'absolute', left: `${position.x}px`, top: `${position.y}px` }}
                 />
                 <div>
