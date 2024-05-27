@@ -1,48 +1,44 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import '../../resources/styles/dashboard.css';
 
 export function Display() {
     const location = useLocation();
-    const state = location.state;
+    const state = location.state || {};
 
-    if (!state) {
-        return <div>No data available</div>;
-    }
-
-    const { weather, location: loc, weatherIcon, events, deadlines, scale, position, logo } = state;
+    const { elements = [], image = { src: '', position: { x: 0, y: 0 }, scale: 1 } } = state;
 
     return (
         <div className="preview">
-            <div className="weather">
-                <img
-                    src={logo}
-                    alt="Logo"
-                    style={{ transform: `scale(${scale})`, position: 'absolute', left: `${position.x}px`, top: `${position.y}px` }}
-                />
-                <div>
-                    {loc && <div>{loc}</div>}
-                    {weatherIcon && <img src={weatherIcon} alt="Weather Icon" />}
-                    {weather ? weather : 'Loading weather data...'}
-                </div>
-            </div>
-            <div className="content">
-                <div className="events">
-                    <h3>Events</h3>
-                    {events.map((event, index) => (
-                        <div key={index}>
-                            {event}
+            <div className="aspect-ratio-box">
+                <div className="aspect-ratio-inner display-content">
+                    {elements.map(el => (
+                        <div
+                            key={el.id}
+                            style={{
+                                position: 'absolute',
+                                left: `${el.position.x}px`,
+                                top: `${el.position.y}px`,
+                                border: '1px solid #000',
+                                padding: '5px'
+                            }}
+                        >
+                            {el.text}
                         </div>
                     ))}
-                </div>
-                <div className="deadlines">
-                    <h3>Deadlines</h3>
-                    {deadlines.map((deadline, index) => (
-                        <div key={index}>
-                            {deadline}
+                    {image.src && (
+                        <div style={{
+                            position: 'absolute',
+                            left: `${image.position.x}px`,
+                            top: `${image.position.y}px`,
+                            transform: `scale(${image.scale})`
+                        }}>
+                            <img src={image.src} alt="Uploaded" style={{ maxWidth: '100px', maxHeight: '100px' }} />
                         </div>
-                    ))}
+                    )}
                 </div>
             </div>
+            <img className="stretch-background" src="/path/to/your/background-image.jpg" alt="Background" />
         </div>
     );
 }

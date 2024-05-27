@@ -8,6 +8,7 @@ import { Display } from '../pages/displaypage';
 import '../../resources/styles/styles.css';
 import Protectedroutes from "./protectedroutes";
 import ProtectedRoutes from "./protectedroutes";
+import { Editor } from '../pages/editor';
 
 export const Context = React.createContext();
 
@@ -24,8 +25,9 @@ export function AppRouter() {
                         <Route path="/" element={<Homepage />} />
                         <Route path="/projects" element={<Projects />} />
                         <Route path="/dashboard" element={<Dashboard />} />
-                        <Route path="/display" element={<Display/>} />
                     </Route>
+                    <Route path="/display" element={<Display/>} />
+                    <Route path="/editor" element={<Editor/>} />
                 </Routes>
             </Router>
         </Context.Provider>

@@ -5,62 +5,96 @@
 
 .settings-sidebar {
     width: 25%;
-    padding: 10px; /* Reduced padding */
+    padding: 10px;
     border-right: 1px solid #ccc;
     display: flex;
     flex-direction: column;
-    gap: 5px; /* Reduced gap between sections */
+    gap: 5px;
 }
 
 .settings-sidebar h2 {
     font-size: 1.5rem;
-    margin-bottom: 5px; /* Reduced margin */
+    margin-bottom: 5px;
 }
 
 .settings-sidebar h3 {
     font-size: 1.2rem;
-    margin-top: 5px; /* Reduced margin */
-    margin-bottom: 5px; /* Reduced margin to create consistent spacing */
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .settings-sidebar ul {
     list-style-type: none;
     padding: 0;
-    margin: 0; /* Removed default margin */
+    margin: 0;
 }
 
 .settings-sidebar li {
-    margin: 3px 0; /* Reduced margin */
+    margin: 3px 0;
 }
 
 .settings-sidebar .size-control,
 .settings-sidebar .move-buttons {
-    margin-top: 5px; /* Reduced margin */
+    margin-top: 5px;
 }
 
 .settings-sidebar .buttons {
-    margin-top: 5px; /* Reduced margin */
+    margin-top: 5px;
     display: flex;
     flex-direction: column;
-    gap: 5px; /* Reduced gap between buttons */
+    gap: 5px;
 }
 
 .settings-sidebar button {
     display: block;
     width: 100%;
-    padding: 5px; /* Reduced padding */
+    padding: 5px;
     cursor: pointer;
     flex: 1;
 }
 
 .preview {
     flex: 1;
-    padding: 20px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.aspect-ratio-box {
+    width: 80%;
+    height: 0;
+    padding-bottom: 45%; /* 16:9 Aspect Ratio */
+    position: relative;
+    background: white;
+}
+
+.aspect-ratio-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.stretch-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+iframe,
+.display-content {
+    width: 100%;
+    height: 100%;
+    border: 2px solid #000;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .weather {
@@ -111,9 +145,9 @@
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-    height: auto; /* Allow height to adjust based on content */
+    height: auto;
     width: 100%;
-    gap: 5px; /* Reduced gap between buttons */
+    gap: 5px;
 }
 
 .vertical-buttons {
@@ -121,11 +155,11 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    gap: 5px; /* Reduced gap between buttons */
+    gap: 5px;
 }
 
 .move-button, .settings-sidebar button {
-    padding: 5px; /* Reduced padding */
+    padding: 5px;
     cursor: pointer;
     font-size: 0.8rem;
     display: flex;
