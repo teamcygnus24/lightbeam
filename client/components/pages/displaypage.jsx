@@ -9,22 +9,10 @@ export function Display() {
         return <div>No data available</div>;
     }
 
-    const { weather, location: loc, weatherIcon, events, deadlines, scale, position, logo } = state;
+    const { events, deadlines } = state;
 
     return (
         <div className="preview">
-            <div className="weather">
-                <img
-                    src={logo}
-                    alt="Logo"
-                    style={{ transform: `scale(${scale})`, position: 'absolute', left: `${position.x}px`, top: `${position.y}px` }}
-                />
-                <div>
-                    {loc && <div>{loc}</div>}
-                    {weatherIcon && <img src={weatherIcon} alt="Weather Icon" />}
-                    {weather ? weather : 'Loading weather data...'}
-                </div>
-            </div>
             <div className="content">
                 <div className="events">
                     <h3>Events</h3>
