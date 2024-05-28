@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/pages/dashboardpage.css';
 
+
 export function DashboardContainer({ project }) {
     const location = useLocation();
     const locationState = location.state || {};
