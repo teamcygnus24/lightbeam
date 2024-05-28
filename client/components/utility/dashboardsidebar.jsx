@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import kpmg_logo from '../../resources/images/kpmg_logo.png';
 import '../styles/pages/dashboardpage.css';
 
-export function DashboardContainer({ project }) {
+export function DashboardSidebar({ project }) {
     const location = useLocation();
     const locationState = location.state || {};
     const [events, setEvents] = useState(locationState.events || ['Sprint meeting']);
@@ -83,46 +83,49 @@ export function DashboardContainer({ project }) {
     };
 
     return (
-            <div className="preview">
-                <div className="weather">
-                    <img
-                        src={logo}
-                        alt="Logo"
-                        style={{ transform: `scale(${scale})`, position: 'absolute', left: `${position.x}px`, top: `${position.y}px` }}
+            <div className="settings-sidebar">
+                <h2>Settings {project.name} {project.slideCount}</h2>
+                <div>
+                    <h3>Events</h3>
+                    <ul>
+                        {events.map((event, index) => (
+                            <li key={index}>{event}</li>
+                        ))}
+                    </ul>
+                </div>
+                <div>
+                    <h3>Deadlines</h3>
+                    <ul>
+                        {deadlines.map((deadline, index) => (
+                            <li key={index}>{deadline}</li>
+                        ))}
+                    </ul>
+                </div>
+                <div className="size-control">
+                    <h3>Image Size</h3>
+                    <input
+                        type="range"
+                        min="1"
+                        max="10"
+                        step="0.1"
+                        value={scale}
+                        onChange={(e) => setScale(e.target.value)}
                     />
-                    <div>
-                        {loc && <div>{loc}</div>}
-                        {weatherIcon && <img src={weatherIcon} alt="Weather Icon" />}
-                        {weather ? weather : 'Loading weather data...'}
+                </div>
+                <div className="move-buttons">
+                    <h3>Move Image</h3>
+                    <div className="button-group">
+                        <button className="move-button double-height" onClick={() => moveImage('left')}>Left</button>
+                        <div className="vertical-buttons">
+                            <button className="move-button" onClick={() => moveImage('up')}>Up</button>
+                            <button className="move-button" onClick={() => moveImage('down')}>Down</button>
+                        </div>
+                        <button className="move-button double-height" onClick={() => moveImage('right')}>Right</button>
                     </div>
                 </div>
-                <div className="content">
-                    <div className="events">
-                        <h3>Events</h3>
-                        {events.map((event, index) => (
-                            <div
-                                key={index}
-                                contentEditable
-                                suppressContentEditableWarning
-                                onBlur={(e) => handleEventChange(index, e)}
-                            >
-                                {event}
-                            </div>
-                        ))}
-                    </div>
-                    <div className="deadlines">
-                        <h3>Deadlines</h3>
-                        {deadlines.map((deadline, index) => (
-                            <div
-                                key={index}
-                                contentEditable
-                                suppressContentEditableWarning
-                                onBlur={(e) => handleDeadlineChange(index, e)}
-                            >
-                                {deadline}
-                            </div>
-                        ))}
-                    </div>
+                <div className="buttons">
+                    <button className="move-button" onClick={handleUpdateClick}>Update</button>
+                    <button className="move-button" onClick={handleUpdateClick}>Open Display</button>
                 </div>
             </div>
     );

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/pages/dashboardpage.css';
 import {DashboardContainer} from "../utility/dashboardcontainer";
+import {DashboardSidebar} from "../utility/dashboardsidebar";
 
 export function Dashboard() {
 
@@ -32,6 +33,9 @@ export function Dashboard() {
     }, []);
 
     return (
-        <DashboardContainer project={currentProject}/>
+        <div className="dashboard-container">
+            <DashboardSidebar project={currentProject}/>
+            <DashboardContainer project={currentProject}/>
+        </div>
     );
 }
