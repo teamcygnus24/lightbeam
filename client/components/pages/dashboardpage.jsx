@@ -30,6 +30,16 @@ export function Dashboard() {
     }, []);
 
     return (
-        <DashboardContainer project={currentProject}/>
+        <div>
+            {currentProject ? (
+                currentProject.slideCount > 0 ? (
+                    <DashboardContainer project={currentProject} />
+                ) : (
+                    <div>No slides available</div>
+                )
+            ) : (
+                <div>Error loading project</div>
+            )}
+        </div>
     );
 }

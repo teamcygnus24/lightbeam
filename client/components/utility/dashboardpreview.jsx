@@ -32,29 +32,6 @@ export function DashboardContainer({ project }) {
 
     return (
         <div className="dashboard-container">
-            <div className="settings-sidebar">
-                <h2>Settings {project.name} {project.slideCount}</h2>
-                <div>
-                    <h3>Events</h3>
-                    <ul>
-                        {events.map((event, index) => (
-                            <li key={index}>{event}</li>
-                        ))}
-                    </ul>
-                </div>
-                <div>
-                    <h3>Deadlines</h3>
-                    <ul>
-                        {deadlines.map((deadline, index) => (
-                            <li key={index}>{deadline}</li>
-                        ))}
-                    </ul>
-                </div>
-                <div className="buttons">
-                    <button className="move-button" onClick={handleUpdateClick}>Update</button>
-                    <button className="move-button" onClick={handleUpdateClick}>Open Display</button>
-                </div>
-            </div>
             <div className="preview">
                 <div className="content">
                     <div className="events">
