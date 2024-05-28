@@ -15,10 +15,30 @@ export function Dashboard() {
     const [position, setPosition] = useState(locationState.position || { x: 0, y: 0 });
     const [logo, setLogo] = useState(locationState.logo || kpmg_logo);
     const navigate = useNavigate();
+    const [currentProject, setCurrentProject] = useState("kjhb");
+
+    const fetchProject = async () => {
+        try {
+            const project = await fetch("/api/project/" + window.sessionStorage.getItem("projectID"))
+            const projectInfo = await project.json();
+
+            if (!project.ok) {
+                console.log(`Error when fetching current project info`)
+            }
+
+            if (project.ok) {
+                setCurrentProject(projectInfo.name)
+            }
+
+        } catch (error) {
+            console.log("Error in fetchProject: \n" + error)
+        }
+    }
 
     useEffect(() => {
         if (!locationState.weather) {
             fetchWeatherData();
+            fetchProject();
         }
     }, []);
 
@@ -84,7 +104,7 @@ export function Dashboard() {
     return (
         <div className="dashboard-container">
             <div className="settings-sidebar">
-                <h2>SETTINGS</h2>
+                <h2>Settings {currentProject}</h2>
                 <div>
                     <h3>Events</h3>
                     <ul>

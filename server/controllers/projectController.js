@@ -19,8 +19,12 @@ const projectPOST = async (req, res) => {
     }
 }
 
-const projectGETONE = async => {
+const projectGETONE = async (req, res) => {
 
+    const projectInfo = await Project.findById(req.params.id.trim())
+    console.log(projectInfo)
+
+    res.status(200).json(projectInfo);
 }
 
 const projectGETALL = async (req, res) => {
