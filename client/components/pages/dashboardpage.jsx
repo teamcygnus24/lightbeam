@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/pages/dashboardpage.css';
-import {DashboardContainer} from "../utility/dashboardcontainer";
+import { DashboardContainer } from "../utility/dashboardcontainer";
 
 export function Dashboard() {
 
@@ -25,7 +25,6 @@ export function Dashboard() {
     }
 
     useEffect(() => {
-
         fetchProject();
     }, []);
 
