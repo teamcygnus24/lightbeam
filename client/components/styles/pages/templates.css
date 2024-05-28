@@ -1,0 +1,37 @@
+.dashboard-body {
+    height: 95%;
+    width: 100%;
+}
+
+
+.template-main {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 100%;
+    grid-template-rows: 10% 70% 20%;
+    align-content: center;
+    justify-items: center;
+}
+
+.template-container {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+    grid-template-columns: 33% 33% 33%;
+}
+
+.template-card {
+    width: 60%;
+    height: 70%;
+    background-color: #20B2AA;
+    border-radius: 5px;
+    border: ghostwhite solid 2px;
+    text-align: center;
+}
+
+.template-btn {
+    width: 100px;
+    height: 50px;
+}

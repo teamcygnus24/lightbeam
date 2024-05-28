@@ -1,8 +1,11 @@
 import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import "../styles/pages/templates.css"
 
 
 export function Templates() {
 
+    const navigate = useNavigate();
     const [templates, setTemplates] = useState([])
 
     const fetchTemplates = async () => {
@@ -18,10 +21,17 @@ export function Templates() {
     }, []);
 
     return(
-        <div>
-            {templates.map((t, index) => (
-                <div key={t._id}>{t.name}</div>
-            ))}
+        <div className="template-main">
+            <h1>Velg en tema</h1>
+            <div className="template-container">
+                {templates.map((t, index) => (
+                    <div key={t._id} className="template-card">{t.name}</div>
+                ))}
+            </div>
+            <button className="template-btn" onClick={() => {
+                navigate("/projects")
+                }}>Back
+            </button>
         </div>
     )
 }

@@ -30,7 +30,7 @@ export function Dashboard() {
     }, []);
 
     return (
-        <div>
+        <div className="dashboard-body">
             {currentProject ? (
                 currentProject.slideCount > 0 ? (
                     <DashboardContainer project={currentProject} />
