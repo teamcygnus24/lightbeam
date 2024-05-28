@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import kpmg_logo from '../../resources/images/kpmg_logo.png';
-import '../../resources/styles/dashboard.css';
+import '../styles/pages/dashboard.css';
 
 export function Dashboard() {
     const location = useLocation();

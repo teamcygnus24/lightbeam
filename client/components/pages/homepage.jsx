@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../../resources/styles/styles.css';
+import '../styles/pages/styles.css';
 import kpmg_logo from '../../resources/images/kpmg_logo.png';
 
 export function Homepage() {

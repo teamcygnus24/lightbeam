@@ -1,0 +1,52 @@
+.container {
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.back-button {
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 60%;
+}
+
+.project-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+    transition: box-shadow 0.3s;
+    width: 90%;
+}
+
+.project-card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.project-header {
+    background-color: #20B2AA; /* Original inline color */
+    color: white;
+    padding: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.project-footer {
+    padding: 10px;
+}
