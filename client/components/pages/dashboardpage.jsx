@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/pages/dashboardpage.css';
 import { DashboardContainer } from "../utility/dashboardcontainer";
+import { Templates } from "../utility/templates";
 
 export function Dashboard() {
 
@@ -34,7 +35,7 @@ export function Dashboard() {
                 currentProject.slideCount > 0 ? (
                     <DashboardContainer project={currentProject} />
                 ) : (
-                    <div>No slides available</div>
+                    <Templates />
                 )
             ) : (
                 <div>Error loading project</div>

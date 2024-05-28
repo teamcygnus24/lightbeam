@@ -1,5 +1,6 @@
-import Template from "../models/TemplateModel.js"
+import Template from "../models/templateModel.js"
 import {response} from "express";
+
 export {
     templatePOST,
     templateGETONE,
@@ -14,7 +15,11 @@ const templatePOST = async (req, res) => {
 }
 
 const templateGETONE = async (req, res) => {
+
 }
 
 const templateGETALL = async (req, res) => {
+
+    const templateList = await Template.find( {}).sort( {createdAt: -1})
+    res.status(200).json(templateList)
 }
