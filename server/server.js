@@ -6,6 +6,7 @@ import projectRoutes from "./routes/projectRoutes.js";
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import dotenv from "dotenv";
+import templateRoutes from "./routes/templateRoutes.js";
 
 // Load environment variables
 dotenv.config();
@@ -33,6 +34,7 @@ app.use((req, res, next) => {
 // Routes
 app.use("/api/login", loginRoutes);
 app.use("/api/project", projectRoutes);
+app.use("/api/template", templateRoutes);
 
 // Catch-all handler to serve the React app for any other routes
 app.get('*', (req, res) => {
