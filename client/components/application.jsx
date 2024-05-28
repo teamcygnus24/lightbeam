@@ -6,7 +6,6 @@ import { Homepage } from './pages/homepage.jsx';
 import { Projects } from './pages/projectpage.jsx';
 import { Dashboard } from './pages/dashboardpage.jsx';
 import { Display } from './pages/displaypage.jsx';
-import './styles/pages/styles.css';
 import ProtectedRoutes from "./utility/protectedroutes.jsx";
 
 export const Context = React.createContext();
