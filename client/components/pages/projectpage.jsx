@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/pages/project.css';
-import { Dashboard } from "./dashboardpage"
 
 export function Projects() {
     const navigate = useNavigate();
