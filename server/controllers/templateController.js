@@ -1,5 +1,6 @@
-import Template from "../models/TemplateModel.js"
+import Template from "../models/templateModel.js"
 import {response} from "express";
+
 export {
     templatePOST,
     templateGETONE,
