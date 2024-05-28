@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import loginRoutes from "./routes/loginRoutes.js";
+import projectRoutes from "./routes/projectRoutes.js";
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import dotenv from "dotenv";
@@ -31,6 +32,7 @@ app.use((req, res, next) => {
 
 // Routes
 app.use("/api/login", loginRoutes);
+app.use("/api/project", projectRoutes);
 
 // Catch-all handler to serve the React app for any other routes
 app.get('*', (req, res) => {

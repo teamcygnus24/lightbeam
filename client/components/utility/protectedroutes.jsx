@@ -1,6 +1,5 @@
 import {Navigate, Outlet} from "react-router-dom";
-import { Login } from "../pages/login";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Context } from "./router";
 
 const ProtectedRoutes = () => {
