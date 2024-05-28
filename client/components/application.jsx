@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
-import useGlobalContext from "../../hooks/useGlobalContext";
+import useGlobalContext from "../hooks/useGlobalContext";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Login } from "../pages/login";
-import { Homepage } from '../pages/homepage';
-import { Projects } from '../pages/projectpage';
-import { Dashboard } from '../pages/dashboardpage';
-import { Display } from '../pages/displaypage';
-import '../../resources/styles/styles.css';
-import ProtectedRoutes from "./protectedroutes";
+import { Login } from "./pages/login";
+import { Homepage } from './pages/homepage.jsx';
+import { Projects } from './pages/projectpage.jsx';
+import { Dashboard } from './pages/dashboardpage.jsx';
+import { Display } from './pages/displaypage.jsx';
+import './styles/pages/styles.css';
+import ProtectedRoutes from "./utility/protectedroutes.jsx";
 
 export const Context = React.createContext();
 
-export function AppRouter() {
+export function Application() {
 
     const [validation, setValidation] = useState(false);
     const [projects, setProjects] = useState([]);

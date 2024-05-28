@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/pages/styles.css';
 import kpmg_logo from '../../resources/images/kpmg_logo.png';
-import { Context } from "../utility/router";
+import { Context } from "../application.jsx";
 
 export function Login() {
     const navigate = useNavigate();

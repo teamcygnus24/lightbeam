@@ -1,6 +1,6 @@
 import {Navigate, Outlet} from "react-router-dom";
 import { useContext } from "react";
-import { Context } from "./router";
+import { Context } from "../application.jsx";
 
 const ProtectedRoutes = () => {
 
