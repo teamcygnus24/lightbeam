@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/pages/dashboardpage.css';
 import {DashboardContainer} from "../utility/dashboardcontainer";
 
 export function Dashboard() {
 
-    const navigate = useNavigate();
     const [currentProject, setCurrentProject] = useState({});
 
     const fetchProject = async () => {
