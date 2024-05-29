@@ -16,30 +16,34 @@ export function DashboardSideBarEditor({ project, slideInfo, setDisplayChange })
 
         const state = { events, deadlines };
 
-        const updateSlide = await fetch(`/api/slide/${slideInfo.slideID}`, {
-            method: "PUT",
-            body: JSON.stringify({
-                text_01: newText
+        if (e.target.name === "Save") {
+            const updateSlide = await fetch(`/api/slide/${slideInfo.slideID}`, {
+                method: "PUT",
+                body: JSON.stringify({
+                    text_01: newText
                 }),
-            headers: {
-                "Content-Type": "application/json",
-            }
-        });
-        const slideUpdate = await updateSlide.json();
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            });
+            const slideUpdate = await updateSlide.json();
 
-        setDisplayChange(prev => !prev);
-        console.log(slideUpdate)
-
+            setDisplayChange(prev => !prev);
+            console.log(slideUpdate)
+        } else if (e.target.name === "Display") {
+            navigate("/Display")
+        }
     };
 
     return (
         <div className="settings-sidebar">
             <h2>Slide: {slideInfo.slideID} Template: {slideInfo.templateID}</h2>
             <div className="buttons">
-                <form onSubmit={handleUpdate}>
+                <form>
                     <h4>Change Slide Text</h4>
                     <input type="text" value={newText} onChange={(e) => setNewText(e.target.value)}/>
-                    <button className="move-button">Create Display</button>
+                    <button className="move-button" name="Save" type="button" onClick={handleUpdate}>Save Changes</button>
+                    <button className="move-button" name="Display" type="button" onClick={handleUpdate}>Go To Display</button>
                 </form>
             </div>
         </div>
