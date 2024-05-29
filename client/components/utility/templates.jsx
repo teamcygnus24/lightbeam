@@ -1,12 +1,13 @@
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import "../styles/pages/templates.css"
+import {set} from "mongoose";
 
 
-export function Templates({ project }) {
+export function Templates({ project, setProjectUpdated }) {
 
     const navigate = useNavigate();
-    const [templates, setTemplates] = useState([])
+    const [templates, setTemplates] = useState([]);
 
     const fetchTemplates = async () => {
         const getAllTemplates = await fetch("/api/template")
@@ -48,10 +49,10 @@ export function Templates({ project }) {
 
                 if (updateProject.ok) {
                     console.log("Project updated successfully!\n" + updateProject)
+                    setProjectUpdated(prev => !prev);
                 }
             }
 
-            navigate("/projects");
         } catch (error) {
             console.log("Error in function handleClick " + error);
         }

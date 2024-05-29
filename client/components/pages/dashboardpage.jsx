@@ -6,6 +6,7 @@ import { Templates } from "../utility/templates";
 export function Dashboard() {
 
     const [currentProject, setCurrentProject] = useState({});
+    const [projectUpdated, setProjectUpdated] = useState(false);
 
     const fetchProject = async () => {
         try {
@@ -27,7 +28,7 @@ export function Dashboard() {
 
     useEffect(() => {
         fetchProject();
-    }, []);
+    }, [projectUpdated]);
 
     return (
         <div className="dashboard-body">
@@ -36,7 +37,7 @@ export function Dashboard() {
                     //Passing fetched project data to the components
                     <DashboardContainer project={currentProject} />
                 ) : (
-                    <Templates project={currentProject}/>
+                    <Templates project={currentProject} setProjectUpdated={setProjectUpdated}/>
                 )
             ) : (
                 <div>Error loading project</div>
