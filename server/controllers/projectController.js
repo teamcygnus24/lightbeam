@@ -3,7 +3,8 @@ import {response} from "express";
 export {
     projectPOST,
     projectGETONE,
-    projectGETALL
+    projectGETALL,
+    projectUPDATEONE
 };
 
 const projectPOST = async (req, res) => {
@@ -31,4 +32,10 @@ const projectGETALL = async (req, res) => {
 
     const projects = await Project.find( {}).sort( {createdAt: -1} );
     res.status(200).json(projects);
+}
+
+const projectUPDATEONE = async (req, res) => {
+
+    const updateProject = await Project.updateOne({ _id: req.params.id}, { slideCount: req.body.slideCount});
+    res.status(200).json(updateProject);
 }

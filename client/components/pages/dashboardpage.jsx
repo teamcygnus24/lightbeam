@@ -33,9 +33,10 @@ export function Dashboard() {
         <div className="dashboard-body">
             {currentProject ? (
                 currentProject.slideCount > 0 ? (
+                    //Passing fetched project data to the components
                     <DashboardContainer project={currentProject} />
                 ) : (
-                    <Templates />
+                    <Templates project={currentProject}/>
                 )
             ) : (
                 <div>Error loading project</div>

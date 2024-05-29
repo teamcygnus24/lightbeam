@@ -2,7 +2,8 @@ import express from "express";
 import {
     projectGETONE,
     projectPOST,
-    projectGETALL
+    projectGETALL,
+    projectUPDATEONE
 } from "../controllers/projectController.js";
 
 const router = express.Router();
@@ -18,6 +19,7 @@ router.get("/", projectGETALL)
 
 //Project DELETE
 
-//Project UPDATE
+//Project UPDATE ONE
+router.put("/:id", projectUPDATEONE)
 
 export default router;

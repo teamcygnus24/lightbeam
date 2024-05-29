@@ -3,10 +3,11 @@ import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import loginRoutes from "./routes/loginRoutes.js";
 import projectRoutes from "./routes/projectRoutes.js";
+import templateRoutes from "./routes/templateRoutes.js";
+import slideRoutes from "./routes/slideRoutes.js";
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import dotenv from "dotenv";
-import templateRoutes from "./routes/templateRoutes.js";
 
 // Load environment variables
 dotenv.config();
@@ -35,6 +36,7 @@ app.use((req, res, next) => {
 app.use("/api/login", loginRoutes);
 app.use("/api/project", projectRoutes);
 app.use("/api/template", templateRoutes);
+app.use("/api/slide", slideRoutes)
 
 // Catch-all handler to serve the React app for any other routes
 app.get('*', (req, res) => {
