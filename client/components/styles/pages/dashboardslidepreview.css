@@ -1,0 +1,24 @@
+.slides-main {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+.slides-container {
+    width: 95%;
+    height: 100%;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.slides-card {
+    width: 250px;
+    height: 150px;
+    background-color: #333333;
+    color: ghostwhite;
+    text-align: center;
+}

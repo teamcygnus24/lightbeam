@@ -2,7 +2,8 @@ import express from "express";
 import {
     slidePOST,
     slideGETALL,
-    slideGETONE
+    slideGETONE,
+    slideGETproject
 } from "../controllers/slideController.js";
 
 const router = express.Router();
@@ -15,6 +16,9 @@ router.get("/", slideGETALL);
 
 //Slide GET ONE
 router.get("/:projectID&:templateID", slideGETONE);
+
+//Slide GET ALL from Project
+router.get("/:projectID", slideGETproject);
 
 
 export default router;

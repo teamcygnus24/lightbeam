@@ -37,6 +37,7 @@ export function Dashboard() {
                     //Passing fetched project data to the components
                     <DashboardContainer project={currentProject} />
                 ) : (
+                    //Passing the projectUpdated state setter, to trigger when a slide has been added and re-render
                     <Templates project={currentProject} setProjectUpdated={setProjectUpdated}/>
                 )
             ) : (
