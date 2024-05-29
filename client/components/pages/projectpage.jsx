@@ -26,6 +26,7 @@ export function Projects() {
 
     return (
         <div className="container">
+            <img src={kpmg_logo} alt="KPMG Logo" className="corner-logo" />
             <h1>Projects</h1>
             <div className="projects">
                 {projects.map((p, index) => (

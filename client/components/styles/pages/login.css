@@ -21,15 +21,16 @@ body {
 }
 
 .container {
-    background-image: url('../../../resources/images/application_background.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-image: url('../../../resources/images/application_background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
 }
 
 .header {
@@ -97,6 +98,7 @@ body {
     border-radius: 5px;
     border: lightgrey solid 1px;
     text-align: center;
+    
 }
 
 .login-info {

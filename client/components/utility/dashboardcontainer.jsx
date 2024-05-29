@@ -20,6 +20,10 @@ export function DashboardContainer({ project }) {
             {slideSelected === true ? <DashboardSideBarEditor project={ project }/> : <DashboardSideBarProjectInfo project={ project }/>}
             {slideSelected === true ? <DashboardSlidePreview /> //If a slide is selected, show slide preview screen
                 : <DashboardSlides projectID={ project._id } setSlideSelected={ setSlideSelected }/>}
+            <button className="back-button" onClick={() => navigate('/projects')}>Back</button>
+            <footer className="footer">
+                <p>by Team Cygnus</p>
+            </footer>
         </div>
     );
 }

@@ -1,6 +1,11 @@
 .dashboard-container {
     display: flex;
     height: 100vh;
+    background-image: url('../../../resources/images/application_background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
 }
 
 .settings-sidebar {
@@ -138,4 +143,20 @@
 .double-height {
     flex: 1;
     box-sizing: border-box;
+}
+
+.back-button {
+    position: absolute;
+    left: 50%;
+    bottom: 15%;
+    padding: 10px 20px;
+    background-color: #003087;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.back-button:hover {
+    background-color: #023fb2;
+    cursor: pointer;
 }
