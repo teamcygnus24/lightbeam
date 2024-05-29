@@ -3,7 +3,8 @@ import {
     slidePOST,
     slideGETALL,
     slideGETONE,
-    slideGETproject
+    slideGETproject,
+    slideUPDATEONE
 } from "../controllers/slideController.js";
 
 const router = express.Router();
@@ -19,6 +20,9 @@ router.get("/:slideID&:projectID", slideGETONE);
 
 //Slide GET ALL from Project
 router.get("/:projectID", slideGETproject);
+
+//slide UPDATE ONE
+router.put("/:slideID", slideUPDATEONE)
 
 
 export default router;

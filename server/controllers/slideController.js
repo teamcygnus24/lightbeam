@@ -5,7 +5,8 @@ export {
     slidePOST,
     slideGETALL,
     slideGETONE,
-    slideGETproject
+    slideGETproject,
+    slideUPDATEONE
 };
 
 const slidePOST = async (req, res) => {
@@ -35,4 +36,9 @@ const slideGETONE = async (req, res) => {
 const slideGETproject = async (req, res) => {
     const slidesFromProject = await Slide.find({ projectID: req.params.projectID });
     res.status(200).json(slidesFromProject);
+}
+
+const slideUPDATEONE  = async (req, res) => {
+    const updateSlide = await Slide.updateOne({ _id: req.params.slideID}, { text: req.body.text});
+    res.status(200).json(updateSlide);
 }

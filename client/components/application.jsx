@@ -14,6 +14,7 @@ export function Application() {
 
     const [validation, setValidation] = useState(false);
     const [projects, setProjects] = useState([]);
+    const [displayChange, setDisplayChange] = useState(false)
 
     return (
         <useGlobalContext.Provider value ={ {projects ,setProjects} }>
@@ -24,9 +25,9 @@ export function Application() {
                         <Route element={<ProtectedRoutes />}>
                             <Route path="/" element={<Homepage />} />
                             <Route path="/projects" element={<Projects />} />
-                            <Route path="/dashboard" element={<Dashboard />} />
+                            <Route path="/dashboard" element={<Dashboard displayChange={ displayChange } setDisplayChange={ setDisplayChange }/>} />
                         </Route>
-                        <Route path="/display" element={<Display/>} />
+                        <Route path="/display" element={<Display displayChange={ displayChange }/>} />
                     </Routes>
                 </Router>
             </Context.Provider>
