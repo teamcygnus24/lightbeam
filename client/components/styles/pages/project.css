@@ -1,23 +1,32 @@
-.container {
-    padding: 20px;
+h1 {
+    font-size: 2.5rem;
+    font-weight: normal;
+    font-style: italic;
+    text-align: center;
+    margin: 1%;
 }
 
-h1 {
-    font-size: 2em;
-    margin-bottom: 20px;
+.corner-logo {
+    position: absolute;
+    width: 150px;
+    height: auto;
+    margin-bottom: 43%;
+    margin-right: 92%;
 }
 
 .back-button {
-    margin-bottom: 20px;
+    margin-bottom: 1%;
+    margin-top: 7%;
     padding: 10px 20px;
-    background-color: #007BFF;
+    background-color: #003087;
     color: white;
     border: none;
-    cursor: pointer;
+    border-radius: 5px;
 }
 
 .back-button:hover {
-    background-color: #0056b3;
+    background-color: #023fb2;
+    cursor: pointer;
 }
 
 .projects {
@@ -37,6 +46,7 @@ h1 {
 
 .project-card:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #eeeeee;
 }
 
 .project-header {
@@ -49,4 +59,7 @@ h1 {
 
 .project-footer {
     padding: 10px;
+    text-align: center;
+    background-color: #218eac;
+    color: white;
 }

@@ -13,7 +13,7 @@ export function Homepage() {
                 <h1 className="title">LIGHTBEAM</h1>
             </header>
             <main className="main-content">
-                <button onClick={() => navigate('/projects')}>Go to Projects</button>
+                <button className="projects-btn" onClick={() => navigate('/projects')}>Go to Projects</button>
             </main>
             <footer className="footer">
                 <p>by Team Cygnus</p>

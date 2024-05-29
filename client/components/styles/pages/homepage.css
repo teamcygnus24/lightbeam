@@ -67,42 +67,18 @@ body {
     bottom: 0;
 }
 
-/* Login Page */
-
-.login-div {
-    height: 100%;
-    width: 15vw;
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    grid-template-rows: 40% 60%;
-}
-
-.login-form {
-    height: 100%;
-    width: 100%;
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    grid-template-rows: 20% 20% 45% 20%;
-}
-
-.login-input {
-    height: 35%;
-    width: 100%;
+.projects-btn{
+    width: fit-content;
+    white-space: nowrap;
+    text-align: center;
+    padding: 10% 100% 10% 100%;
     border-radius: 5px;
-    border: lightgrey solid 1px;
-    text-align: center;
+    border: none;
+    background-color: #003087;
+    color: white;
 }
 
-.login-info {
-    text-align: center;
-}
-
-.login-btn {
-    width: 100%;
-}
-
-.login-trademark {
-    font-size: small;
+.projects-btn:hover {
+    background-color: #023fb2;
+    cursor: pointer;
 }

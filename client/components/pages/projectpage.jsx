@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import kpmg_logo  from '../../resources/images/kpmg_logo.png';
 import '../styles/pages/project.css';
 
 export function Projects() {
@@ -26,7 +27,6 @@ export function Projects() {
     return (
         <div className="container">
             <h1>Projects</h1>
-            <button className="back-button" onClick={() => navigate('/')}>Back</button>
             <div className="projects">
                 {projects.map((p, index) => (
                     <div key={index} className="project-card" onClick={handleClick} id={p._id}>
@@ -37,6 +37,10 @@ export function Projects() {
                     </div>
                 ))}
             </div>
+            <button className="back-button" onClick={() => navigate('/')}>Back</button>
+            <footer className="footer">
+                <p>by Team Cygnus</p>
+            </footer>
         </div>
     );
 }

@@ -28,11 +28,13 @@ export function Dashboard() {
 
     useEffect(() => {
         fetchProject();
+        //Dependency will re-render on projectUpdated state change
     }, [projectUpdated]);
 
     return (
         <div className="dashboard-body">
-            {currentProject === null ? (<div></div>) :
+            {currentProject === null ? (<div></div>) : //If currentProject is not fetched yet, show loading state
+                //Conditional render statement based on how many slides a project has
                 currentProject.slideCount > 0 ? (
                     //Passing fetched project data to the components
                     <DashboardContainer project={currentProject} />

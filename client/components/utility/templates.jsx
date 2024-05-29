@@ -1,7 +1,6 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import "../styles/pages/templates.css"
-import {set} from "mongoose";
 
 
 export function Templates({ project, setProjectUpdated }) {
@@ -72,8 +71,11 @@ export function Templates({ project, setProjectUpdated }) {
             </div>
             <button className="template-btn" onClick={() => {
                 navigate("/projects")
-                }}>Back
+            }}>Back
             </button>
+            <footer className="footer">
+                <p>by Team Cygnus</p>
+            </footer>
         </div>
     )
 }

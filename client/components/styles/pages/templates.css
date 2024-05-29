@@ -32,6 +32,16 @@
 }
 
 .template-btn {
-    width: 100px;
-    height: 50px;
+    margin-top: 2%;
+    margin-bottom: 5%;
+    padding: 10px 20px;
+    background-color: #003087;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.template-btn:hover {
+    background-color: #023fb2;
+    cursor: pointer;
 }
