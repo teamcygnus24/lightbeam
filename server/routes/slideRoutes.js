@@ -15,7 +15,7 @@ router.post("/", slidePOST);
 router.get("/", slideGETALL);
 
 //Slide GET ONE
-router.get("/:projectID&:templateID", slideGETONE);
+router.get("/:slideID&:projectID", slideGETONE);
 
 //Slide GET ALL from Project
 router.get("/:projectID", slideGETproject);

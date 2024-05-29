@@ -1,4 +1,5 @@
 import Slide from "../models/slideModel.js"
+import Project from "../models/projectModel.js";
 
 export {
     slidePOST,
@@ -25,6 +26,10 @@ const slideGETALL = async (req, res) => {
 
 const slideGETONE = async (req, res) => {
 
+    const slideInfo = await Slide.findById(req.params.slideID.trim())
+    console.log(slideInfo)
+
+    res.status(200).json(slideInfo);
 };
 
 const slideGETproject = async (req, res) => {

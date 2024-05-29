@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/pages/dashboardpage.css';
 
 
-export function DashboardSideBarEditor({ project }) {
+export function DashboardSideBarEditor({ project, slideInfo }) {
     const location = useLocation();
     const locationState = location.state || {};
     const [events, setEvents] = useState(locationState.events || ['Sprint meeting']);
@@ -19,7 +19,7 @@ export function DashboardSideBarEditor({ project }) {
 
     return (
         <div className="settings-sidebar">
-            <h2>Settings {project.name} Slides: {project.slideCount}</h2>
+            <h2>Slide: {slideInfo.slideID} Template: {slideInfo.templateID}</h2>
             <div>
                 <h3>Events</h3>
                 <ul>
@@ -37,7 +37,7 @@ export function DashboardSideBarEditor({ project }) {
                 </ul>
             </div>
             <div className="buttons">
-                <button className="move-button" onClick={handleUpdateClick}>Update</button>
+                <button className="move-button">Update</button>
                 <button className="move-button" onClick={handleUpdateClick}>Open Display</button>
             </div>
         </div>

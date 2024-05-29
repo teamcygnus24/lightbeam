@@ -25,8 +25,8 @@ export function Application() {
                             <Route path="/" element={<Homepage />} />
                             <Route path="/projects" element={<Projects />} />
                             <Route path="/dashboard" element={<Dashboard />} />
-                            <Route path="/display" element={<Display/>} />
                         </Route>
+                        <Route path="/display" element={<Display/>} />
                     </Routes>
                 </Router>
             </Context.Provider>

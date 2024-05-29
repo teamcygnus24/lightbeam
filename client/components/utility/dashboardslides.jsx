@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/pages/dashboardslidepreview.css';
 
 
-export function DashboardSlides({ projectID, setSlideSelected }) {
+export function DashboardSlides({ projectID, setSlideSelected, setSlideInfo  }) {
     const navigate = useNavigate();
     const [slides, setSlides] = useState([]);
 
@@ -17,8 +17,16 @@ export function DashboardSlides({ projectID, setSlideSelected }) {
         }
     }
 
-    const handleClick = async () => {
-        setSlideSelected(prev => !prev)
+    const handleClick = async (e) => {
+        e.preventDefault();
+
+        const slideInfo = {
+            slideID: e.currentTarget.id,
+            templateID: e.currentTarget.dataset.template
+        }
+
+        setSlideInfo(slideInfo)
+        setSlideSelected(prev => !prev);
     }
 
     useEffect(() => {
@@ -29,7 +37,7 @@ export function DashboardSlides({ projectID, setSlideSelected }) {
         <div className="slides-main">
             <div className="slides-container">
                 {slides.map((s, index) => (
-                    <div className="slides-card" id={s._id} onClick={handleClick}> Slide {projectID}</div>
+                    <div className="slides-card" id={s._id} data-template={s.templateID} onClick={handleClick}> Slide {projectID}</div>
                 ))}
             </div>
         </div>
