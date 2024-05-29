@@ -13,19 +13,6 @@ export function DashboardContainer({ project }) {
     const navigate = useNavigate();
     const [currentProject, setCurrentProject] = useState({});
 
-
-    const handleEventChange = (index, event) => {
-        const newEvents = [...events];
-        newEvents[index] = event.target.innerText;
-        setEvents(newEvents);
-    };
-
-    const handleDeadlineChange = (index, event) => {
-        const newDeadlines = [...deadlines];
-        newDeadlines[index] = event.target.innerText;
-        setDeadlines(newDeadlines);
-    };
-
     const handleUpdateClick = () => {
         const state = { events, deadlines };
         navigate(`/display`, {

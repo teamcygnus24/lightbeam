@@ -9,7 +9,6 @@ export function DashboardSlidePreview() {
     const [events, setEvents] = useState(locationState.events || ['Sprint meeting']);
     const [deadlines, setDeadlines] = useState(locationState.deadlines || ['Weekly reports']);
     const navigate = useNavigate();
-    const [currentProject, setCurrentProject] = useState({});
 
 
     const handleEventChange = (index, event) => {
@@ -22,13 +21,6 @@ export function DashboardSlidePreview() {
         const newDeadlines = [...deadlines];
         newDeadlines[index] = event.target.innerText;
         setDeadlines(newDeadlines);
-    };
-
-    const handleUpdateClick = () => {
-        const state = { events, deadlines };
-        navigate(`/display`, {
-            state: state
-        });
     };
 
     return (

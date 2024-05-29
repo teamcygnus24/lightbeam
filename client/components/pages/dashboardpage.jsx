@@ -5,7 +5,7 @@ import { Templates } from "../utility/templates";
 
 export function Dashboard() {
 
-    const [currentProject, setCurrentProject] = useState({});
+    const [currentProject, setCurrentProject] = useState(null);
     const [projectUpdated, setProjectUpdated] = useState(false);
 
     const fetchProject = async () => {
@@ -32,17 +32,14 @@ export function Dashboard() {
 
     return (
         <div className="dashboard-body">
-            {currentProject ? (
+            {currentProject === null ? (<div></div>) :
                 currentProject.slideCount > 0 ? (
                     //Passing fetched project data to the components
                     <DashboardContainer project={currentProject} />
                 ) : (
                     //Passing the projectUpdated state setter, to trigger when a slide has been added and re-render
                     <Templates project={currentProject} setProjectUpdated={setProjectUpdated}/>
-                )
-            ) : (
-                <div>Error loading project</div>
-            )}
+                )}
         </div>
     );
 }
