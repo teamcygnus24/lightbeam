@@ -19,7 +19,7 @@ export function DashboardSideBarEditor({ project, slideInfo, setDisplayChange })
         const updateSlide = await fetch(`/api/slide/${slideInfo.slideID}`, {
             method: "PUT",
             body: JSON.stringify({
-                text: newText
+                text_01: newText
                 }),
             headers: {
                 "Content-Type": "application/json",

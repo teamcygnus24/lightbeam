@@ -6,7 +6,7 @@ export function Display({ displayChange }) {
     const [slide, setSlide] = useState({})
 
     const fetchSlide = async () => {
-        const getSlide = await fetch(`/api/slide/66571e98a993a8ee8e9c3f24&6655f10157e8816e5eedbd55`)
+        const getSlide = await fetch(`/api/slide/665790ac9c5237fe18174f1a&sdfg`)
         const newSlide = await getSlide.json();
 
         setSlide(newSlide)
@@ -20,7 +20,7 @@ export function Display({ displayChange }) {
     return (
         <div className="preview">
             <div className="content">
-                {slide.text}
+                {slide.text_01}
             </div>
         </div>
     );
