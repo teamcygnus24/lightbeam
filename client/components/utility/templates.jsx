@@ -2,6 +2,16 @@ import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import "../styles/pages/templates.css"
 
+/*
+============================================================================================
+TEMPLATES
+-----------------
+Denne siden rendres når prosjektet ikke har noe slides eksisterende.
+Dette gir brukeren mulighet for å velge templates som ligger i MongoDB
+når brukeren velger en template, så vil en slide bli opprettet med den spesifikke template.
+Dette gir oss mulighet til å videreutvikle layout og innhold, spesifikk til denne templaten.
+============================================================================================
+*/ 
 
 export function Templates({ project, setProjectUpdated }) {
 

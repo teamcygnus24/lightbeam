@@ -8,6 +8,11 @@ import { Dashboard } from './pages/dashboardpage.jsx';
 import { Display } from './pages/displaypage.jsx';
 import ProtectedRoutes from "./utility/protectedroutes.jsx";
 
+/* Denne siden er basically "innholdsfortegnelsen til nettsiden"
+Vi har lagt "Display" siden utenfor protected routes, da man ikke skal trenge
+å logge seg på for å se denne siden. Men alt annet er beskyttet.
+*/
+
 export const Context = React.createContext();
 
 export function Application() {

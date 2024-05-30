@@ -2,6 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/pages/dashboardslidepreview.css';
 
+/*
+============================================================================================
+SLIDES
+-----------------
+Denne siden rendrer alle slides tilknyttet prosjektet man har trykket seg inn i.
+Her kjøres det en API Fetch inne i MongoDB når man går videre med et prosjekt.
+For alle slides med Prosjektets ID tilknyttet, renderes det følgende slides.
+Ved å trykke på spesifikk slide, så vil slideID følge med til editoren, hvor man redigerer
+sliden som man har trykket på.
+============================================================================================
+*/ 
 
 export function DashboardSlides({ projectID, setSlideSelected, setSlideInfo  }) {
     const navigate = useNavigate();

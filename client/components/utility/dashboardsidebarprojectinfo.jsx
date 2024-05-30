@@ -1,7 +1,13 @@
 import React from 'react';
 import '../styles/pages/dashboardpage.css';
 
-
+/*
+============================================================================================
+PROJECT INFO
+-----------------
+Bare en info side. ikke noe spess.
+============================================================================================
+*/ 
 export function DashboardSideBarProjectInfo({ project }) {
 
     return (

@@ -6,6 +6,18 @@ import {DashboardSlides} from "./dashboardslides";
 import {DashboardSideBarEditor} from "./dashboardsidebareditor";
 import {DashboardSideBarProjectInfo} from "./dashboardsidebarprojectinfo";
 
+/*
+============================================================================================
+DASHBOARD CONTAINER
+-----------------
+Når brukeren har trykket seg inn på et prosjekt og trykket på en slide, så vil følgende skje:
+1. Sidebar Editor containeren renderes på venstre side.
+2. Slide Preview containeren renderes på høyre side.
+Noen IF setninger for å sjekke om at ting funker.
+
+Så denne siden er i teorien delt i "to".
+============================================================================================
+*/ 
 
 export function DashboardContainer({ project, displayChange, setDisplayChange}) {
     const navigate = useNavigate();
@@ -31,9 +43,12 @@ export function DashboardContainer({ project, displayChange, setDisplayChange}) 
 
     return (
         <div className="dashboard-container">
-            {slideSelected === true ? <DashboardSideBarEditor project={ project } slideInfo={ slideInfo } setDisplayChange={ setDisplayChange }/> : <DashboardSideBarProjectInfo project={ project }/>}
-            {slideSelected === true ? <DashboardSlidePreview displayChange={ displayChange }/> //If a slide is selected, show slide preview screen
+            {slideSelected === true ? <DashboardSideBarEditor project={ project } slideInfo={ slideInfo } setDisplayChange={ setDisplayChange }/> 
+                : <DashboardSideBarProjectInfo project={ project }/>}
+
+            {slideSelected === true ? <DashboardSlidePreview displayChange={ displayChange }/>
                 : <DashboardSlides projectID={ project._id } setSlideSelected={ setSlideSelected } setSlideInfo={ setSlideInfo }/>}
+
             {slideSelected === true ? <button className="back-button" onClick={backToSLides}>Back</button>
                  :
                     <button className="back-button" onClick={backToProjects}>Back</button>}
