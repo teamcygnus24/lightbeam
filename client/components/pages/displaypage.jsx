@@ -33,14 +33,23 @@ export function Display({ displayChange }) {
         <div className="preview">
             <div className="content">
                 <div><p>Text 1:</p>{slide.text_01}</div>
+                <br></br>
                 <div><p>Text 2:</p> {slide.text_02}</div>
+                <br></br>
                 <div><p>Text 3:</p> {slide.text_03}</div>
+                <br></br>
                 <div><p>Text 4:</p> {slide.text_04}</div>
+                <br></br>
                 <div><p>Text 5:</p> {slide.text_05}</div>
+                <br></br>
                 <div><p>Text 6:</p> {slide.text_06}</div>
+                <br></br>
                 <div><p>Text 7:</p> {slide.text_07}</div>
+                <br></br>
                 <div><p>Text 8:</p> {slide.text_08}</div>
+                <br></br>
                 <div><p>Text 9:</p> {slide.text_09}</div>
+                <br></br>
                 <div><p>Text 10:</p> {slide.text_10}</div>
             </div>
         </div>
