@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+.input {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
 body {
     background-color: white;
     font-family: Arial, sans-serif;
