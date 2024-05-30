@@ -8,7 +8,10 @@ export function Dashboard() {
     const locationState = location.state || {};
     const [templateState, setTemplateState] = useState(locationState.templateState || {
         elements: [],
-        image: { src: '', position: { x: 0, y: 0 }, scale: 1 }
+        image: { src: '', position: { x: 0, y: 0 }, scale: 1 },
+        weather: null,
+        location: '',
+        weatherIcon: ''
     });
     const [showImageSettings, setShowImageSettings] = useState(!!templateState.image.src);
     const navigate = useNavigate();
@@ -32,15 +35,47 @@ export function Dashboard() {
         };
     }, [templateState]);
 
+    const fetchWeatherData = async () => {
+        try {
+            const response = await fetch('https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=59.93&lon=10.72&altitude=90');
+            const data = await response.json();
+            const weatherDetails = data.properties.timeseries[0].data.instant.details;
+            const temperature = weatherDetails.air_temperature;
+            const weatherCondition = data.properties.timeseries[0].data.next_1_hours.summary.symbol_code;
+
+            const newTemplateState = {
+                ...templateState,
+                weather: `Temperature: ${temperature}°C`,
+                location: 'Oslo, Norway',
+                weatherIcon: getWeatherIconUrl(weatherCondition),
+                elements: [
+                    { id: '1', text: 'Editable Text 1', position: { x: 100, y: 100 } },
+                    { id: '2', text: 'Editable Text 2', position: { x: 500, y: 100 } }
+                ]
+            };
+            setTemplateState(newTemplateState);
+        } catch (error) {
+            console.error('Error fetching weather data:', error);
+        }
+    };
+
+    const getWeatherIconUrl = (condition) => {
+        return `https://raw.githubusercontent.com/metno/weathericons/89e3173756248b4696b9b10677b66c4ef435db53/weather/svg/${condition}.svg`;
+    };
+
     const handleTemplate1Click = () => {
         const newTemplateState = {
             elements: [
                 { id: '1', text: 'Editable Text 1', position: { x: 100, y: 100 } },
-                { id: '2', text: 'Editable Text 2', position: { x: 200, y: 200 } }
+                { id: '2', text: 'Editable Text 2', position: { x: 500, y: 100 } }
             ],
             image: { src: '', position: { x: 300, y: 300 }, scale: 1 }
         };
         setTemplateState(newTemplateState);
+    };
+
+    const handleTemplate2Click = async () => {
+        await fetchWeatherData();
     };
 
     const handleImageUpload = (event) => {
@@ -120,6 +155,7 @@ export function Dashboard() {
                 <h2>SETTINGS</h2>
                 <div className="buttons">
                     <button className="move-button" onClick={handleTemplate1Click}>Template 1</button>
+                    <button className="move-button" onClick={handleTemplate2Click}>Template 2</button>
                     <input type="file" accept="image/*" onChange={handleImageUpload} />
                     {showImageSettings && (
                         <>

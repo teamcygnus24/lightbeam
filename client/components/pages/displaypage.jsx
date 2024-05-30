@@ -6,12 +6,19 @@ export function Display() {
     const location = useLocation();
     const state = location.state || {};
 
-    const { elements = [], image = { src: '', position: { x: 0, y: 0 }, scale: 1 } } = state;
+    const { elements = [], image = { src: '', position: { x: 0, y: 0 }, scale: 1 }, weather, location: loc, weatherIcon } = state;
 
     return (
         <div className="preview">
             <div className="aspect-ratio-box">
                 <div className="aspect-ratio-inner display-content">
+                    {weather && (
+                        <div style={{ position: 'absolute', top: '10px', left: '10px' }}>
+                            <div>{loc}</div>
+                            <div>{weather}</div>
+                            <img src={weatherIcon} alt="Weather Icon" />
+                        </div>
+                    )}
                     {elements.map(el => (
                         <div
                             key={el.id}
@@ -20,11 +27,12 @@ export function Display() {
                                 left: `${el.position.x}px`,
                                 top: `${el.position.y}px`,
                                 border: '1px solid #000',
-                                padding: '5px'
+                                padding: '5px',
+                                whiteSpace: 'pre-wrap', // Preserve whitespace and new lines
+                                overflowWrap: 'break-word' // Handle long words
                             }}
-                        >
-                            {el.text}
-                        </div>
+                            dangerouslySetInnerHTML={{ __html: el.text }}
+                        />
                     ))}
                     {image.src && (
                         <div style={{
