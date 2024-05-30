@@ -3,6 +3,10 @@ body{
    width: 100%;
    height: 100%;
    margin: 0;
+   overflow: hidden;
+   font-family: 'Arial', sans-serif;
+   background-color: #f4f4f4;
+   color: #333;
 }
 
 .preview {
@@ -13,6 +17,8 @@ body{
     display: flex;
     flex-direction: row;
     width: 100%;
+    padding: 1px;
+    box-sizing: border-box;
 }
 
 .menu-box {
@@ -21,12 +27,18 @@ body{
     margin-top: 2%;
     margin: 2%;
     padding: 20px;
-    border: 2px solid black;
+    border: 1px solid #ccc;
+    border-radius: 10px;
     background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .menu-box h2 {
-    margin-left: 30%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #0056b3;
 }
 
 .inside-menu {
@@ -40,20 +52,26 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid black;
+    border: 1px solid #ccc;
+    border-radius: 10px;
     box-sizing: border-box;
-    padding: 10px;
+    padding: 3px;
     height: auto;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
 }
 
 .menu-img img {
     width: 100%;
     height: auto;
+    border-radius: 7px;
 }
 
 .content {
+    display: flex;
     flex-direction: column;
-    line-height: 1; 
+    line-height: 1.5;
     margin-left: 5%;  
 }
 
@@ -65,9 +83,10 @@ body{
     margin-right: 2%;
     margin-top: 2%;
     margin: 2%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
     background-color: white;
-    border: 2px solid black;
-    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .wheather {
@@ -78,7 +97,7 @@ body{
 .img-box .image {
     flex: 1;
     width: 100%;
-    border-top: 2px solid black;
+    border-top: 2px solid #ccc;
     overflow: hidden;
     display: flex;
     justify-content: center;
