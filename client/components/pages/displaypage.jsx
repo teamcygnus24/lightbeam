@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import "../styles/pages/displaypage.css"
 import {set} from "mongoose";
 import kpmg_logo from '../../resources/images/kpmg_logo.png';
-import long_food from '../../resources/images/long_food.png';
+import long_food from '../../resources/images/food.png';
 /*
 ============================================================================================
 DISPLAY PAGE
