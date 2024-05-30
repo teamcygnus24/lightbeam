@@ -17,7 +17,7 @@ Noen IF setninger for å sjekke om at ting funker.
 
 Så denne siden er i teorien delt i "to".
 ============================================================================================
-*/ 
+*/
 
 export function DashboardContainer({ project, displayChange, setDisplayChange}) {
     const navigate = useNavigate();
