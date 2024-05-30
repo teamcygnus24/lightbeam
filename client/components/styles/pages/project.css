@@ -1,3 +1,7 @@
+.container h1 {
+    margin-bottom: 2%;
+}
+
 h1 {
     font-size: 2.5rem;
     font-weight: normal;
@@ -14,8 +18,8 @@ h1 {
     left: 1%;
 }
 
-.back-button {
-    margin-left: -2%;
+.back-button-project {
+    margin-top: 5%;
     padding: 10px 20px;
     background-color: #003087;
     color: white;
@@ -23,7 +27,7 @@ h1 {
     border-radius: 5px;
 }
 
-.back-button:hover {
+.back-button-project:hover {
     background-color: #023fb2;
     cursor: pointer;
 }

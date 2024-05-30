@@ -49,7 +49,7 @@ export function Projects() {
                     </div>
                 ))}
             </div>
-            <button className="back-button" onClick={() => navigate('/')}>Back</button>
+            <button className="back-button-project" onClick={() => navigate('/')}>Back</button>
             <footer className="footer">
                 <p>by Team Cygnus</p>
             </footer>
