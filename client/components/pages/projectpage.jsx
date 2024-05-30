@@ -3,6 +3,17 @@ import { useNavigate } from 'react-router-dom';
 import kpmg_logo  from '../../resources/images/kpmg_logo.png';
 import '../styles/pages/project.css';
 
+/*
+============================================================================================
+PROJECT PAGE
+-----------------
+Her kjøres det en query til databasen for å hente alle prosjekter som eksisterer
+Disse har alle en unik ID
+for hvert prosjekt, renderes det ut et "kort" med prosjektets id.
+Ved trykk av disse, vil det ta med seg ID til prosjektet for videre endringer.
+============================================================================================
+*/ 
+
 export function Projects() {
     const navigate = useNavigate();
     const [projects, setProjects] = useState([]);
