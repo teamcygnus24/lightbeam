@@ -1,42 +1,58 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import * as styles from "../../resources/styles/project.module.css";
+import kpmg_logo  from '../../resources/images/kpmg_logo.png';
+import '../styles/pages/project.css';
+
+/*
+============================================================================================
+PROJECT PAGE
+-----------------
+Her kjøres det en query til databasen for å hente alle prosjekter som eksisterer
+Disse har alle en unik ID
+for hvert prosjekt, renderes det ut et "kort" med prosjektets id.
+Ved trykk av disse, vil det ta med seg ID til prosjektet for videre endringer.
+============================================================================================
+*/ 
+
 export function Projects() {
     const navigate = useNavigate();
+    const [projects, setProjects] = useState([]);
+
+    const fetchProjects = async () => {
+        const allProjects = await fetch("/api/project");
+        const projectsList = await allProjects.json();
+        setProjects(projectsList);
+    };
+
+    const handleClick = async (e) => {
+        e.preventDefault()
+
+        window.sessionStorage.setItem("projectID", e.currentTarget.id)
+        navigate("/dashboard")
+    }
+
+    useEffect(() => {
+        fetchProjects();
+    }, []);
 
     return (
-        <div className={styles.container}>
+        <div className="container">
+            <img src={kpmg_logo} alt="KPMG Logo" className="corner-logo" />
             <h1>Projects</h1>
-            <button onClick={() => navigate('/')}>Back</button>
-            <div className={styles.projects}>
-                <div 
-                    className={styles['project-card']} 
-                    onClick={() => navigate('/dashboard')}
-                >
-                    <div className={styles['project-header']} style={{ backgroundColor: '#20B2AA' }}>
-                        Project 1
+            <div className="projects">
+                {projects.map((p, index) => (
+                    <div key={index} className="project-card" onClick={handleClick} id={p._id}>
+                        <div className="project-header">
+                           ID: {p._id}
+                        </div>
+                        <div className="project-footer">{p.name}</div>
                     </div>
-                    <div className={styles['project-footer']}>Lunch</div>
-                </div>
-                <div className={styles['project-card']}>
-                    <div className={styles['project-header']} style={{ backgroundColor: '#800080' }}>
-                        Project 2
-                    </div>
-                    <div className={styles['project-footer']}>Birthdays</div>
-                </div>
-                <div className={styles['project-card']}>
-                    <div className={styles['project-header']} style={{ backgroundColor: '#1E90FF' }}>
-                        Project 3
-                    </div>
-                    <div className={styles['project-footer']}>Events</div>
-                </div>
-                <div className={styles['project-card']}>
-                    <div className={styles['project-header']} style={{ backgroundColor: '#00BFFF' }}>
-                        Project 4
-                    </div>
-                    <div className={styles['project-footer']}>Wine-Lottery</div>
-                </div>
+                ))}
             </div>
+            <button className="back-button-project" onClick={() => navigate('/')}>Back</button>
+            <footer className="footer">
+                <p>by Team Cygnus</p>
+            </footer>
         </div>
     );
 }

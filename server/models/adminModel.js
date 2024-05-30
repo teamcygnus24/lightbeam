@@ -6,6 +6,6 @@ const adminSchema = new Schema(
     {
         password: { type: String },
     },
-    );
+);
 
 export default mongoose.model("Admin", adminSchema);
