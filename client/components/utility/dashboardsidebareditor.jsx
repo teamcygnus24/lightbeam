@@ -71,17 +71,17 @@ export function DashboardSideBarEditor({ project, slideInfo, setDisplayChange })
 
     return (
         <div className="settings-sidebar">
-            <h2>Slide: {slideInfo.slideID} Template: {slideInfo.templateID}</h2>
+            <h2>Slide: {slideInfo.slideID}</h2>
+            <h2>Template: {slideInfo.templateID}</h2>
             <div className="buttons">
                 <form>
-                    <h4>Change Slide Text</h4>
-                    <div>Type 1:<input type="text" value={InputText_01} onChange={(e) => setInputText_01(e.target.value)} placeholder="Food"/></div>
-                    <div>Alternative 1:<input type="text" value={InputText_02} onChange={(e) => setInputText_02(e.target.value)}/></div>
-                    <div>Alternative 2:<input type="text" value={InputText_03} onChange={(e) => setInputText_03(e.target.value)}/></div>
-                    <div>Alternative 3:<input type="text" value={InputText_04} onChange={(e) => setInputText_04(e.target.value)}/></div>
-                    <div>Type 2:<input type="text" value={InputText_07} onChange={(e) => setInputText_07(e.target.value)} placeholder="Drinks"/></div>
-                    <div>Alternative 1:<input type="text" value={InputText_08} onChange={(e) => setInputText_08(e.target.value)}/></div>
-                    <div>Alternative 2:<input type="text" value={InputText_09} onChange={(e) => setInputText_09(e.target.value)}/></div>                    
+                    <div className="type">Type 1:<input type="text" value={InputText_01} onChange={(e) => setInputText_01(e.target.value)} placeholder="Example: Food"/></div>
+                    <div className="alternative">Alternative 1:<input type="text" value={InputText_02} onChange={(e) => setInputText_02(e.target.value)}/></div>
+                    <div className="alternative">Alternative 2:<input type="text" value={InputText_03} onChange={(e) => setInputText_03(e.target.value)}/></div>
+                    <div className="alternative">Alternative 3:<input type="text" value={InputText_04} onChange={(e) => setInputText_04(e.target.value)}/></div>
+                    <div className="type">Type 2:<input type="text" value={InputText_07} onChange={(e) => setInputText_07(e.target.value)} placeholder="Example: Drinks"/></div>
+                    <div className="alternative">Alternative 1:<input type="text" value={InputText_08} onChange={(e) => setInputText_08(e.target.value)}/></div>
+                    <div className="alternative">Alternative 2:<input type="text" value={InputText_09} onChange={(e) => setInputText_09(e.target.value)}/></div>                    
                     <button className="move-button" name="Save" type="button" onClick={handleUpdate}>Save Changes</button>
                     <button className="move-button" name="Display" type="button" onClick={handleUpdate}>Go To Display</button>
                 </form>
