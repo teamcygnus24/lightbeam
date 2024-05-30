@@ -48,7 +48,7 @@ export function DashboardSlides({ projectID, setSlideSelected, setSlideInfo  }) 
         <div className="slides-main">
             <div className="slides-container">
                 {slides.map((s, index) => (
-                    <div className="slides-card" id={s._id} data-template={s.templateID} onClick={handleClick}> Slide {projectID}</div>
+                    <div className="slides-card" id={s._id} data-template={s.templateID} onClick={handleClick}> Slide: Today's menu {projectID}</div>
                 ))}
             </div>
         </div>

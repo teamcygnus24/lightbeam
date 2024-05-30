@@ -40,7 +40,17 @@ export function DashboardContainer({ project, displayChange, setDisplayChange}) 
     useEffect(() => {
         console.log("I rendered")
     }, [slideSelected, displayChange]);
+    return (
+        <div className="dashboard-container">
+            {slideSelected === true ? <DashboardSideBarEditor project={ project } slideInfo={ slideInfo } setDisplayChange={ setDisplayChange }/> 
+                : <DashboardSideBarProjectInfo project={ project }/>}
 
+            {slideSelected === true ? <DashboardSlidePreview displayChange={ displayChange }/>
+                : <DashboardSlides projectID={ project._id } setSlideSelected={ setSlideSelected } setSlideInfo={ setSlideInfo }/>}
+        </div>
+    );
+
+    /* MÅ FLYTTE BACK KNAPP
     return (
         <div className="dashboard-container">
             {slideSelected === true ? <DashboardSideBarEditor project={ project } slideInfo={ slideInfo } setDisplayChange={ setDisplayChange }/> 
@@ -57,4 +67,5 @@ export function DashboardContainer({ project, displayChange, setDisplayChange}) 
             </footer>
         </div>
     );
+    */
 }

@@ -21,14 +21,11 @@ export function DashboardSlidePreview({ displayChange }) {
     }, [displayChange]);
 
     return (
-        <div className="preview">
                 <iframe
                     key={iframeKey}
-                    src="https://lightbeam-smidig-dev-393006ce2df9.herokuapp.com/display" // Replace with the actual URL
+                    src="http://localhost:1234/display" // Replace with the actual URL
                     title="Embedded Page"
-                    width="80%"
-                    height="80%"
+                    id="frame"
                 />
-        </div>
     );
 }

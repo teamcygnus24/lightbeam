@@ -21,6 +21,13 @@ export function Homepage() {
                 <img src={kpmg_logo} alt="KPMG Logo" className="logo" />
                 <h1 className="title">LIGHTBEAM</h1>
             </header>
+            <div><h3>
+                Real-time collaboration without hassle: Work in an editor in real-time,
+                </h3>
+                <h3>
+                making great changes in a super effective way, from wherever you are.
+                </h3>
+            </div>
             <main className="main-content">
                 <button className="projects-btn" onClick={() => navigate('/projects')}>Go to Projects</button>
             </main>

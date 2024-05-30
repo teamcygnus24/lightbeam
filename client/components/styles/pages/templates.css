@@ -3,6 +3,9 @@
     width: 100%;
 }
 
+body {
+    background: linear-gradient(rgba(255, 255, 255, 0.81), rgba(255, 255, 255, 0.81)), url("../../../resources/images/application_background.png");
+}
 
 .template-main {
     display: grid;
@@ -25,7 +28,7 @@
 .template-card {
     width: 60%;
     height: 70%;
-    background-color: #20B2AA;
+    background-color: #2058b2;
     border-radius: 5px;
     border: ghostwhite solid 2px;
     text-align: center;
