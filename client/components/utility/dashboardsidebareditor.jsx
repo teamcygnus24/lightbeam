@@ -22,7 +22,18 @@ export function DashboardSideBarEditor({ project, slideInfo, setDisplayChange })
     const [events, setEvents] = useState(locationState.events || ['Sprint meeting']);
     const [deadlines, setDeadlines] = useState(locationState.deadlines || ['Weekly reports']);
     const navigate = useNavigate();
-    const [newText, setNewText] = useState("");
+
+    // Inputs
+    const [InputText_01, setInputText_01] = useState("");
+    const [InputText_02, setInputText_02] = useState("");
+    const [InputText_03, setInputText_03] = useState("");
+    const [InputText_04, setInputText_04] = useState("");
+    const [InputText_05, setInputText_05] = useState("");
+    const [InputText_06, setInputText_06] = useState("");
+    const [InputText_07, setInputText_07] = useState("");
+    const [InputText_08, setInputText_08] = useState("");
+    const [InputText_09, setInputText_09] = useState("");
+    const [InputText_10, setInputText_10] = useState("");
 
     const handleUpdate = async (e) => {
         e.preventDefault();
@@ -33,7 +44,17 @@ export function DashboardSideBarEditor({ project, slideInfo, setDisplayChange })
             const updateSlide = await fetch(`/api/slide/${slideInfo.slideID}`, {
                 method: "PUT",
                 body: JSON.stringify({
-                    text_01: newText
+                    text_01: InputText_01,
+                    text_02: InputText_02,
+                    text_03: InputText_03,
+                    text_04: InputText_04,
+                    text_05: InputText_05,
+                    text_06: InputText_06,
+                    text_07: InputText_07,
+                    text_08: InputText_08,
+                    text_09: InputText_09,
+                    text_10: InputText_10
+
                 }),
                 headers: {
                     "Content-Type": "application/json",
@@ -54,7 +75,17 @@ export function DashboardSideBarEditor({ project, slideInfo, setDisplayChange })
             <div className="buttons">
                 <form>
                     <h4>Change Slide Text</h4>
-                    <input type="text" value={newText} onChange={(e) => setNewText(e.target.value)}/>
+                    <div>Text 1:<input type="text" value={InputText_01} onChange={(e) => setInputText_01(e.target.value)}/></div>
+                    <div>Text 2:<input type="text" value={InputText_02} onChange={(e) => setInputText_02(e.target.value)}/></div>
+                    <div>Text 3:<input type="text" value={InputText_03} onChange={(e) => setInputText_03(e.target.value)}/></div>
+                    <div>Text 4:<input type="text" value={InputText_04} onChange={(e) => setInputText_04(e.target.value)}/></div>
+                    <div>Text 5:<input type="text" value={InputText_05} onChange={(e) => setInputText_05(e.target.value)}/></div>
+                    <div>Text 6:<input type="text" value={InputText_06} onChange={(e) => setInputText_06(e.target.value)}/></div>
+                    <div>Text 7:<input type="text" value={InputText_07} onChange={(e) => setInputText_07(e.target.value)}/></div>
+                    <div>Text 8:<input type="text" value={InputText_08} onChange={(e) => setInputText_08(e.target.value)}/></div>
+                    <div>Text 9:<input type="text" value={InputText_09} onChange={(e) => setInputText_09(e.target.value)}/></div>
+                    <div>Text 10:<input type="text" value={InputText_10} onChange={(e) => setInputText_10(e.target.value)}/></div>
+                    
                     <button className="move-button" name="Save" type="button" onClick={handleUpdate}>Save Changes</button>
                     <button className="move-button" name="Display" type="button" onClick={handleUpdate}>Go To Display</button>
                 </form>
