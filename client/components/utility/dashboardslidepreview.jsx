@@ -11,7 +11,7 @@ Denne har basically bare limt inn display siden i en boks, slik at vi kan se den
 Denne preview'en refreshes for hver gang en bruker kjører en update i sidebar editoren.
 Knappene i sidebar editoren trigger en displayChange, som refresher denne preview'en.
 ============================================================================================
-*/ 
+*/  
 
 export function DashboardSlidePreview({ displayChange }) {
     const [iframeKey, setIframeKey] = useState(0);
