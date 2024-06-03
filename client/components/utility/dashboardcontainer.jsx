@@ -5,7 +5,7 @@ import {DashboardSlidePreview} from "./dashboardslidepreview";
 import {DashboardSlides} from "./dashboardslides";
 import {DashboardSideBarEditor} from "./dashboardsidebareditor";
 import {DashboardSideBarProjectInfo} from "./dashboardsidebarprojectinfo";
-import {AppContext} from "../application";
+import { AppContext } from "../application";
 
 /*
 ============================================================================================

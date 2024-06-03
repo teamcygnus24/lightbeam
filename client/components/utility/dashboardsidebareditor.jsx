@@ -62,7 +62,7 @@ export function DashboardSideBarEditor({ slideInfo, setDisplayChange, backToSlid
                 }
             });
             const slideUpdate = await updateSlide.json();
-            handleWS(slideInfo.slideID)
+            await handleWS(slideInfo.slideID)
 
             setDisplayChange(prev => !prev);
             console.log(slideUpdate)
@@ -77,7 +77,7 @@ export function DashboardSideBarEditor({ slideInfo, setDisplayChange, backToSlid
     }
 
     useEffect(() => {
-        const ws = new WebSocket("ws://localhost:3000");
+        const ws = new WebSocket("wss://localhost:3000");
         ws.onmessage = (event) => {
             setServerResponse(JSON.parse(event.data))
             console.log(event.data)

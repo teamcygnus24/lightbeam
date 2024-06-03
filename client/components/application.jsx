@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {createContext, useState} from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Login } from "./pages/login";
 import { Homepage } from './pages/homepage.jsx';
@@ -12,7 +12,7 @@ Vi har lagt "Display" siden utenfor protected routes, da man ikke skal trenge
 å logge seg på for å se denne siden. Men alt annet er beskyttet.
 */
 
-export const AppContext = React.createContext();
+export const AppContext = createContext();
 
 export function Application() {
 

@@ -30,7 +30,7 @@ export function Display({ displayChange }) {
     }
 
     useEffect(() => {
-        const ws = new WebSocket("ws://localhost:3000")
+        const ws = new WebSocket("wss://localhost:3000")
         ws.onmessage = (event) => {
             const newSlide = JSON.parse(event.data)
             setSlideID(newSlide.channelMsg)
