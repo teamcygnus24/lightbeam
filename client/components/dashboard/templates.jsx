@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import "../styles/pages/templates.css"
+import "../styles/view/templates.css"
 
 /*
 ============================================================================================

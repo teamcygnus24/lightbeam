@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import kpmg_logo  from '../../resources/images/kpmg_logo.png';
-import '../styles/pages/project.css';
+import kpmg_logo  from '../resources/images/kpmg_logo.png';
+import '../components/styles/view/project.css';
 
 /*
 ============================================================================================

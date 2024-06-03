@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/pages/dashboardpage.css';
-import { DashboardContainer } from "../utility/dashboardcontainer";
-import { Templates } from "../utility/templates";
+import '../components/styles/view/dashboard.css';
+import { Container } from "../components/dashboard/container";
+import { Templates } from "../components/dashboard/templates";
 import {useNavigate} from "react-router-dom";
 
 /*
@@ -51,7 +51,7 @@ export function Dashboard({ displayChange, setDisplayChange }) {
                 // Conditional render statement based on how many slides a project has
                 currentProject.slideCount > 0 ? (
                     // Passing fetched project data to the components
-                    <DashboardContainer project={currentProject} displayChange={ displayChange } setDisplayChange={ setDisplayChange }/>
+                    <Container project={currentProject} displayChange={ displayChange } setDisplayChange={ setDisplayChange }/>
                 ) : (
                     // Passing the projectUpdated state setter, to trigger when a slide has been added and re-render
                     <Templates project={currentProject} setProjectUpdated={setProjectUpdated}/>

@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
-import '../styles/pages/dashboardslidepreview.css';
-import {AppContext} from "../application";
+import '../styles/view/dashboardslidepreview.css';
+import {AppContext} from "../../application";
 
 /*
 ============================================================================================
@@ -14,7 +14,7 @@ Knappene i sidebar editoren trigger en displayChange, som refresher denne previe
 ============================================================================================
 */  
 
-export function DashboardSlidePreview({ displayChange }) {
+export function Slidepreview({ displayChange }) {
     const [iframeKey, setIframeKey] = useState(0);
 
     const { slideID } = useContext(AppContext);

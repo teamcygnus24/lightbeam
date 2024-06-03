@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
-import "../styles/pages/displaypage.css"
-import long_food from '../../resources/images/food.png';
+import "../components/styles/view/display.css"
+import long_food from '../resources/images/food.png';
 
 /*
 ============================================================================================

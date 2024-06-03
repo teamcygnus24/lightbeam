@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/pages/dashboardslidepreview.css';
-import {AppContext} from "../application";
+import '../styles/view/dashboardslidepreview.css';
+import {AppContext} from "../../application";
 
 /*
 ============================================================================================
@@ -24,7 +24,7 @@ const templateCodes = {
 }
 
 
-export function DashboardSlides({ projectID, setSlideSelected, setSlideInfo  }) {
+export function Slides({ projectID, setSlideSelected, setSlideInfo  }) {
     const { slideID, setSlideID } = useContext(AppContext)
 
     const navigate = useNavigate();

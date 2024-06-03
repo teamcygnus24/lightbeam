@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/pages/login.css';
-import kpmg_logo from '../../resources/images/kpmg_logo.png';
+import '../components/styles/view/login.css';
+import kpmg_logo from '../resources/images/kpmg_logo.png';
 import { AppContext } from "../application.jsx";
 
 /*

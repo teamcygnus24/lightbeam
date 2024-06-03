@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/pages/dashboardpage.css';
+import '../styles/view/dashboard.css';
 
 /*
 ============================================================================================
@@ -8,7 +8,7 @@ PROJECT INFO
 Bare en info side. ikke noe spess.
 ============================================================================================
 */ 
-export function DashboardSideBarProjectInfo({ project }) {
+export function Sidebarprojectinfo({ project }) {
 
     return (
         <div className="settings-sidebar">

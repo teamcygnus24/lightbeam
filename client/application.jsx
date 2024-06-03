@@ -1,11 +1,11 @@
 import React, {createContext, useState} from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Login } from "./pages/login";
-import { Homepage } from './pages/homepage.jsx';
-import { Projects } from './pages/projectpage.jsx';
-import { Dashboard } from './pages/dashboardpage.jsx';
-import { Display } from './pages/displaypage.jsx';
-import ProtectedRoutes from "./utility/protectedroutes.jsx";
+import { Login } from "./view/login";
+import { Home } from './view/home.jsx';
+import { Projects } from './view/project.jsx';
+import { Dashboard } from './view/dashboard.jsx';
+import { Display } from './view/display.jsx';
+import ProtectedRoutes from "./components/utility/protectedroutes.jsx";
 
 /* Denne siden er basically "innholdsfortegnelsen til nettsiden"
 Vi har lagt "Display" siden utenfor protected routes, da man ikke skal trenge
@@ -26,7 +26,7 @@ export function Application() {
                 <Routes>
                     <Route path="/login" element={<Login />} />
                     <Route element={<ProtectedRoutes />}>
-                        <Route path="/" element={<Homepage />} />
+                        <Route path="/" element={<Home />} />
                         <Route path="/projects" element={<Projects />} />
                         <Route path="/dashboard" element={<Dashboard displayChange={ displayChange } setDisplayChange={ setDisplayChange }/>} />
                     </Route>

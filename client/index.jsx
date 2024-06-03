@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { Homepage } from "./components/pages/homepage";
-import { Projects } from "./components/pages/projectpage";
-import { Application } from "./components/application.jsx";
+import { Home } from "./view/home";
+import { Projects } from "./view/project";
+import { Application } from "./application.jsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-//root.render(<Homepage/>);
+//root.render(<Home/>);
 root.render(
     <Application/>
 );

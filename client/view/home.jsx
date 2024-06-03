@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/pages/homepage.css';
-import kpmg_logo from '../../resources/images/kpmg_logo.png';
+import '../components/styles/view/home.css';
+import kpmg_logo from '../resources/images/kpmg_logo.png';
 
 /*
 ============================================================================================
@@ -12,7 +12,7 @@ Formålet og innhold skal diskuteres til neste sprint.
 ============================================================================================
 */ 
 
-export function Homepage() {
+export function Home() {
     const navigate = useNavigate();
 
     return (

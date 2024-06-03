@@ -1,11 +1,11 @@
 import React, {useState, useEffect, useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/pages/dashboardpage.css';
-import {DashboardSlidePreview} from "./dashboardslidepreview";
-import {DashboardSlides} from "./dashboardslides";
-import {DashboardSideBarEditor} from "./dashboardsidebareditor";
-import {DashboardSideBarProjectInfo} from "./dashboardsidebarprojectinfo";
-import { AppContext } from "../application";
+import '../styles/view/dashboard.css';
+import {Slidepreview} from "./slidepreview";
+import {Slides} from "./slides";
+import {Sidebareditor} from "./sidebareditor";
+import {Sidebarprojectinfo} from "./sidebarprojectinfo";
+import { AppContext } from "../../application";
 
 /*
 ============================================================================================
@@ -20,7 +20,7 @@ Så denne siden er i teorien delt i "to".
 ============================================================================================
 */
 
-export function DashboardContainer({ project, displayChange, setDisplayChange, setSlideID }) {
+export function Container({ project, displayChange, setDisplayChange, setSlideID }) {
     const { slideID } = useContext(AppContext);
 
     const navigate = useNavigate();
@@ -47,21 +47,21 @@ export function DashboardContainer({ project, displayChange, setDisplayChange, s
 
         <div className="dashboard-container">
             <button className="back-button" onClick={backToProjects}>Back</button>
-            {slideSelected === true ? <DashboardSideBarEditor backToSlides={backToSlides} project={ project } slideInfo={ slideInfo } setDisplayChange={ setDisplayChange }/>
-                : <DashboardSideBarProjectInfo project={ project }/>}
-            {slideSelected === true ? <DashboardSlidePreview displayChange={ displayChange }/>
-                : <DashboardSlides projectID={ project._id } setSlideSelected={ setSlideSelected } setSlideInfo={ setSlideInfo } setSlideID={ setSlideID }/>}
+            {slideSelected === true ? <Sidebareditor backToSlides={backToSlides} project={ project } slideInfo={ slideInfo } setDisplayChange={ setDisplayChange }/>
+                : <Sidebarprojectinfo project={ project }/>}
+            {slideSelected === true ? <Slidepreview displayChange={ displayChange }/>
+                : <Slides projectID={ project._id } setSlideSelected={ setSlideSelected } setSlideInfo={ setSlideInfo } setSlideID={ setSlideID }/>}
         </div>
     );
 
     /* MÅ FLYTTE BACK KNAPP
     return (
         <div className="dashboard-container">
-            {slideSelected === true ? <DashboardSideBarEditor project={ project } slideInfo={ slideInfo } setDisplayChange={ setDisplayChange }/> 
-                : <DashboardSideBarProjectInfo project={ project }/>}
+            {slideSelected === true ? <Sidebareditor project={ project } slideInfo={ slideInfo } setDisplayChange={ setDisplayChange }/>
+                : <Sidebarprojectinfo project={ project }/>}
 
-            {slideSelected === true ? <DashboardSlidePreview displayChange={ displayChange }/>
-                : <DashboardSlides projectID={ project._id } setSlideSelected={ setSlideSelected } setSlideInfo={ setSlideInfo }/>}
+            {slideSelected === true ? <Slidepreview displayChange={ displayChange }/>
+                : <Slides projectID={ project._id } setSlideSelected={ setSlideSelected } setSlideInfo={ setSlideInfo }/>}
 
             {slideSelected === true ? <button className="back-button" onClick={backToSLides}>Back</button>
                  :

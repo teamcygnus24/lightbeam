@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import '../styles/pages/dashboardpage.css';
-import {DashboardContainer} from "./dashboardcontainer";
+import '../styles/view/dashboard.css';
+import {Container} from "./container";
 import {Templates} from "./templates";
 
 /*
@@ -11,14 +11,14 @@ SIDEBAR EDITOR
 Dette er editor delen av DASHBOARD CONTAINER.
 Her legges det opp Input fields hvor brukeren sender data inn. Denne dataen lagres i MongoDB.
 Ved trykk av buttons, så vil funksjonen "setDisplayChange" trigges.
-Denne funksjonen trigger useEffect i DashboardSlidePreview, som refresher Preview'en.
+Denne funksjonen trigger useEffect i Slidepreview, som refresher Preview'en.
 I bunn og grunn så får den preview'en til å laste inn på nytt igjen, med nyeste data.
 (Hence hvorfor du ser 1 millisekund flimring når man gjør en update). 
 (DETTE GÅR FINT! Brukeren får en feeling av at noe skjer.)
 ============================================================================================
 */
 
-export function DashboardSideBarEditor({ slideInfo, backToSlides }) {
+export function Sidebareditor({ slideInfo, backToSlides }) {
     const navigate = useNavigate();
     const [ws, setWs] = useState();
 
