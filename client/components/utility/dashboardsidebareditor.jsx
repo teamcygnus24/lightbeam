@@ -77,7 +77,7 @@ export function DashboardSideBarEditor({ slideInfo, setDisplayChange, backToSlid
     }
 
     useEffect(() => {
-        const ws = new WebSocket("wss://localhost:3000");
+        const ws = new WebSocket("wss://https://lightbeam-smidig-dev-393006ce2df9.herokuapp.com/");
         ws.onmessage = (event) => {
             setServerResponse(JSON.parse(event.data))
             console.log(event.data)
