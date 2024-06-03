@@ -3,6 +3,7 @@ import "../styles/pages/displaypage.css"
 import { set } from "mongoose";
 import kpmg_logo from '../../resources/images/kpmg_logo.png';
 import long_food from '../../resources/images/food.png';
+import {useNavigate} from "react-router-dom";
 /*
 ============================================================================================
 DISPLAY PAGE
@@ -17,6 +18,7 @@ Jokubas ordner dette.
 
 export function Display({ displayChange }) {
     const [slide, setSlide] = useState({})
+    const navigate = useNavigate();
 
     const fetchSlide = async () => {
         const getSlide = await fetch(`/api/slide/665790ac9c5237fe18174f1a&sdfg`)
@@ -30,8 +32,8 @@ export function Display({ displayChange }) {
         console.log("Display Render")
     }, [displayChange]);
 
-    return (
-        <div className="menu-container">
+    return (<div>
+            <div className="menu-container">
             <div className='menu-box'>
                 <div className="content">
                     <h2>Today's menu</h2>
@@ -50,6 +52,7 @@ export function Display({ displayChange }) {
             <div className="image-box">
                 <img src={long_food} alt="" />
             </div>
+        </div>
         </div>
     );
 }

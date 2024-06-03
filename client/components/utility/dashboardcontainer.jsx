@@ -42,9 +42,9 @@ export function DashboardContainer({ project, displayChange, setDisplayChange}) 
     }, [slideSelected, displayChange]);
     return (
         <div className="dashboard-container">
-            {slideSelected === true ? <DashboardSideBarEditor project={ project } slideInfo={ slideInfo } setDisplayChange={ setDisplayChange }/> 
+            <button className="back-button" onClick={()=> navigate('/projects')}>back</button>
+            {slideSelected === true ? <DashboardSideBarEditor project={ project } slideInfo={ slideInfo } setDisplayChange={ setDisplayChange }/>
                 : <DashboardSideBarProjectInfo project={ project }/>}
-
             {slideSelected === true ? <DashboardSlidePreview displayChange={ displayChange }/>
                 : <DashboardSlides projectID={ project._id } setSlideSelected={ setSlideSelected } setSlideInfo={ setSlideInfo }/>}
         </div>

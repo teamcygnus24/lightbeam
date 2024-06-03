@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../styles/pages/dashboardpage.css';
 import { DashboardContainer } from "../utility/dashboardcontainer";
 import { Templates } from "../utility/templates";
+import {useNavigate} from "react-router-dom";
 
 /*
 ============================================================================================
@@ -19,6 +20,7 @@ export function Dashboard({ displayChange, setDisplayChange }) {
 
     const [currentProject, setCurrentProject] = useState(null);
     const [projectUpdated, setProjectUpdated] = useState(false);
+    const navigate = useNavigate();
 
     const fetchProject = async () => {
         try {
@@ -53,7 +55,9 @@ export function Dashboard({ displayChange, setDisplayChange }) {
                 ) : (
                     // Passing the projectUpdated state setter, to trigger when a slide has been added and re-render
                     <Templates project={currentProject} setProjectUpdated={setProjectUpdated}/>
+
                 )}
+
         </div>
     );
 }
