@@ -16,21 +16,58 @@ export const AppContext = createContext();
 
 export function Application() {
 
+    //Login Verification
     const [validation, setValidation] = useState(false);
-    const [displayChange, setDisplayChange] = useState(false)
-    const [slideID, setSlideID] = useState("665790ac9c5237fe18174f1a")
+
+    //Display
+    const [displayChange, setDisplayChange] = useState(false);
+
+    //Project
+    const [currentProject, setCurrentProject] = useState(null);
+    const [projectUpdated, setProjectUpdated] = useState(false);
+
+    //Template
+    const [templates, setTemplates] = useState([]);
+
+    //Slide
+    const [slideID, setSlideID] = useState("");
+    const [slides, setSlides] = useState([]);
+    const [slideInfo, setSlideInfo] = useState({});
+    const [slideSelected, setSlideSelected] = useState(false);
+    const [displaySlide, setDisplaySlide] = useState({})
 
     return (
-        <AppContext.Provider value={ { validation, setValidation, slideID, setSlideID } }>
+        <AppContext.Provider value={ {
+            validation,
+            setValidation,
+            slideID,
+            setSlideID,
+            displayChange,
+            setDisplayChange,
+            currentProject,
+            setCurrentProject,
+            projectUpdated,
+            setProjectUpdated,
+            slideInfo,
+            setSlideInfo,
+            slideSelected,
+            setSlideSelected,
+            templates,
+            setTemplates,
+            slides,
+            setSlides,
+            displaySlide,
+            setDisplaySlide
+        } }>
             <Router>
                 <Routes>
                     <Route path="/login" element={<Login />} />
                     <Route element={<ProtectedRoutes />}>
                         <Route path="/" element={<Home />} />
                         <Route path="/projects" element={<Projects />} />
-                        <Route path="/dashboard" element={<Dashboard displayChange={ displayChange } setDisplayChange={ setDisplayChange }/>} />
+                        <Route path="/dashboard" element={<Dashboard />} />
                     </Route>
-                    <Route path="/display" element={<Display displayChange={ displayChange }/>} />
+                    <Route path="/display" element={<Display />} />
                 </Routes>
             </Router>
         </AppContext.Provider>

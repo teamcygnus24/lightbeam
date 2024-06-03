@@ -20,24 +20,15 @@ Så denne siden er i teorien delt i "to".
 ============================================================================================
 */
 
-export function Container({ project, displayChange, setDisplayChange, setSlideID }) {
-    const { slideID } = useContext(AppContext);
+export function Container() {
+    const { displayChange, slideSelected } = useContext(AppContext);
 
     const navigate = useNavigate();
-    const [currentProject, setCurrentProject] = useState({});
-    const [slideInfo, setSlideInfo] = useState({})
-    const [slideSelected, setSlideSelected] = useState(false)
 
     const backToProjects = async (e) => {
         e.preventDefault();
 
         navigate("/projects")
-    }
-
-    const backToSlides = async (e) => {
-        e.preventDefault();
-
-        setSlideSelected(prev => !prev)
     }
 
     useEffect(() => {
@@ -47,10 +38,10 @@ export function Container({ project, displayChange, setDisplayChange, setSlideID
 
         <div className="dashboard-container">
             <button className="back-button" onClick={backToProjects}>Back</button>
-            {slideSelected === true ? <Sidebareditor backToSlides={backToSlides} project={ project } slideInfo={ slideInfo } setDisplayChange={ setDisplayChange }/>
-                : <Sidebarprojectinfo project={ project }/>}
-            {slideSelected === true ? <Slidepreview displayChange={ displayChange }/>
-                : <Slides projectID={ project._id } setSlideSelected={ setSlideSelected } setSlideInfo={ setSlideInfo } setSlideID={ setSlideID }/>}
+            {slideSelected === true ? <Sidebareditor />
+                : <Sidebarprojectinfo />}
+            {slideSelected === true ? <Slidepreview />
+                : <Slides />}
         </div>
     );
 

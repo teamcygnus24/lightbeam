@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import "../components/styles/view/display.css"
 import long_food from '../resources/images/food.png';
+import {AppContext} from "../application";
 
 /*
 ============================================================================================
@@ -15,18 +16,15 @@ Jokubas ordner dette.
 */
 
 export function Display() {
-    const [slideID, setSlideID] = useState("665790ac9c5237fe18174f1a")
-    const [ws, setWs] = useState();
-    const [serverResponse, setServerResponse] = useState(null)
-    const [displayChange, setDisplayChange] = useState(false)
+    const { displayChange, setDisplayChange, slideID, setSlideID, displaySlide, setDisplaySlide, slideSelected } = useContext(AppContext)
 
-    const [slide, setSlide] = useState({})
+    const [ws, setWs] = useState();
 
     const fetchSlide = async () => {
         const getSlide = await fetch(`/api/slide/${slideID}&1`)
         const newSlide = await getSlide.json();
 
-        setSlide(newSlide)
+        setDisplaySlide(newSlide)
     }
 
     useEffect(() => {
@@ -40,30 +38,29 @@ export function Display() {
         setWs(ws)
         fetchSlide();
         console.log("Display Rendering Slide: " + slideID)
-    }, [displayChange, slideID]);
+    }, [displayChange, slideID, slideSelected]);
 
     return (<div>
-            <div className="menu-container">
+        <div className="menu-container">
             <div className='menu-box'>
                 <div className="content">
                     <h2>Today's menu</h2>
                     <div className="spacer"></div>
-                    <span className="input"><h3>{slide.text_01}</h3></span>
+                    <span className="input"><h3>{displaySlide.text_01}</h3></span>
                     <div className="line"></div>
-                    <span className="input">{slide.text_02}</span>
-                    <span className="input">{slide.text_03}</span>
-                    <span className="input">{slide.text_04}</span>
-                    <span className="input"><h3>{slide.text_07}</h3></span>
+                    <span className="input">{displaySlide.text_02}</span>
+                    <span className="input">{displaySlide.text_03}</span>
+                    <span className="input">{displaySlide.text_04}</span>
+                    <span className="input"><h3>{displaySlide.text_07}</h3></span>
                     <div className="line"></div>
-                    <span className="input">{slide.text_08}</span>
-                    <span className="input">{slide.text_09}</span>
+                    <span className="input">{displaySlide.text_08}</span>
+                    <span className="input">{displaySlide.text_09}</span>
                 </div>
             </div>
             <div className="image-box">
-                <img src={long_food} alt="" />
+            <img src={long_food} alt="" />
             </div>
         </div>
-            <div>{serverResponse ? serverResponse.displayChange : ""}</div>
-        </div>
+    </div>
     );
 }

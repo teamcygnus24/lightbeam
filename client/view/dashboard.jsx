@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import '../components/styles/view/dashboard.css';
 import { Container } from "../components/dashboard/container";
 import { Templates } from "../components/dashboard/templates";
 import {useNavigate} from "react-router-dom";
+import {AppContext} from "../application";
 
 /*
 ============================================================================================
@@ -16,11 +17,8 @@ Disse ligger i Utility mappen.
 ============================================================================================
 */ 
 
-export function Dashboard({ displayChange, setDisplayChange }) {
-
-    const [currentProject, setCurrentProject] = useState(null);
-    const [projectUpdated, setProjectUpdated] = useState(false);
-    const navigate = useNavigate();
+export function Dashboard() {
+    const { currentProject, setCurrentProject, projectUpdated } = useContext(AppContext)
 
     const fetchProject = async () => {
         try {
@@ -51,10 +49,10 @@ export function Dashboard({ displayChange, setDisplayChange }) {
                 // Conditional render statement based on how many slides a project has
                 currentProject.slideCount > 0 ? (
                     // Passing fetched project data to the components
-                    <Container project={currentProject} displayChange={ displayChange } setDisplayChange={ setDisplayChange }/>
+                    <Container />
                 ) : (
                     // Passing the projectUpdated state setter, to trigger when a slide has been added and re-render
-                    <Templates project={currentProject} setProjectUpdated={setProjectUpdated}/>
+                    <Templates />
 
                 )}
 

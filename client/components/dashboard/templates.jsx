@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import "../styles/view/templates.css"
+import {AppContext} from "../../application";
 
 /*
 ============================================================================================
@@ -13,10 +14,11 @@ Dette gir oss mulighet til å videreutvikle layout og innhold, spesifikk til den
 ============================================================================================
 */ 
 
-export function Templates({ project, setProjectUpdated }) {
+export function Templates() {
+
+    const { project, setProjectUpdated, templates, setTemplates } = useContext(AppContext)
 
     const navigate = useNavigate();
-    const [templates, setTemplates] = useState([]);
 
     const fetchTemplates = async () => {
         const getAllTemplates = await fetch("/api/template")

@@ -14,10 +14,10 @@ Knappene i sidebar editoren trigger en displayChange, som refresher denne previe
 ============================================================================================
 */  
 
-export function Slidepreview({ displayChange }) {
-    const [iframeKey, setIframeKey] = useState(0);
+export function Slidepreview() {
+    const { slideID, displayChange } = useContext(AppContext);
 
-    const { slideID } = useContext(AppContext);
+    const [iframeKey, setIframeKey] = useState(0);
 
     useEffect(() => {
         setIframeKey(iframeKey + 1)

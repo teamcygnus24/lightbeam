@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/view/dashboard.css';
 import {Container} from "./container";
 import {Templates} from "./templates";
+import {AppContext} from "../../application";
 
 /*
 ============================================================================================
@@ -18,7 +19,9 @@ I bunn og grunn så får den preview'en til å laste inn på nytt igjen, med nye
 ============================================================================================
 */
 
-export function Sidebareditor({ slideInfo, backToSlides }) {
+export function Sidebareditor() {
+    const { slideInfo, displayChange, setDisplayChange, setSlideSelected } = useContext(AppContext);
+
     const navigate = useNavigate();
     const [ws, setWs] = useState();
 
@@ -33,10 +36,7 @@ export function Sidebareditor({ slideInfo, backToSlides }) {
     const [InputText_08, setInputText_08] = useState("");
     const [InputText_09, setInputText_09] = useState("");
     const [InputText_10, setInputText_10] = useState("");
-    const [channelMsg, setChannelMsg] = useState("");
-    const [displayChange, setDisplayChange] = useState(false);
 
-    const [serverData, setServerData] = useState("")
     const [serverResponse, setServerResponse] = useState(null)
 
     const handleUpdate = async (e) => {
@@ -71,6 +71,12 @@ export function Sidebareditor({ slideInfo, backToSlides }) {
         }
     };
 
+    const backToSlides = async (e) => {
+        e.preventDefault();
+
+        setSlideSelected(prev => !prev)
+    }
+
     const handleWS = async (sID, displayEvent) => {
 
         ws.send(JSON.stringify({ slideID: sID, displayChange: displayEvent }))
@@ -103,9 +109,6 @@ export function Sidebareditor({ slideInfo, backToSlides }) {
                     <button className="move-button" name="Back" onClick={backToSlides}>Back</button>
                 </form>
             </div>
-            <input type="text" placeholder="Channel Message" value={channelMsg} onChange={(e) => setChannelMsg(e.target.value)}/>
-            <button onClick={handleWS}>Send Channel Message</button>
-            <div>{serverResponse ? serverResponse.slideID : ""}</div>
         </div>
     );
 }
