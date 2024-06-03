@@ -30,7 +30,7 @@ export function Display({ displayChange }) {
     }
 
     useEffect(() => {
-        const ws = new WebSocket("wss://localhost:3000")
+        const ws = new WebSocket("wss://lightbeam-smidig-dev-393006ce2df9.herokuapp.com/")
         ws.onmessage = (event) => {
             const newSlide = JSON.parse(event.data)
             setSlideID(newSlide.channelMsg)
