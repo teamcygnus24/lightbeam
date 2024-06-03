@@ -16,7 +16,7 @@ I bunn og grunn så får den preview'en til å laste inn på nytt igjen, med nye
 ============================================================================================
 */ 
 
-export function DashboardSideBarEditor({ project, slideInfo, setDisplayChange }) {
+export function DashboardSideBarEditor({ project, slideInfo, setDisplayChange, backToSlides }) {
     const location = useLocation();
     const locationState = location.state || {};
     const [events, setEvents] = useState(locationState.events || ['Sprint meeting']);
@@ -84,7 +84,7 @@ export function DashboardSideBarEditor({ project, slideInfo, setDisplayChange })
                     <div className="alternative">Alternative 2:<input type="text" value={InputText_09} onChange={(e) => setInputText_09(e.target.value)}/></div>                    
                     <button className="move-button" name="Save" type="button" onClick={handleUpdate}>Save Changes</button>
                     <button className="move-button" name="Display" type="button" onClick={handleUpdate}>Go To Display</button>
-                    <button className="move-button" name="Back" onClick={()=> navigate('/projects')}>back</button>
+                    <button className="move-button" name="Back" onClick={backToSlides}>Back</button>
                 </form>
             </div>
         </div>

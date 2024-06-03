@@ -31,7 +31,7 @@ export function DashboardContainer({ project, displayChange, setDisplayChange}) 
         navigate("/projects")
     }
 
-    const backToSLides = async (e) => {
+    const backToSlides = async (e) => {
         e.preventDefault();
 
         setSlideSelected(prev => !prev)
@@ -41,9 +41,10 @@ export function DashboardContainer({ project, displayChange, setDisplayChange}) 
         console.log("I rendered")
     }, [slideSelected, displayChange]);
     return (
+
         <div className="dashboard-container">
-            <button className="back-button" onClick={()=> navigate('/projects')}>back</button>
-            {slideSelected === true ? <DashboardSideBarEditor project={ project } slideInfo={ slideInfo } setDisplayChange={ setDisplayChange }/>
+            <button className="back-button" onClick={backToProjects}>Back</button>
+            {slideSelected === true ? <DashboardSideBarEditor backToSlides={backToSlides} project={ project } slideInfo={ slideInfo } setDisplayChange={ setDisplayChange }/>
                 : <DashboardSideBarProjectInfo project={ project }/>}
             {slideSelected === true ? <DashboardSlidePreview displayChange={ displayChange }/>
                 : <DashboardSlides projectID={ project._id } setSlideSelected={ setSlideSelected } setSlideInfo={ setSlideInfo }/>}
