@@ -1,8 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import "../styles/pages/displaypage.css"
 import long_food from '../../resources/images/food.png';
-import { useNavigate } from "react-router-dom";
-import {AppContext} from "../application";
+
 /*
 ============================================================================================
 DISPLAY PAGE
@@ -15,10 +14,11 @@ Jokubas ordner dette.
 ============================================================================================
 */
 
-export function Display({ displayChange }) {
+export function Display() {
     const [slideID, setSlideID] = useState("665790ac9c5237fe18174f1a")
     const [ws, setWs] = useState();
     const [serverResponse, setServerResponse] = useState(null)
+    const [displayChange, setDisplayChange] = useState(false)
 
     const [slide, setSlide] = useState({})
 
@@ -33,13 +33,14 @@ export function Display({ displayChange }) {
         const ws = new WebSocket("wss://lightbeam-smidig-dev-393006ce2df9.herokuapp.com/")
         ws.onmessage = (event) => {
             const newSlide = JSON.parse(event.data)
-            setSlideID(newSlide.channelMsg)
-            console.log(newSlide.channelMsg)
+            setSlideID(newSlide.slideID)
+            setDisplayChange(newSlide.displayChange)
+            console.log(newSlide.slideID)
         }
         setWs(ws)
         fetchSlide();
         console.log("Display Rendering Slide: " + slideID)
-    }, [slideID]);
+    }, [displayChange, slideID]);
 
     return (<div>
             <div className="menu-container">
@@ -62,7 +63,7 @@ export function Display({ displayChange }) {
                 <img src={long_food} alt="" />
             </div>
         </div>
-            <div>{serverResponse ? serverResponse.channelMsg : ""}</div>
+            <div>{serverResponse ? serverResponse.displayChange : ""}</div>
         </div>
     );
 }

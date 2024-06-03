@@ -62,8 +62,6 @@ const wsServer = new WebSocketServer({ noServer: true });
 
 wsServer.on("connect", (socket) => {
     sockets.push(socket);
-    connectionCount++;
-    console.log("ws Connections: " + connectionCount);
 
     socket.on("message", (buffer) => {
         const message = buffer.toString();

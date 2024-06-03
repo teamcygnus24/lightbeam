@@ -18,7 +18,7 @@ I bunn og grunn så får den preview'en til å laste inn på nytt igjen, med nye
 ============================================================================================
 */
 
-export function DashboardSideBarEditor({ slideInfo, setDisplayChange, backToSlides }) {
+export function DashboardSideBarEditor({ slideInfo, backToSlides }) {
     const navigate = useNavigate();
     const [ws, setWs] = useState();
 
@@ -34,6 +34,7 @@ export function DashboardSideBarEditor({ slideInfo, setDisplayChange, backToSlid
     const [InputText_09, setInputText_09] = useState("");
     const [InputText_10, setInputText_10] = useState("");
     const [channelMsg, setChannelMsg] = useState("");
+    const [displayChange, setDisplayChange] = useState(false);
 
     const [serverData, setServerData] = useState("")
     const [serverResponse, setServerResponse] = useState(null)
@@ -62,18 +63,17 @@ export function DashboardSideBarEditor({ slideInfo, setDisplayChange, backToSlid
                 }
             });
             const slideUpdate = await updateSlide.json();
-            await handleWS(slideInfo.slideID)
-
-            setDisplayChange(prev => !prev);
-            console.log(slideUpdate)
+            setDisplayChange(prev => !prev)
+            await handleWS(slideInfo.slideID, displayChange)
+            console.log("Data: " + slideInfo.slideID + " " + displayChange)
         } else if (e.target.name === "Display") {
             navigate("/Display")
         }
     };
 
-    const handleWS = async (sID) => {
+    const handleWS = async (sID, displayEvent) => {
 
-        ws.send(JSON.stringify({ channelMsg: sID }))
+        ws.send(JSON.stringify({ slideID: sID, displayChange: displayEvent }))
     }
 
     useEffect(() => {
@@ -105,7 +105,7 @@ export function DashboardSideBarEditor({ slideInfo, setDisplayChange, backToSlid
             </div>
             <input type="text" placeholder="Channel Message" value={channelMsg} onChange={(e) => setChannelMsg(e.target.value)}/>
             <button onClick={handleWS}>Send Channel Message</button>
-            <div>{serverResponse ? serverResponse.channelMsg : ""}</div>
+            <div>{serverResponse ? serverResponse.slideID : ""}</div>
         </div>
     );
 }
