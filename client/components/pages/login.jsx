@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/pages/login.css';
 import kpmg_logo from '../../resources/images/kpmg_logo.png';
-import { Context } from "../application.jsx";
+import { AppContext } from "../application.jsx";
 
 /*
 ============================================================================================
@@ -15,7 +15,7 @@ Det kjøres en API til databasen for å sjekke om passordet stemmer.
 
 export function Login() {
     const navigate = useNavigate();
-    const [validation, setValidation] = useContext(Context)
+    const { validation, setValidation } = useContext(AppContext)
 
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("Skriv inn passordet for å komme deg videre");

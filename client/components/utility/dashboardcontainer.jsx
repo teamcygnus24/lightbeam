@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/pages/dashboardpage.css';
 import {DashboardSlidePreview} from "./dashboardslidepreview";
 import {DashboardSlides} from "./dashboardslides";
 import {DashboardSideBarEditor} from "./dashboardsidebareditor";
 import {DashboardSideBarProjectInfo} from "./dashboardsidebarprojectinfo";
+import {AppContext} from "../application";
 
 /*
 ============================================================================================
@@ -19,7 +20,9 @@ Så denne siden er i teorien delt i "to".
 ============================================================================================
 */
 
-export function DashboardContainer({ project, displayChange, setDisplayChange}) {
+export function DashboardContainer({ project, displayChange, setDisplayChange, setSlideID }) {
+    const { slideID } = useContext(AppContext);
+
     const navigate = useNavigate();
     const [currentProject, setCurrentProject] = useState({});
     const [slideInfo, setSlideInfo] = useState({})
@@ -47,7 +50,7 @@ export function DashboardContainer({ project, displayChange, setDisplayChange}) 
             {slideSelected === true ? <DashboardSideBarEditor backToSlides={backToSlides} project={ project } slideInfo={ slideInfo } setDisplayChange={ setDisplayChange }/>
                 : <DashboardSideBarProjectInfo project={ project }/>}
             {slideSelected === true ? <DashboardSlidePreview displayChange={ displayChange }/>
-                : <DashboardSlides projectID={ project._id } setSlideSelected={ setSlideSelected } setSlideInfo={ setSlideInfo }/>}
+                : <DashboardSlides projectID={ project._id } setSlideSelected={ setSlideSelected } setSlideInfo={ setSlideInfo } setSlideID={ setSlideID }/>}
         </div>
     );
 

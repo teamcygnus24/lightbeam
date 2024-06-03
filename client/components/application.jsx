@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import useGlobalContext from "../hooks/useGlobalContext";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Login } from "./pages/login";
 import { Homepage } from './pages/homepage.jsx';
@@ -13,29 +12,27 @@ Vi har lagt "Display" siden utenfor protected routes, da man ikke skal trenge
 å logge seg på for å se denne siden. Men alt annet er beskyttet.
 */
 
-export const Context = React.createContext();
+export const AppContext = React.createContext();
 
 export function Application() {
 
     const [validation, setValidation] = useState(false);
-    const [projects, setProjects] = useState([]);
     const [displayChange, setDisplayChange] = useState(false)
+    const [slideID, setSlideID] = useState("665790ac9c5237fe18174f1a")
 
     return (
-        <useGlobalContext.Provider value ={ {projects ,setProjects} }>
-            <Context.Provider value={ [validation, setValidation] }>
-                <Router>
-                    <Routes>
-                        <Route path="/login" element={<Login />} />
-                        <Route element={<ProtectedRoutes />}>
-                            <Route path="/" element={<Homepage />} />
-                            <Route path="/projects" element={<Projects />} />
-                            <Route path="/dashboard" element={<Dashboard displayChange={ displayChange } setDisplayChange={ setDisplayChange }/>} />
-                        </Route>
-                        <Route path="/display" element={<Display displayChange={ displayChange }/>} />
-                    </Routes>
-                </Router>
-            </Context.Provider>
-        </useGlobalContext.Provider>
+        <AppContext.Provider value={ { validation, setValidation, slideID, setSlideID } }>
+            <Router>
+                <Routes>
+                    <Route path="/login" element={<Login />} />
+                    <Route element={<ProtectedRoutes />}>
+                        <Route path="/" element={<Homepage />} />
+                        <Route path="/projects" element={<Projects />} />
+                        <Route path="/dashboard" element={<Dashboard displayChange={ displayChange } setDisplayChange={ setDisplayChange }/>} />
+                    </Route>
+                    <Route path="/display" element={<Display displayChange={ displayChange }/>} />
+                </Routes>
+            </Router>
+        </AppContext.Provider>
     );
 }

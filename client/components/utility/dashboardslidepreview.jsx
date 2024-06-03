@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import '../styles/pages/dashboardslidepreview.css';
+import {AppContext} from "../application";
 
 /*
 ============================================================================================
@@ -16,14 +17,16 @@ Knappene i sidebar editoren trigger en displayChange, som refresher denne previe
 export function DashboardSlidePreview({ displayChange }) {
     const [iframeKey, setIframeKey] = useState(0);
 
+    const { slideID } = useContext(AppContext);
+
     useEffect(() => {
         setIframeKey(iframeKey + 1)
-    }, [displayChange]);
+    }, [displayChange, slideID]);
 
     return (
                 <iframe
                     key={iframeKey}
-                    src="https://lightbeam-smidig-dev-393006ce2df9.herokuapp.com/display" // Replace with the actual URL
+                    src="http://localhost:1234/Display" // Replace with the actual URL
                     title="Embedded Page"
                     id="frame"
                 />

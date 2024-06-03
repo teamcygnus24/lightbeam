@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/pages/dashboardpage.css';
+import {DashboardContainer} from "./dashboardcontainer";
+import {Templates} from "./templates";
 
 /*
 ============================================================================================
@@ -14,14 +16,11 @@ I bunn og grunn så får den preview'en til å laste inn på nytt igjen, med nye
 (Hence hvorfor du ser 1 millisekund flimring når man gjør en update). 
 (DETTE GÅR FINT! Brukeren får en feeling av at noe skjer.)
 ============================================================================================
-*/ 
+*/
 
-export function DashboardSideBarEditor({ project, slideInfo, setDisplayChange, backToSlides }) {
-    const location = useLocation();
-    const locationState = location.state || {};
-    const [events, setEvents] = useState(locationState.events || ['Sprint meeting']);
-    const [deadlines, setDeadlines] = useState(locationState.deadlines || ['Weekly reports']);
+export function DashboardSideBarEditor({ slideInfo, setDisplayChange, backToSlides }) {
     const navigate = useNavigate();
+    const [ws, setWs] = useState();
 
     // Inputs
     const [InputText_01, setInputText_01] = useState("");
@@ -34,11 +33,13 @@ export function DashboardSideBarEditor({ project, slideInfo, setDisplayChange, b
     const [InputText_08, setInputText_08] = useState("");
     const [InputText_09, setInputText_09] = useState("");
     const [InputText_10, setInputText_10] = useState("");
+    const [channelMsg, setChannelMsg] = useState("");
+
+    const [serverData, setServerData] = useState("")
+    const [serverResponse, setServerResponse] = useState(null)
 
     const handleUpdate = async (e) => {
         e.preventDefault();
-
-        const state = { events, deadlines };
 
         if (e.target.name === "Save") {
             const updateSlide = await fetch(`/api/slide/${slideInfo.slideID}`, {
@@ -61,6 +62,7 @@ export function DashboardSideBarEditor({ project, slideInfo, setDisplayChange, b
                 }
             });
             const slideUpdate = await updateSlide.json();
+            handleWS(slideInfo.slideID)
 
             setDisplayChange(prev => !prev);
             console.log(slideUpdate)
@@ -68,6 +70,20 @@ export function DashboardSideBarEditor({ project, slideInfo, setDisplayChange, b
             navigate("/Display")
         }
     };
+
+    const handleWS = async (sID) => {
+
+        ws.send(JSON.stringify({ channelMsg: sID }))
+    }
+
+    useEffect(() => {
+        const ws = new WebSocket("ws://localhost:3000");
+        ws.onmessage = (event) => {
+            setServerResponse(JSON.parse(event.data))
+            console.log(event.data)
+        }
+        setWs(ws)
+    }, []);
 
     return (
         <div className="settings-sidebar">
@@ -87,6 +103,9 @@ export function DashboardSideBarEditor({ project, slideInfo, setDisplayChange, b
                     <button className="move-button" name="Back" onClick={backToSlides}>Back</button>
                 </form>
             </div>
+            <input type="text" placeholder="Channel Message" value={channelMsg} onChange={(e) => setChannelMsg(e.target.value)}/>
+            <button onClick={handleWS}>Send Channel Message</button>
+            <div>{serverResponse ? serverResponse.channelMsg : ""}</div>
         </div>
     );
 }

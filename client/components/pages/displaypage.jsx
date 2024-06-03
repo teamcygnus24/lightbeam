@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import "../styles/pages/displaypage.css"
-import { set } from "mongoose";
-import kpmg_logo from '../../resources/images/kpmg_logo.png';
 import long_food from '../../resources/images/food.png';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import {AppContext} from "../application";
 /*
 ============================================================================================
 DISPLAY PAGE
@@ -17,20 +16,30 @@ Jokubas ordner dette.
 */
 
 export function Display({ displayChange }) {
+    const [slideID, setSlideID] = useState("665790ac9c5237fe18174f1a")
+    const [ws, setWs] = useState();
+    const [serverResponse, setServerResponse] = useState(null)
+
     const [slide, setSlide] = useState({})
-    const navigate = useNavigate();
 
     const fetchSlide = async () => {
-        const getSlide = await fetch(`/api/slide/665790ac9c5237fe18174f1a&sdfg`)
+        const getSlide = await fetch(`/api/slide/${slideID}&1`)
         const newSlide = await getSlide.json();
 
         setSlide(newSlide)
     }
 
     useEffect(() => {
+        const ws = new WebSocket("ws://localhost:3000")
+        ws.onmessage = (event) => {
+            const newSlide = JSON.parse(event.data)
+            setSlideID(newSlide.channelMsg)
+            console.log(newSlide.channelMsg)
+        }
+        setWs(ws)
         fetchSlide();
-        console.log("Display Render")
-    }, [displayChange]);
+        console.log("Display Rendering Slide: " + slideID)
+    }, [slideID]);
 
     return (<div>
             <div className="menu-container">
@@ -53,6 +62,7 @@ export function Display({ displayChange }) {
                 <img src={long_food} alt="" />
             </div>
         </div>
+            <div>{serverResponse ? serverResponse.channelMsg : ""}</div>
         </div>
     );
 }
