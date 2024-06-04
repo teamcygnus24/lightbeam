@@ -21,7 +21,7 @@ router.get("/:slideID&:projectID", slideGETONE);
 //Slide GET ALL from Project
 router.get("/:projectID", slideGETproject);
 
-//slide UPDATE ONE
+//Slide UPDATE ONE
 router.put("/:slideID", slideUPDATEONE)
 
 

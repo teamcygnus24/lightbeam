@@ -9,7 +9,7 @@
         "supertest": "^6.3.3"
     },
     "scripts": {
-        "dev": "concurrently npm:dev:client npm:dev:server",
+        "dev": "concurrently npm:dev:server npm:dev:client",
         "dev:client": "cd client && npm run dev",
         "dev:server": "cd server && npm run dev",
         "postinstall": "npm run install:client && npm run install:server",

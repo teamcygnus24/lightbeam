@@ -1,8 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../styles/view/dashboard.css';
-import {Container} from "./container";
-import {Templates} from "./templates";
 import {AppContext} from "../../application";
 
 /*
@@ -25,6 +23,9 @@ export function Sidebareditor() {
     const navigate = useNavigate();
     const [ws, setWs] = useState();
 
+    //States
+    const [slideUpdate, setSlideUpdate] = useState(false);
+
     // Inputs
     const [InputText_01, setInputText_01] = useState("");
     const [InputText_02, setInputText_02] = useState("");
@@ -36,8 +37,6 @@ export function Sidebareditor() {
     const [InputText_08, setInputText_08] = useState("");
     const [InputText_09, setInputText_09] = useState("");
     const [InputText_10, setInputText_10] = useState("");
-
-    const [serverResponse, setServerResponse] = useState(null)
 
     const handleUpdate = async (e) => {
         e.preventDefault();
@@ -64,7 +63,8 @@ export function Sidebareditor() {
             });
             const slideUpdate = await updateSlide.json();
             setDisplayChange(prev => !prev)
-            await handleWS(slideInfo.slideID, displayChange)
+            setSlideUpdate(prev => !prev)
+            await handleWS(slideUpdate)
             console.log("Data: " + slideInfo.slideID + " " + displayChange)
         } else if (e.target.name === "Display") {
             navigate("/Display")
@@ -77,15 +77,13 @@ export function Sidebareditor() {
         setSlideSelected(prev => !prev)
     }
 
-    const handleWS = async (sID, displayEvent) => {
-
-        ws.send(JSON.stringify({ slideID: sID, displayChange: displayEvent }))
+    const handleWS = async (event) => {
+        ws.send(JSON.stringify( { slideUpdate: event } ));
     }
 
     useEffect(() => {
         const ws = new WebSocket("wss://lightbeam-smidig-dev-393006ce2df9.herokuapp.com/");
         ws.onmessage = (event) => {
-            setServerResponse(JSON.parse(event.data))
             console.log(event.data)
         }
         setWs(ws)

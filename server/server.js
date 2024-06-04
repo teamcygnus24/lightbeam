@@ -55,7 +55,6 @@ mongoose
         process.exit(1); // Exit the process with an error code
     });
 
-let connectionCount = 0;
 const sockets = [];
 
 const wsServer = new WebSocketServer({ noServer: true });

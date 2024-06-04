@@ -25,6 +25,8 @@ export function Application() {
     //Project
     const [currentProject, setCurrentProject] = useState(null);
     const [projectUpdated, setProjectUpdated] = useState(false);
+    const [displayProject, setDisplayProject] = useState("6655f10157e8816e5eedbd55")
+    const [prevProject, setPrevProject] = useState("")
 
     //Template
     const [templates, setTemplates] = useState([]);
@@ -57,7 +59,11 @@ export function Application() {
             slides,
             setSlides,
             displaySlide,
-            setDisplaySlide
+            setDisplaySlide,
+            displayProject,
+            setDisplayProject,
+            prevProject,
+            setPrevProject
         } }>
             <Router>
                 <Routes>
