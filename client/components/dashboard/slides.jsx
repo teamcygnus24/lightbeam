@@ -1,10 +1,8 @@
 import React, {useState, useEffect, useContext} from 'react';
-import { useNavigate } from 'react-router-dom';
 import '../styles/view/dashboardslidepreview.css';
 import {AppContext} from "../../application";
-import Menu from "../templates/menu";
-import long_food from "../../resources/images/food.png";
 import MenuSlide from "../templates/menuslide";
+import InfoSlide from "../templates/infoslide";
 
 /*
 ============================================================================================
@@ -18,12 +16,16 @@ sliden som man har trykket på.
 ============================================================================================
 */
 
-
 export function Slides() {
     const { setSlideID, currentProject, setSlideSelected, setSlideInfo, slides, setSlides, removeSlideClicked } = useContext(AppContext)
 
     const [loading, setLoading] = useState(false)
 
+    const templateComponents = {
+        "665625763da2eb37ed00af98": MenuSlide,
+        "6656257b3da2eb37ed00af9a": InfoSlide
+
+    }
 
     const fetchSlidesFromProject = async () => {
         setLoading(true)
@@ -80,16 +82,20 @@ export function Slides() {
         <div className="slides-main">
             {removeSlideClicked ? <h1 style={{color: "crimson"}}>Removing slides</h1> : <h1>Selecting slides</h1>}
             <div className="slides-container">
-                {loading ? <div>Loading</div> : (removeSlideClicked ? slides.map((s, index) => (
+                {loading ? <div>Loading</div> : (removeSlideClicked ? slides.map((s, index) => {
+                    const SlideComponent = templateComponents[s.templateID];
+                    return (
                     <div key={s._id} className="remove-slides-card" id={s._id} data-template={s.templateID} onClick={handleRemoveSlide}>
-                        <MenuSlide currentSlide={ s }/>
+                        <SlideComponent currentSlide={ s }/>
                     </div>
-                )) : slides.map((s, index) => (
+                )}) : slides.map((s, index) => {
+                    const SlideComponent = templateComponents[s.templateID];
+                    return (
                     <div key={s._id} className="slides-card" id={s._id} data-template={s.templateID}
                          onClick={handleClick}>
-                        <MenuSlide currentSlide={ s }/>
+                        <SlideComponent currentSlide={ s }/>
                     </div>
-                    )))}
+                    )}))}
             </div>
         </div>
     );
