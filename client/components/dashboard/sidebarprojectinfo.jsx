@@ -13,15 +13,17 @@ Bare en info side. ikke noe spess.
 */
 
 /*{removeSlideClicked && <DashboardContainer project={project}/>}*/
-export function Sidebarprojectinfo( ) {
+export function Sidebarprojectinfo() {
 
     const [ws, setWs] = useState();
 
     const navigate = useNavigate();
 
-    const { currentProject, project, fetchTemplates } = useContext(AppContext)
+    const { currentProject, setShowBackButton } = useContext(AppContext)
 
     const [addSlideClicked, setAddSlideChecked] = useState(false);
+
+
     const handleWS = async () => {
 
         if (ws) {
@@ -30,11 +32,8 @@ export function Sidebarprojectinfo( ) {
     }
 
     const toggleTemplates = async ()=>{
-        if (addSlideClicked) {
-            setAddSlideChecked(false);
-        }else {
-            setAddSlideChecked(true);
-        }
+        setAddSlideChecked(prevState => !prevState);
+        setShowBackButton(false);
     }
 
     useEffect(() => {
@@ -42,18 +41,19 @@ export function Sidebarprojectinfo( ) {
         ws.onmessage = (event) => {
             console.log(event.data)
         }
+        setShowBackButton(true);
         setWs(ws)
     }, []);
 
     return (
         <div className="settings-sidebar">
-            <h2>Project: {currentProject.name}</h2>
-            <h3>Slides: {currentProject.slideCount}</h3>
+            <h2>Project: {currentProject?.name}</h2>
+            <h3>Slides: {currentProject?.slideCount}</h3>
             <button className="move-button" onClick={toggleTemplates}>Add slide</button>
             <button className="move-button">Remove slide</button>
             <button className="move-button" onClick={handleWS}>Set Active</button>
             <button className="move-button" onClick={() => navigate('/projects')}>Back</button>
-            {addSlideClicked && (<Templates project={project} fetchTemplates={fetchTemplates} showBackButton={false}  />)}
+            {addSlideClicked && (<Templates/>)}
 
         </div>
     );

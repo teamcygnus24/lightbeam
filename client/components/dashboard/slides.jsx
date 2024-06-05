@@ -17,7 +17,7 @@ sliden som man har trykket på.
 
 
 export function Slides() {
-    const { setSlideID, currentProject, setSlideSelected, setSlideInfo, slides, setSlides, setDisplayChange } = useContext(AppContext)
+    const { setSlideID, currentProject, setSlideSelected, setSlideInfo, slides, setSlides } = useContext(AppContext)
 
 
     const fetchSlidesFromProject = async () => {
@@ -46,7 +46,7 @@ export function Slides() {
 
     useEffect(() => {
         fetchSlidesFromProject();
-    }, [])
+    }, [currentProject])
 
     return (
         <div className="slides-main">

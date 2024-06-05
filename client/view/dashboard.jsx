@@ -55,6 +55,9 @@ export function Dashboard() {
                     <Templates />
 
                 )}
+            <footer className="footer">
+                <p>by Team Cygnus</p>
+            </footer>
 
         </div>
     );
