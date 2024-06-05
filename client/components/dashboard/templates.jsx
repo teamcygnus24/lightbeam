@@ -82,7 +82,7 @@ export function Templates() {
                     <div key={t._id} id={t._id} className="template-card" onClick={handleAddSlide}>{t.name}</div>
                 ))}
             </div>
-            {showBackButton &&  <button className="template-btn" onClick={()=>navigate("/projects")}>back</button>}
+            {showBackButton &&  <button className="template-btn" onClick={()=>navigate("/projects")}>Back</button>}
 
         </div>
     )

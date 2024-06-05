@@ -17,8 +17,8 @@
 }
 
 .slides-card {
-    width: 90%;
-    height: 50%;
+    width: 300px;
+    height: 250px;
     background-color: #203672;
     color: ghostwhite;
     text-align: center;
@@ -32,8 +32,8 @@
 }
 
 .remove-slides-card {
-    width: 90%;
-    height: 50%;
+    width: 300px;
+    height: 250px;
     background-color: #203672;
     color: ghostwhite;
     text-align: center;
@@ -43,7 +43,7 @@
 }
 
 .remove-slides-card:hover {
-    background-color: red;
+    background-color: crimson;
     cursor: pointer;
 }
 

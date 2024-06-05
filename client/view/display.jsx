@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useRef, useState} from 'react';
 import "../components/styles/view/display.css"
 import long_food from '../resources/images/food.png';
 import { AppContext } from "../application";
+import Menu from "../components/templates/menu";
 
 /*
 ============================================================================================
@@ -83,7 +84,7 @@ export function Display() {
     }
 
     useEffect(() => {
-        const ws = new WebSocket("wss://lightbeam-smidig-dev-393006ce2df9.herokuapp.com/")
+        const ws = new WebSocket("ws://localhost:3000/")
         ws.onmessage = (event) => {
             const serverResponse = JSON.parse(event.data)
             if (serverResponse.projectID !== null && serverResponse.projectID !== undefined) {
@@ -107,29 +108,9 @@ export function Display() {
         };
     }, [slideSwitch]);
 
-    return (<div>
-            <div className="menu-container">
-                <div className='menu-box'>
-                    <div>Project: {projectName}</div>
-                    <div className="content">
-                        <h2>Slide Number: {arrayIndex}, Today's menu</h2>
-                        <div className="spacer"></div>
-                        <span className="input"><h3>{currentSlide.text_01}</h3></span>
-                        <div className="line"></div>
-                        <span className="input">{currentSlide.text_02}</span>
-                        <span className="input">{currentSlide.text_03}</span>
-                        <span className="input">{currentSlide.text_04}</span>
-                        <span className="input"><h3>{currentSlide.text_07}</h3></span>
-                        <div className="line"></div>
-                        <span className="input">{currentSlide.text_08}</span>
-                        <span className="input">{currentSlide.text_09}</span>
-                    </div>
-                </div>
-                <div className="image-box">
-                    <img src={long_food} alt=""/>
-                </div>
-            </div>
-            <button onClick={handleClick}>Change Project</button>
+    return (
+        <div>
+            <Menu currentSlide={ currentSlide }/>
         </div>
     );
 }

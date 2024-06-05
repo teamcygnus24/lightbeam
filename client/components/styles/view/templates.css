@@ -27,8 +27,8 @@ body {
 
 .template-card {
     color: white;
-    width: 90%;
-    height: 60%;
+    width: 70%;
+    height: 80%;
     background-color: #003087;
     border-radius: 5px;
     border: ghostwhite solid 2px;
@@ -41,6 +41,8 @@ body {
 }
 
 .template-btn {
+    height: 50px;
+    width: 75px;
     margin-top: 2%;
     margin-bottom: 5%;
     padding: 10px 20px;

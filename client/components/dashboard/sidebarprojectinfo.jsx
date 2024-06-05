@@ -44,12 +44,12 @@ export function Sidebarprojectinfo() {
         if (addSlideClicked){
             setAddSlideClicked(false)
         }
-        setRemoveSlideClicked(true);
+        setRemoveSlideClicked(prev => !prev);
     }
 
 
     useEffect(() => {
-        const ws = new WebSocket("wss://lightbeam-smidig-dev-393006ce2df9.herokuapp.com/");
+        const ws = new WebSocket("ws://localhost:3000/");
         ws.onmessage = (event) => {
             console.log(event.data)
         }
@@ -63,8 +63,9 @@ export function Sidebarprojectinfo() {
             <h3>Slides: {currentProject?.slideCount}</h3>
             <div className="buttons">
             <button className="move-button" onClick={toggleAddSlide}>Add slide</button>
-            <button className="move-button" onClick={toggleRemoveSlide}>Remove slide</button>
-            <button className="move-button" onClick={handleWS}>Set Active</button>
+            {removeSlideClicked ? <button className="move-button" style={{background: "crimson"}} onClick={toggleRemoveSlide}>Remove slide</button> :
+                <button className="move-button" onClick={toggleRemoveSlide}>Remove slide</button>}
+                <button className="move-button" onClick={handleWS}>Set Active</button>
             <button className="move-button" onClick={() => navigate('/projects')}>Back</button>
             </div>
             {addSlideClicked && (<Templates/>)}

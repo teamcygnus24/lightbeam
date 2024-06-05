@@ -19,8 +19,11 @@ sliden som man har trykket på.
 export function Slides() {
     const { setSlideID, currentProject, setSlideSelected, setSlideInfo, slides, setSlides, removeSlideClicked } = useContext(AppContext)
 
+    const [loading, setLoading] = useState(false)
+
 
     const fetchSlidesFromProject = async () => {
+        setLoading(true)
         const projectSlides = await fetch("/api/slide/" + currentProject._id)
         const slidesList = await projectSlides.json();
 
@@ -28,6 +31,7 @@ export function Slides() {
             console.log("Slides successfully fetches from project " + currentProject._id + "\n" + slidesList);
             setSlides(slidesList)
         }
+        setLoading(false)
     }
 
     const handleClick = async (e) => {
@@ -50,13 +54,13 @@ export function Slides() {
 
     return (
         <div className="slides-main">
-            {removeSlideClicked ? <h1>Removing slides</h1> : <h1>Selecting slides</h1>}
+            {removeSlideClicked ? <h1 style={{color: "crimson"}}>Removing slides</h1> : <h1>Selecting slides</h1>}
             <div className="slides-container">
-                {removeSlideClicked ? slides.map((s, index) => (
+                {loading ? <div>Loading</div> : (removeSlideClicked ? slides.map((s, index) => (
                     <div key={s._id} className="remove-slides-card" id={s._id} data-template={s.templateID} onClick={handleClick}> Slide: Today's menu {currentProject._id}</div>
                 )) : slides.map((s, index) => (
                     <div key={s._id} className="slides-card" id={s._id} data-template={s.templateID} onClick={handleClick}> Slide: Today's menu {currentProject._id}</div>
-                ))}
+                )))}
             </div>
         </div>
     );
