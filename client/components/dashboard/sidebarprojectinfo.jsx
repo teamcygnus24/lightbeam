@@ -21,8 +21,7 @@ export function Sidebarprojectinfo( ) {
 
     const { currentProject, project, fetchTemplates } = useContext(AppContext)
 
-    const [setAddSlideChecked, addSlideClicked] = useState(false);
-
+    const [addSlideClicked, setAddSlideChecked] = useState(false);
     const handleWS = async () => {
 
         if (ws) {
@@ -32,8 +31,11 @@ export function Sidebarprojectinfo( ) {
 
     const toggleTemplates = async ()=>{
         if (addSlideClicked) {
+            console.log("false")
             setAddSlideChecked(false);
         }else {
+            console.log("true")
+
             setAddSlideChecked(true);
         }
     }
