@@ -16,7 +16,7 @@ Dette gir oss mulighet til å videreutvikle layout og innhold, spesifikk til den
 
 export function Templates() {
 
-    const { project, setProjectUpdated, templates, setTemplates } = useContext(AppContext)
+    const { project, setProjectUpdated, templates, setTemplates, showBackButton = true } = useContext(AppContext)
 
     const navigate = useNavigate();
 
@@ -81,10 +81,7 @@ export function Templates() {
                     <div key={t._id} id={t._id} className="template-card" onClick={handleClick}>{t.name}</div>
                 ))}
             </div>
-            <button className="template-btn" onClick={() => {
-                navigate("/projects")
-            }}>Back
-            </button>
+            {showBackButton &&  <button className="template-btn" onClick={()=>navigate("/projects")}>back</button>}
             <footer className="footer">
                 <p>by Team Cygnus</p>
             </footer>

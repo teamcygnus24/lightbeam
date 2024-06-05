@@ -31,7 +31,6 @@ export function Container() {
     return (
 
         <div className="dashboard-container">
-            <button className="back-button" onClick={() => {navigate("/projects")}}>Back</button>
             {slideSelected === true ? <Sidebareditor />
                 : <Sidebarprojectinfo />}
             {slideSelected === true ? <Slidepreview />
