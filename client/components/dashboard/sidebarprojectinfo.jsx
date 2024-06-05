@@ -31,11 +31,8 @@ export function Sidebarprojectinfo( ) {
 
     const toggleTemplates = async ()=>{
         if (addSlideClicked) {
-            console.log("false")
             setAddSlideChecked(false);
         }else {
-            console.log("true")
-
             setAddSlideChecked(true);
         }
     }
