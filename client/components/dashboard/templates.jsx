@@ -16,26 +16,25 @@ Dette gir oss mulighet til å videreutvikle layout og innhold, spesifikk til den
 
 export function Templates() {
 
-    const { project, setProjectUpdated, templates, setTemplates } = useContext(AppContext)
+    const { setProjectUpdated, templates, setTemplates, currentProject, showBackButton } = useContext(AppContext)
 
     const navigate = useNavigate();
+
 
     const fetchTemplates = async () => {
         const getAllTemplates = await fetch("/api/template")
         const listTemplates = await getAllTemplates.json();
 
         setTemplates(listTemplates)
-
     }
 
     const handleClick = async (e) => {
         e.preventDefault();
-
         try {
             const postSlide = await fetch("/api/slide", {
                 method: "POST",
                 body: JSON.stringify({
-                    projectID: project._id,
+                    projectID: currentProject._id,
                     templateID: e.currentTarget.id
                 }),
                 headers: {
@@ -48,10 +47,10 @@ export function Templates() {
             if (postSlide.ok) {
                 console.log("Slide created!\n" + createSlide)
 
-                const updateProject = await fetch("/api/project/" + project._id, {
+                const updateProject = await fetch("/api/project/" + currentProject._id, {
                     method: "PUT",
                     body: JSON.stringify({
-                        slideCount: project.slideCount + 1
+                        slideCount: currentProject.slideCount + 1
                     }),
                     headers: {
                         "Content-Type": "application/json",
@@ -69,7 +68,9 @@ export function Templates() {
         }
     }
 
-    useEffect(() => {
+
+
+    useEffect( () => {
         fetchTemplates();
     }, []);
 
@@ -81,13 +82,8 @@ export function Templates() {
                     <div key={t._id} id={t._id} className="template-card" onClick={handleClick}>{t.name}</div>
                 ))}
             </div>
-            <button className="template-btn" onClick={() => {
-                navigate("/projects")
-            }}>Back
-            </button>
-            <footer className="footer">
-                <p>by Team Cygnus</p>
-            </footer>
+            {showBackButton &&  <button className="template-btn" onClick={()=>navigate("/projects")}>back</button>}
+
         </div>
     )
 }

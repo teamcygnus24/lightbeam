@@ -1,4 +1,4 @@
-import React, {createContext, useState} from 'react';
+import React, {createContext, useEffect, useState} from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Login } from "./view/login";
 import { Home } from './view/home.jsx';
@@ -30,6 +30,8 @@ export function Application() {
 
     //Template
     const [templates, setTemplates] = useState([]);
+    const [showBackButton, setShowBackButton] = useState(true);
+
 
     //Slide
     const [slideID, setSlideID] = useState("");
@@ -38,8 +40,11 @@ export function Application() {
     const [slideSelected, setSlideSelected] = useState(false);
     const [displaySlide, setDisplaySlide] = useState({})
 
+
     return (
         <AppContext.Provider value={ {
+            showBackButton,
+            setShowBackButton,
             validation,
             setValidation,
             slideID,
