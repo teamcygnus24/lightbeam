@@ -31,6 +31,7 @@ export function Application() {
     //Template
     const [templates, setTemplates] = useState([]);
     const [showBackButton, setShowBackButton] = useState(true);
+    const [addSlideClicked, setAddSlideClicked] = useState(false);
 
 
     //Slide
@@ -71,7 +72,9 @@ export function Application() {
             displayProject,
             setDisplayProject,
             prevProject,
-            setPrevProject
+            setPrevProject,
+            addSlideClicked,
+            setAddSlideClicked
         } }>
             <Router>
                 <Routes>

@@ -2,6 +2,15 @@ import React, {useContext, useEffect, useState} from 'react';
 import "../components/styles/view/display.css"
 import { AppContext } from "../application";
 import Menu from "../components/templates/menu";
+import MenuSlide from "../components/templates/menuslide";
+import InfoSlide from "../components/templates/infoslide";
+import EventSlide from "../components/templates/eventslide";
+import BirthdaySlide from "../components/templates/birthdayslide";
+import MeetingRoomSlide from "../components/templates/meetingroomslide";
+import MeetingRoom from "../components/templates/meetingroom";
+import Birthday from "../components/templates/birthday";
+import Info from "../components/templates/info";
+import EventDisplay from "../components/templates/event";
 
 /*
 ============================================================================================
@@ -107,9 +116,20 @@ export function Display() {
         };
     }, [slideSwitch]);
 
+    const templateComponents = {
+        "665625763da2eb37ed00af98": Menu,
+        "6656257b3da2eb37ed00af9a": Info,
+        "6656257e3da2eb37ed00af9c": EventDisplay,
+        "665625813da2eb37ed00af9e": Birthday,
+        "66562773d3c067b2433f976e": MeetingRoom
+    }
+
+    const TemplateComponent = templateComponents[currentSlide?.templateID]
+
+
     return (
         <div>
-            <Menu currentSlide={ currentSlide }/>
+            {TemplateComponent ? <TemplateComponent currentSlide={ currentSlide }/> : <div>Loading</div>}
         </div>
     );
 }

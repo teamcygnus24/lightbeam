@@ -2,6 +2,11 @@ import React, {useContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import "../styles/view/templates.css"
 import {AppContext} from "../../application";
+import MenuSlide from "../templates/menuslide";
+import InfoSlide from "../templates/infoslide";
+import EventSlide from "../templates/eventslide";
+import BirthdaySlide from "../templates/birthdayslide";
+import MeetingRoomSlide from "../templates/meetingroomslide";
 
 /*
 ============================================================================================
@@ -68,6 +73,13 @@ export function Templates() {
         }
     }
 
+    const templateComponents = {
+        "MenuSlide": MenuSlide,
+        "InfoSlide": InfoSlide,
+        "EventSlide": EventSlide,
+        "BirthdaySlide": BirthdaySlide,
+        "MeetingRoomSlide": MeetingRoomSlide
+    }
 
 
     useEffect( () => {
@@ -78,12 +90,15 @@ export function Templates() {
         <div className="template-main">
             <h1>Templates:</h1>
             <div className="template-container">
-                {templates.map((t, index) => (
-                    <div key={t._id} id={t._id} className="template-card" onClick={handleAddSlide}>{t.name}</div>
-                ))}
+                {templates.map((t, index) => {
+                    const TemplateComponent = templateComponents[t.name]
+                    return (
+                    <div key={t._id} id={t._id} className="template-card" onClick={handleAddSlide}>
+                        <TemplateComponent />
+                    </div>
+                )})}
             </div>
             {showBackButton &&  <button className="template-btn" onClick={()=>navigate("/projects")}>Back</button>}
-
         </div>
     )
 }

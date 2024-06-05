@@ -15,15 +15,10 @@ Bare en info side. ikke noe spess.
 
 /*{removeSlideClicked && <DashboardContainer project={project}/>}*/
 export function Sidebarprojectinfo() {
+    const { currentProject, setShowBackButton, removeSlideClicked, setRemoveSlideClicked, addSlideClicked, setAddSlideClicked} = useContext(AppContext)
 
     const [ws, setWs] = useState();
-
     const navigate = useNavigate();
-
-    const { currentProject, setShowBackButton, removeSlideClicked, setRemoveSlideClicked } = useContext(AppContext)
-
-    const [addSlideClicked, setAddSlideClicked] = useState(false);
-
 
 
     const handleWS = async () => {
@@ -69,8 +64,6 @@ export function Sidebarprojectinfo() {
                 <button className="move-button" onClick={handleWS}>Set Active</button>
             <button className="move-button" onClick={() => navigate('/projects')}>Back</button>
             </div>
-            {addSlideClicked && (<Templates/>)}
-
         </div>
     );
 }

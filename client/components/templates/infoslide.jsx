@@ -1,5 +1,3 @@
-import long_food from '../../resources/images/food.png'
-
 const InfoSlide = ({ currentSlide }) => {
 
     return (

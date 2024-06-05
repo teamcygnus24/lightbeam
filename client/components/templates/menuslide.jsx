@@ -9,15 +9,15 @@ const MenuSlide = ({ currentSlide }) => {
                 <div className="slides-card-content">
                     <h2>Today's menu</h2>
                     <div className="slides-card-spacer"></div>
-                    <span className="slides-card-input"><h3>{currentSlide?.text_01}</h3></span>
+                    <span className="slides-card-input"><h3>{currentSlide ? currentSlide.text_01 : "Add Text"}</h3></span>
                     <div className="slides-card-line"></div>
-                    <span className="slides-card-input">{currentSlide?.text_02}</span>
-                    <span className="slides-card-input">{currentSlide?.text_03}</span>
-                    <span className="slides-card-input">{currentSlide?.text_04}</span>
-                    <span className="slides-card-input"><h3>{currentSlide?.text_07}</h3></span>
+                    <span className="slides-card-input">{currentSlide ? currentSlide.text_02 : "Add Text"}</span>
+                    <span className="slides-card-input">{currentSlide ? currentSlide.text_03 : "Add Text"}</span>
+                    <span className="slides-card-input">{currentSlide ? currentSlide.text_04 : "Add Text"}</span>
+                    <span className="slides-card-input"><h3>{currentSlide ? currentSlide.text_07 : "Add Text"}</h3></span>
                     <div className="slides-card-line"></div>
-                    <span className="slides-card-input">{currentSlide?.text_08}</span>
-                    <span className="slides-card-input">{currentSlide?.text_09}</span>
+                    <span className="slides-card-input">{currentSlide ? currentSlide.text_08 : "Add Text"}</span>
+                    <span className="slides-card-input">{currentSlide ? currentSlide.text_09 : "Add Text"}</span>
                 </div>
             </div>
             <div className="slides-card-image-box">

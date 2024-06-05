@@ -7,8 +7,9 @@
     background-repeat: no-repeat;
     position: relative;
 }
+
 .settings-sidebar {
-    width: 25%;
+    min-width: 15vmax;
     padding: 10px; /* Reduced padding */
     border-right: 1px solid #ccc;
     display: flex;

@@ -27,15 +27,14 @@ body {
 
 .template-card {
     color: white;
-    width: 70%;
-    height: 80%;
-    background-color: #003087;
+    width: 300px;
+    height: 250px;
     border-radius: 5px;
     border: ghostwhite solid 2px;
     text-align: center;
 }
 .template-card:hover {
-    background-color: #023fb2;
+    border: 2px solid black;
     cursor: pointer;
 
 }

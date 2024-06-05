@@ -98,3 +98,55 @@ h3 {
 .spacer {
     margin-bottom: 10px;
 }
+
+.display-info-container {
+    position: absolute;
+    top: 50px;
+    left: 150px;
+    width: 85vw;
+    border-radius: 10px;
+    height: 90vh;
+    color: black;
+    background-color: lightskyblue;
+    text-align: center;
+    font-size: 20px;
+}
+
+.display-event-container {
+    position: absolute;
+    top: 50px;
+    left: 150px;
+    width: 85vw;
+    height: 90vh;
+    border-radius: 10px;
+    color: black;
+    background-color: lightcoral;
+    text-align: center;
+    font-size: 20px;
+}
+
+.display-birthday-container {
+    position: absolute;
+    top: 50px;
+    left: 150px;
+    width: 85vw;
+    height: 90vh;
+    border-radius: 10px;
+    color: black;
+    background-color: seagreen;
+    text-align: center;
+    font-size: 20px;
+}
+
+.display-meetingroom-container {
+    position: absolute;
+    top: 50px;
+    left: 150px;
+    width: 85vw;
+    height: 90vh;
+    border-radius: 10px;
+    color: black;
+    background-color: mediumpurple;
+    text-align: center;
+    font-size: 20px;
+}

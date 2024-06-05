@@ -3,6 +3,10 @@ import '../styles/view/dashboardslidepreview.css';
 import {AppContext} from "../../application";
 import MenuSlide from "../templates/menuslide";
 import InfoSlide from "../templates/infoslide";
+import {Templates} from "./templates";
+import EventSlide from "../templates/eventslide";
+import BirthdaySlide from "../templates/birthdayslide";
+import MeetingRoomSlide from "../templates/meetingroomslide";
 
 /*
 ============================================================================================
@@ -17,13 +21,16 @@ sliden som man har trykket på.
 */
 
 export function Slides() {
-    const { setSlideID, currentProject, setSlideSelected, setSlideInfo, slides, setSlides, removeSlideClicked } = useContext(AppContext)
+    const { setSlideID, currentProject, setSlideSelected, setSlideInfo, slides, setSlides, removeSlideClicked, addSlideClicked, setAddSlideClicked } = useContext(AppContext)
 
     const [loading, setLoading] = useState(false)
 
     const templateComponents = {
         "665625763da2eb37ed00af98": MenuSlide,
-        "6656257b3da2eb37ed00af9a": InfoSlide
+        "6656257b3da2eb37ed00af9a": InfoSlide,
+        "6656257e3da2eb37ed00af9c": EventSlide,
+        "665625813da2eb37ed00af9e": BirthdaySlide,
+        "66562773d3c067b2433f976e": MeetingRoomSlide
 
     }
 
@@ -82,7 +89,7 @@ export function Slides() {
         <div className="slides-main">
             {removeSlideClicked ? <h1 style={{color: "crimson"}}>Removing slides</h1> : <h1>Selecting slides</h1>}
             <div className="slides-container">
-                {loading ? <div>Loading</div> : (removeSlideClicked ? slides.map((s, index) => {
+                {addSlideClicked ? <Templates />: (loading ? <div>Loading</div> : (removeSlideClicked ? slides.map((s, index) => {
                     const SlideComponent = templateComponents[s.templateID];
                     return (
                     <div key={s._id} className="remove-slides-card" id={s._id} data-template={s.templateID} onClick={handleRemoveSlide}>
@@ -95,7 +102,7 @@ export function Slides() {
                          onClick={handleClick}>
                         <SlideComponent currentSlide={ s }/>
                     </div>
-                    )}))}
+                )})))}
             </div>
         </div>
     );
