@@ -20,13 +20,6 @@ export function Templates() {
 
     const navigate = useNavigate();
 
-    const fetchTemplates = async () => {
-        const getAllTemplates = await fetch("/api/template")
-        const listTemplates = await getAllTemplates.json();
-
-        setTemplates(listTemplates)
-
-    }
 
     const handleClick = async (e) => {
         e.preventDefault();
@@ -67,6 +60,14 @@ export function Templates() {
         } catch (error) {
             console.log("Error in function handleClick " + error);
         }
+    }
+
+    const fetchTemplates = async () => {
+        const getAllTemplates = await fetch("/api/template")
+        const listTemplates = await getAllTemplates.json();
+
+        setTemplates(listTemplates)
+
     }
 
     useEffect(() => {
