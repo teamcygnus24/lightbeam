@@ -1,7 +1,7 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import "../components/styles/view/display.css"
 import long_food from '../resources/images/food.png';
-import {AppContext} from "../application";
+import { AppContext } from "../application";
 
 /*
 ============================================================================================
@@ -24,15 +24,27 @@ export function Display() {
     const [slideSwitch, setSlideSwitch] = useState(false);
     const [arrayIndex, setArrayIndex] = useState(0);
     const [prevProject, setPrevProject] = useState("");
+    const [haveSlidesChanged, setHaveSlidesChanged] = useState(false)
+    const [slideChange, setSlideChange] = useState(false);
 
+    const [updatedProjectID, setUpdatedProjectID] = useState("")
 
     const currentSlide = projectSlides[arrayIndex] || {};
 
+    const handleClick = () => {
+        setProjectName(prev => prev + "Big Ballz")
+    }
+
     const fetchProject = async () => {
+
+        if (!displayProject) {
+            console.log("displayProject is undefined or null")
+            return;
+        }
+
             console.log("I was activated (fetchProject)")
             const getProject = await fetch(`/api/project/${displayProject}`)
             const newProject = await getProject.json();
-
             setProjectName(newProject.name)
     }
 
@@ -49,8 +61,17 @@ export function Display() {
 
             setArrayIndex(0)
             setPrevProject(displayProject)
-            await fetchProject()
-            await fetchProjectSlides()
+            console.log("This shouldnt run when updating other projects that are not active")
+            await fetchProject();
+            await fetchProjectSlides();
+        }
+
+        if (prevProject === displayProject && slideChange !== haveSlidesChanged) {
+
+            setArrayIndex(0)
+            setHaveSlidesChanged(slideChange)
+            console.log("This shouldnt run when updating other projects that are not active")
+            await fetchProjectSlides();
         }
 
         if (arrayIndex === (projectSlides.length - 1)) {
@@ -62,24 +83,36 @@ export function Display() {
     }
 
     useEffect(() => {
-        const ws = new WebSocket("wss://lightbeam-smidig-dev-393006ce2df9.herokuapp.com/")
+        const ws = new WebSocket("ws://localhost:3000/")
         ws.onmessage = (event) => {
             const serverResponse = JSON.parse(event.data)
-            if (serverResponse.projectID !== null) {
+            if (serverResponse.projectID !== null && serverResponse.projectID !== undefined) {
                 setDisplayProject(serverResponse.projectID)
+                console.log(`ProjectID Recieved: ${serverResponse.projectID}`)
+            }
+            if (serverResponse.slideChange !== null && serverResponse.projectUpdated === displayProject){
+                setSlideChange(prev => !prev)
+                console.log(`Project Updated: ${serverResponse.projectUpdated}`)
             }
         }
         setWs(ws)
-        setTimeout(slideRotation, 3000)
+        const i = setInterval(() => {
+            slideRotation();
+        }, 3000)
+
         console.log("Display Rendering Project: " + JSON.stringify(displayProject))
-    }, [projectSlides, slideSwitch]);
+        return () => {
+            console.log("Clearing Interval")
+            clearInterval(i)
+        };
+    }, [slideSwitch]);
 
     return (<div>
             <div className="menu-container">
                 <div className='menu-box'>
                     <div>Project: {projectName}</div>
                     <div className="content">
-                        <h2>Today's menu</h2>
+                        <h2>Slide Number: {arrayIndex}, Today's menu</h2>
                         <div className="spacer"></div>
                         <span className="input"><h3>{currentSlide.text_01}</h3></span>
                         <div className="line"></div>
@@ -96,6 +129,7 @@ export function Display() {
                     <img src={long_food} alt=""/>
                 </div>
             </div>
+            <button onClick={handleClick}>Change Project</button>
         </div>
     );
 }

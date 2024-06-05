@@ -18,7 +18,7 @@ I bunn og grunn så får den preview'en til å laste inn på nytt igjen, med nye
 */
 
 export function Sidebareditor() {
-    const { slideInfo, displayChange, setDisplayChange, setSlideSelected } = useContext(AppContext);
+    const { slideInfo, displayChange, setDisplayChange, setSlideSelected, currentProject } = useContext(AppContext);
 
     const navigate = useNavigate();
     const [ws, setWs] = useState();
@@ -64,7 +64,7 @@ export function Sidebareditor() {
             const slideUpdate = await updateSlide.json();
             setDisplayChange(prev => !prev)
             setSlideUpdate(prev => !prev)
-            await handleWS(slideUpdate)
+            await handleWS("Hi", currentProject._id)
             console.log("Data: " + slideInfo.slideID + " " + displayChange)
         } else if (e.target.name === "Display") {
             navigate("/Display")
@@ -77,12 +77,12 @@ export function Sidebareditor() {
         setSlideSelected(prev => !prev)
     }
 
-    const handleWS = async (event) => {
-        ws.send(JSON.stringify( { slideUpdate: event } ));
+    const handleWS = async (event, event2) => {
+        ws.send(JSON.stringify( { slideChange: event, projectUpdated: event2 } ));
     }
 
     useEffect(() => {
-        const ws = new WebSocket("wss://lightbeam-smidig-dev-393006ce2df9.herokuapp.com/");
+        const ws = new WebSocket("ws://localhost:3000/");
         ws.onmessage = (event) => {
             console.log(event.data)
         }

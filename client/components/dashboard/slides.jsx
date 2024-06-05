@@ -46,14 +46,14 @@ export function Slides() {
 
     useEffect(() => {
         fetchSlidesFromProject();
-    }, [])
+    }, [currentProject])
 
     return (
         <div className="slides-main">
             <div className="slides-container">
-                {slides.map((s, index) => (
+                {slides ? slides.map((s, index) => (
                     <div key={s._id} className="slides-card" id={s._id} data-template={s.templateID} onClick={handleClick}> Slide: Today's menu {currentProject._id}</div>
-                ))}
+                )) : <h1>Loading</h1>}
             </div>
         </div>
     );
