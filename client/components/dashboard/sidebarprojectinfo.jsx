@@ -18,11 +18,17 @@ export function Sidebarprojectinfo() {
 
     const { currentProject } = useContext(AppContext)
 
+    const [addSlideButton, checkedAddSlideButton] = useState();
+
     const handleWS = async () => {
 
         if (ws) {
             ws.send(JSON.stringify({projectID: currentProject._id, slideID: null, displayChange: null}))
         }
+    }
+
+    const toggleAddSlide= async () =>{
+
     }
 
     useEffect(() => {
