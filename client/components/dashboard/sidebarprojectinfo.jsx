@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import '../styles/view/dashboard.css';
 import {AppContext} from "../../application";
+import { useNavigate } from 'react-router-dom';
 
 /*
 ============================================================================================
@@ -12,6 +13,8 @@ Bare en info side. ikke noe spess.
 export function Sidebarprojectinfo() {
 
     const [ws, setWs] = useState();
+
+    const navigate = useNavigate();
 
     const { currentProject } = useContext(AppContext)
 
@@ -34,7 +37,10 @@ export function Sidebarprojectinfo() {
         <div className="settings-sidebar">
             <h2>Project: {currentProject.name}</h2>
             <h3>Slides: {currentProject.slideCount}</h3>
-            <button onClick={handleWS}>Set Active</button>
+            <button className="move-button">Add slide</button>
+            <button className="move-button">Remove slide</button>
+            <button className="move-button" onClick={handleWS}>Set Active</button>
+            <button className="move-button" onClick={()=> navigate('/projects')}>Back</button>
         </div>
     );
 }
