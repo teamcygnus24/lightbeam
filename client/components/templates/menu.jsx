@@ -8,15 +8,15 @@ const Menu = ({ currentSlide }) => {
                 <div className="content">
                     <h2>Today's menu</h2>
                     <div className="spacer"></div>
-                    <span className="input"><h3>{currentSlide.text_01}</h3></span>
+                    <span className="input"><h3>{currentSlide?.text_01}</h3></span>
                     <div className="line"></div>
-                    <span className="input">{currentSlide.text_02}</span>
-                    <span className="input">{currentSlide.text_03}</span>
-                    <span className="input">{currentSlide.text_04}</span>
-                    <span className="input"><h3>{currentSlide.text_07}</h3></span>
+                    <span className="input">{currentSlide?.text_02}</span>
+                    <span className="input">{currentSlide?.text_03}</span>
+                    <span className="input">{currentSlide?.text_04}</span>
+                    <span className="input"><h3>{currentSlide?.text_07}</h3></span>
                     <div className="line"></div>
-                    <span className="input">{currentSlide.text_08}</span>
-                    <span className="input">{currentSlide.text_09}</span>
+                    <span className="input">{currentSlide?.text_08}</span>
+                    <span className="input">{currentSlide?.text_09}</span>
                 </div>
             </div>
             <div className="image-box">

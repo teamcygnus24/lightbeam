@@ -1,6 +1,5 @@
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import "../components/styles/view/display.css"
-import long_food from '../resources/images/food.png';
 import { AppContext } from "../application";
 import Menu from "../components/templates/menu";
 

@@ -2,6 +2,9 @@ import React, {useState, useEffect, useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/view/dashboardslidepreview.css';
 import {AppContext} from "../../application";
+import Menu from "../templates/menu";
+import long_food from "../../resources/images/food.png";
+import MenuSlide from "../templates/menuslide";
 
 /*
 ============================================================================================
@@ -72,15 +75,21 @@ export function Slides() {
         fetchSlidesFromProject();
     }, [currentProject])
 
+
     return (
         <div className="slides-main">
             {removeSlideClicked ? <h1 style={{color: "crimson"}}>Removing slides</h1> : <h1>Selecting slides</h1>}
             <div className="slides-container">
                 {loading ? <div>Loading</div> : (removeSlideClicked ? slides.map((s, index) => (
-                    <div key={s._id} className="remove-slides-card" id={s._id} data-template={s.templateID} onClick={handleRemoveSlide}> Slide: Today's menu {currentProject._id}</div>
+                    <div key={s._id} className="remove-slides-card" id={s._id} data-template={s.templateID} onClick={handleRemoveSlide}>
+                        <MenuSlide currentSlide={ s }/>
+                    </div>
                 )) : slides.map((s, index) => (
-                    <div key={s._id} className="slides-card" id={s._id} data-template={s.templateID} onClick={handleClick}> Slide: Today's menu {currentProject._id}</div>
-                )))}
+                    <div key={s._id} className="slides-card" id={s._id} data-template={s.templateID}
+                         onClick={handleClick}>
+                        <MenuSlide currentSlide={ s }/>
+                    </div>
+                    )))}
             </div>
         </div>
     );
