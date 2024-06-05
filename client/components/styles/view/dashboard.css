@@ -52,93 +52,25 @@
 .settings-sidebar button {
     display: block;
     width: 100%;
-    padding: 5px; /* Reduced padding */
+    padding: 10px; /* Adjusted padding */
     cursor: pointer;
-    flex: 1;
-}
-
-.preview {
-    flex: 1;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    position: relative;
-}
-
-.weather {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-    position: relative;
-}
-
-.weather img {
-    width: 50px;
-    height: 50px;
-    margin: 10px 0;
-}
-
-.weather div {
-    font-size: 2rem;
+    font-size: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #003087;
+    color: white;
+    margin-bottom: 5px;
     text-align: center;
-}
-
-.content {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-}
-
-.events, .deadlines {
-    width: 45%;
-    background: #e0f7fa;
-    padding: 20px;
-    border-radius: 8px;
-}
-
-.events h3, .deadlines h3 {
-    margin-bottom: 10px;
-}
-
-.events div, .deadlines div {
-    background: #fff;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    cursor: text;
-}
-
-.button-group {
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    height: auto; /* Allow height to adjust based on content */
-    width: 100%;
-    gap: 5px; /* Reduced gap between buttons */
-}
-
-.vertical-buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    gap: 5px; /* Reduced gap between buttons */
+    box-sizing: border-box;
 }
 
 .move-button, .settings-sidebar button {
-    padding: 5px; /* Reduced padding */
+    padding: 8px; /* Reduced padding */
     cursor: pointer;
     font-size: 0.8rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: 1;
-    box-sizing: border-box;
-}
-
-.double-height {
     flex: 1;
     box-sizing: border-box;
 }
@@ -166,7 +98,6 @@
 
 }
 
-
 input[type=text] {
   width: 100%;
   padding: 5px 10px;
@@ -176,14 +107,4 @@ input[type=text] {
 
 .settings-sidebar h2 {
     font-size: 12px;
-}
-
-.settings-sidebar .move-button {
-    width: 100%;
-    padding: 3%;
-    border-radius: 5px;
-    border: none;
-    background-color: #003087;
-    color: white;
-    margin-bottom: 5px;
 }

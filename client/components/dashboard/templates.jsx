@@ -28,7 +28,7 @@ export function Templates() {
         setTemplates(listTemplates)
     }
 
-    const handleClick = async (e) => {
+    const handleAddSlide = async (e) => {
         e.preventDefault();
         try {
             const postSlide = await fetch("/api/slide", {
@@ -76,10 +76,10 @@ export function Templates() {
 
     return(
         <div className="template-main">
-            <h1>Velg en tema</h1>
+            <h1>Templates:</h1>
             <div className="template-container">
                 {templates.map((t, index) => (
-                    <div key={t._id} id={t._id} className="template-card" onClick={handleClick}>{t.name}</div>
+                    <div key={t._id} id={t._id} className="template-card" onClick={handleAddSlide}>{t.name}</div>
                 ))}
             </div>
             {showBackButton &&  <button className="template-btn" onClick={()=>navigate("/projects")}>back</button>}

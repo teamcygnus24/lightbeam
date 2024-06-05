@@ -31,10 +31,11 @@ export function Sidebarprojectinfo() {
         }
     }
 
-    const toggleTemplates = async ()=>{
+    const toggleAddTemplates = async ()=>{
         setAddSlideChecked(prevState => !prevState);
         setShowBackButton(false);
     }
+
 
     useEffect(() => {
         const ws = new WebSocket("wss://lightbeam-smidig-dev-393006ce2df9.herokuapp.com/");
@@ -49,10 +50,12 @@ export function Sidebarprojectinfo() {
         <div className="settings-sidebar">
             <h2>Project: {currentProject?.name}</h2>
             <h3>Slides: {currentProject?.slideCount}</h3>
-            <button className="move-button" onClick={toggleTemplates}>Add slide</button>
+            <div className="buttons">
+            <button className="move-button" onClick={toggleAddTemplates}>Add slide</button>
             <button className="move-button">Remove slide</button>
             <button className="move-button" onClick={handleWS}>Set Active</button>
             <button className="move-button" onClick={() => navigate('/projects')}>Back</button>
+            </div>
             {addSlideClicked && (<Templates/>)}
 
         </div>
