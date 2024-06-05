@@ -39,10 +39,13 @@ export function Application() {
     const [slideInfo, setSlideInfo] = useState({});
     const [slideSelected, setSlideSelected] = useState(false);
     const [displaySlide, setDisplaySlide] = useState({})
+    const [removeSlideClicked, setRemoveSlideClicked] = useState(false);
 
 
     return (
         <AppContext.Provider value={ {
+            removeSlideClicked,
+            setRemoveSlideClicked,
             showBackButton,
             setShowBackButton,
             validation,

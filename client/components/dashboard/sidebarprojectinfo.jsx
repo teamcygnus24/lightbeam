@@ -20,11 +20,10 @@ export function Sidebarprojectinfo() {
 
     const navigate = useNavigate();
 
-    const { currentProject, setShowBackButton } = useContext(AppContext)
+    const { currentProject, setShowBackButton, removeSlideClicked, setRemoveSlideClicked } = useContext(AppContext)
 
-    const [addSlideClicked, setAddSlideChecked] = useState(false);
+    const [addSlideClicked, setAddSlideClicked] = useState(false);
 
-    const [removeSlideClicked, setRemoveSideClicked] = useState(false);
 
 
     const handleWS = async () => {
@@ -36,17 +35,16 @@ export function Sidebarprojectinfo() {
 
     const toggleAddSlide = async ()=>{
         if (removeSlideClicked){
-            setRemoveSideClicked(false)
+            setRemoveSlideClicked(false)
         }
-        setAddSlideChecked(prevState => !prevState);
+        setAddSlideClicked(prev => !prev);
         setShowBackButton(false);
     }
     const toggleRemoveSlide = async ()=>{
         if (addSlideClicked){
-            setAddSlideChecked(false)
+            setAddSlideClicked(false)
         }
-        setRemoveSideClicked(prevState => !prevState);
-
+        setRemoveSlideClicked(true);
     }
 
 
@@ -69,7 +67,6 @@ export function Sidebarprojectinfo() {
             <button className="move-button" onClick={handleWS}>Set Active</button>
             <button className="move-button" onClick={() => navigate('/projects')}>Back</button>
             </div>
-            {removeSlideClicked && (<Slides/>)}
             {addSlideClicked && (<Templates/>)}
 
         </div>
