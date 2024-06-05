@@ -71,6 +71,10 @@ export function Templates() {
     }
 
     useEffect(() => {
+        const getTemplates = async ()=>{
+            const fetchedTemplates = await fetchTemplates();
+            setTemplates(fetchedTemplates);
+        }
         fetchTemplates();
     }, []);
 
