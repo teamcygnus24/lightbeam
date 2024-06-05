@@ -4,7 +4,8 @@ import {
     slideGETALL,
     slideGETONE,
     slideGETproject,
-    slideUPDATEONE
+    slideUPDATEONE,
+    slideDELETE
 } from "../controllers/slideController.js";
 
 const router = express.Router();
@@ -24,5 +25,7 @@ router.get("/:projectID", slideGETproject);
 //Slide UPDATE ONE
 router.put("/:slideID", slideUPDATEONE)
 
+//Slide delete one
+router.delete("/:slideID", slideDELETE)
 
 export default router;

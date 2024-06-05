@@ -54,6 +54,7 @@ export function Sidebarprojectinfo() {
             console.log(event.data)
         }
         setShowBackButton(true);
+        setRemoveSlideClicked(false);
         setWs(ws)
     }, []);
 

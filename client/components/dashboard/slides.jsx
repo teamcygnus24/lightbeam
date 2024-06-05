@@ -48,6 +48,26 @@ export function Slides() {
 
     }
 
+    const handleRemoveSlide = async (e) => {
+        try {
+            const deleteSlide = await fetch(`/api/slide/${e.currentTarget.id}`, {
+                method: "DELETE"
+            });
+            const slideDeleted = deleteSlide.json();
+
+            if (deleteSlide.ok) {
+                await fetchSlidesFromProject()
+                console.log(`Slide ${slideDeleted} deleted successfully`);
+
+            } else {
+                console.log(`Failed to delete slide ${e.currentTarget.id}`);
+            }
+
+        } catch (error) {
+            console.log("Error in function handleRemoveSlide " + error);
+        }
+    }
+
     useEffect(() => {
         fetchSlidesFromProject();
     }, [currentProject])
@@ -57,7 +77,7 @@ export function Slides() {
             {removeSlideClicked ? <h1 style={{color: "crimson"}}>Removing slides</h1> : <h1>Selecting slides</h1>}
             <div className="slides-container">
                 {loading ? <div>Loading</div> : (removeSlideClicked ? slides.map((s, index) => (
-                    <div key={s._id} className="remove-slides-card" id={s._id} data-template={s.templateID} onClick={handleClick}> Slide: Today's menu {currentProject._id}</div>
+                    <div key={s._id} className="remove-slides-card" id={s._id} data-template={s.templateID} onClick={handleRemoveSlide}> Slide: Today's menu {currentProject._id}</div>
                 )) : slides.map((s, index) => (
                     <div key={s._id} className="slides-card" id={s._id} data-template={s.templateID} onClick={handleClick}> Slide: Today's menu {currentProject._id}</div>
                 )))}

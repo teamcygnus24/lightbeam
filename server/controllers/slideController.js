@@ -6,7 +6,8 @@ export {
     slideGETALL,
     slideGETONE,
     slideGETproject,
-    slideUPDATEONE
+    slideUPDATEONE,
+    slideDELETE
 };
 
 const slidePOST = async (req, res) => {
@@ -38,6 +39,11 @@ const slideGETproject = async (req, res) => {
     console.log(slidesFromProject);
     console.log(req.params.projectID);
     res.status(200).json(slidesFromProject);
+}
+
+const slideDELETE = async (req, res) => {
+    const deleteSlide = await Slide.deleteOne({_id: req.params.slideID});
+    res.status(200).json(deleteSlide);
 }
 
 const slideUPDATEONE  = async (req, res) => {
