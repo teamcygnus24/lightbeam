@@ -3,6 +3,7 @@ import '../styles/view/dashboard.css';
 import {AppContext} from "../../application";
 import { useNavigate } from 'react-router-dom';
 import {Templates} from "./templates";
+import {Slides} from "./slides";
 
 /*
 ============================================================================================
@@ -23,6 +24,8 @@ export function Sidebarprojectinfo() {
 
     const [addSlideClicked, setAddSlideChecked] = useState(false);
 
+    const [removeSlideClicked, setRemoveSideClicked] = useState(false);
+
 
     const handleWS = async () => {
 
@@ -31,9 +34,19 @@ export function Sidebarprojectinfo() {
         }
     }
 
-    const toggleAddTemplates = async ()=>{
+    const toggleAddSlide = async ()=>{
+        if (removeSlideClicked){
+            setRemoveSideClicked(false)
+        }
         setAddSlideChecked(prevState => !prevState);
         setShowBackButton(false);
+    }
+    const toggleRemoveSlide = async ()=>{
+        if (addSlideClicked){
+            setAddSlideChecked(false)
+        }
+        setRemoveSideClicked(prevState => !prevState);
+
     }
 
 
@@ -51,11 +64,12 @@ export function Sidebarprojectinfo() {
             <h2>Project: {currentProject?.name}</h2>
             <h3>Slides: {currentProject?.slideCount}</h3>
             <div className="buttons">
-            <button className="move-button" onClick={toggleAddTemplates}>Add slide</button>
-            <button className="move-button">Remove slide</button>
+            <button className="move-button" onClick={toggleAddSlide}>Add slide</button>
+            <button className="move-button" onClick={toggleRemoveSlide}>Remove slide</button>
             <button className="move-button" onClick={handleWS}>Set Active</button>
             <button className="move-button" onClick={() => navigate('/projects')}>Back</button>
             </div>
+            {removeSlideClicked && (<Slides/>)}
             {addSlideClicked && (<Templates/>)}
 
         </div>

@@ -1,12 +1,11 @@
 .dashboard-body {
-    height: 95%;
+    height: 100%;
     width: 100%;
 }
 
 body {
     background: linear-gradient(rgba(255, 255, 255, 0.81), rgba(255, 255, 255, 0.81)), url("../../../resources/images/application_background.png");
 }
-
 
 .template-main {
     display: grid;
