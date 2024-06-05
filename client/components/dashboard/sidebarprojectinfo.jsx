@@ -19,7 +19,7 @@ export function Sidebarprojectinfo( ) {
 
     const navigate = useNavigate();
 
-    const { currentProject, project, fetchTemplates, showBackButton } = useContext(AppContext)
+    const { currentProject, project, fetchTemplates } = useContext(AppContext)
 
     const [addSlideClicked, setAddSlideChecked] = useState(false);
     const handleWS = async () => {
@@ -39,11 +39,6 @@ export function Sidebarprojectinfo( ) {
             setAddSlideChecked(true);
         }
     }
-    const hideBackButton = async ()=> {
-        if(showBackButton = true) {
-
-        }
-    }
 
     useEffect(() => {
         const ws = new WebSocket("wss://lightbeam-smidig-dev-393006ce2df9.herokuapp.com/");
@@ -61,7 +56,7 @@ export function Sidebarprojectinfo( ) {
             <button className="move-button">Remove slide</button>
             <button className="move-button" onClick={handleWS}>Set Active</button>
             <button className="move-button" onClick={() => navigate('/projects')}>Back</button>
-            {addSlideClicked && (<Templates project={project} fetchTemplates={fetchTemplates} showBackButton={showBackButton}  />)}
+            {addSlideClicked && (<Templates project={project} fetchTemplates={fetchTemplates} showBackButton={false}  />)}
 
         </div>
     );
