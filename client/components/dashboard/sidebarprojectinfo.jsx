@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import '../styles/view/dashboard.css';
 import {AppContext} from "../../application";
 import { useNavigate } from 'react-router-dom';
+import {Templates} from "./templates";
 
 /*
 ============================================================================================
@@ -9,16 +10,18 @@ PROJECT INFO
 -----------------
 Bare en info side. ikke noe spess.
 ============================================================================================
-*/ 
-export function Sidebarprojectinfo() {
+*/
+
+/*{removeSlideClicked && <DashboardContainer project={project}/>}*/
+export function Sidebarprojectinfo( ) {
 
     const [ws, setWs] = useState();
 
     const navigate = useNavigate();
 
-    const { currentProject } = useContext(AppContext)
+    const { currentProject, project, fetchTemplates } = useContext(AppContext)
 
-    const [addSlideButton, checkedAddSlideButton] = useState();
+    const [setAddSlideChecked, addSlideClicked] = useState();
 
     const handleWS = async () => {
 
@@ -27,8 +30,12 @@ export function Sidebarprojectinfo() {
         }
     }
 
-    const toggleAddSlide= async () =>{
-
+    const toggleTemplates = async ()=>{
+        if (addSlideClicked) {
+            setAddSlideChecked(false);
+        }else {
+            setAddSlideChecked(true);
+        }
     }
 
     useEffect(() => {
@@ -46,7 +53,10 @@ export function Sidebarprojectinfo() {
             <button className="move-button">Add slide</button>
             <button className="move-button">Remove slide</button>
             <button className="move-button" onClick={handleWS}>Set Active</button>
-            <button className="move-button" onClick={()=> navigate('/projects')}>Back</button>
+            <button className="move-button" onClick={toggleTemplates}>Back</button>
+            {addSlideClicked && (<Templates project={project} fetchTemplates={fetchTemplates} />)}
+
         </div>
     );
 }
+
