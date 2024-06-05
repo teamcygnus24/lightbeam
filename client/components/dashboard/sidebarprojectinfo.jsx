@@ -21,7 +21,7 @@ export function Sidebarprojectinfo( ) {
 
     const { currentProject, project, fetchTemplates } = useContext(AppContext)
 
-    const [setAddSlideChecked, addSlideClicked] = useState();
+    const [setAddSlideChecked, addSlideClicked] = useState(false);
 
     const handleWS = async () => {
 
