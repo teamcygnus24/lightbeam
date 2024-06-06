@@ -33,7 +33,7 @@ export function Container() {
         <div className="dashboard-container">
             {slideSelected === true ? <Sidebareditor />
                 : <Sidebarprojectinfo />}
-            {slideSelected === true ? /*<Slidepreview>*/ <div>hi</div>
+            {slideSelected === true ? <Slidepreview /> 
                 : <Slides />}
         </div>
     );
