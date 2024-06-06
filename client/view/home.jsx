@@ -32,7 +32,6 @@ export function Home() {
                 <button className="projects-btn" onClick={() => navigate('/projects')}>Go to Projects</button>
             </main>
             <footer className="footer">
-                <p>by Team Cygnus</p>
             </footer>
         </div>
     );

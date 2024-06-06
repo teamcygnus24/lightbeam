@@ -56,7 +56,6 @@ export function Dashboard() {
 
                 )}
             <footer className="footer">
-                <p>by Team Cygnus</p>
             </footer>
 
         </div>

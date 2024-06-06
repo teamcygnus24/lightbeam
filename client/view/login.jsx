@@ -99,7 +99,6 @@ export function Login() {
                 </div>
             </main>
             <footer className="footer">
-                <p>by Team Cygnus</p>
             </footer>
         </div>
     );
