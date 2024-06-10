@@ -1,7 +1,7 @@
 const Info = ({ currentSlide }) => {
 
     return (
-        <div className="display-info-container">
+        <div className="display-slide-container">
             Info Slide
         </div>
     )

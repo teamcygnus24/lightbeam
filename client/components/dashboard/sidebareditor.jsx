@@ -2,6 +2,9 @@ import React, {useState, useEffect, useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/view/dashboard.css';
 import {AppContext} from "../../application";
+import Menu from "../templates/menu";
+import Info from "../templates/info";
+import Birthday from "../templates/birthday";
 
 /*
 ============================================================================================
@@ -18,7 +21,7 @@ I bunn og grunn så får den preview'en til å laste inn på nytt igjen, med nye
 */
 
 export function Sidebareditor() {
-    const { slideInfo, displayChange, setDisplayChange, setSlideSelected, currentProject } = useContext(AppContext);
+    const { slideInfo, setSlideInfo, displayChange, setDisplayChange, setSlideSelected, currentProject } = useContext(AppContext);
 
     const navigate = useNavigate();
     const [ws, setWs] = useState();
@@ -42,7 +45,7 @@ export function Sidebareditor() {
         e.preventDefault();
 
         if (e.target.name === "Save") {
-            const updateSlide = await fetch(`/api/slide/${slideInfo.slideID}`, {
+            const updateSlide = await fetch(`/api/slide/${slideInfo._id}`, {
                 method: "PUT",
                 body: JSON.stringify({
                     text_01: InputText_01,
@@ -65,7 +68,7 @@ export function Sidebareditor() {
             setDisplayChange(prev => !prev)
             setSlideUpdate(prev => !prev)
             await handleWS("Hi", currentProject._id)
-            console.log("Data: " + slideInfo.slideID + " " + displayChange)
+            console.log("Data: " + slideInfo._id + " " + displayChange)
         } else if (e.target.name === "Display") {
             navigate("/Display")
         }
@@ -89,24 +92,20 @@ export function Sidebareditor() {
         setWs(ws)
     }, []);
 
+    const templateComponents = {
+        "665625763da2eb37ed00af98": Menu,
+        "6656257b3da2eb37ed00af9a": Info,
+        "665625813da2eb37ed00af9e": Birthday
+    }
+
+    const TemplateComponent = templateComponents[currentSlide?.templateID]
+
+
     return (
         <div className="settings-sidebar">
-            <h2>Slide: {slideInfo.slideID}</h2>
+            <h2>Slide: {slideInfo._id}</h2>
             <h2>Template: {slideInfo.templateID}</h2>
-            <div className="buttons">
-                <form>
-                    <div className="type">Type 1:<input type="text" value={InputText_01} onChange={(e) => setInputText_01(e.target.value)} placeholder="Example: Food"/></div>
-                    <div className="alternative">Alternative 1:<input type="text" value={InputText_02} onChange={(e) => setInputText_02(e.target.value)}/></div>
-                    <div className="alternative">Alternative 2:<input type="text" value={InputText_03} onChange={(e) => setInputText_03(e.target.value)}/></div>
-                    <div className="alternative">Alternative 3:<input type="text" value={InputText_04} onChange={(e) => setInputText_04(e.target.value)}/></div>
-                    <div className="type">Type 2:<input type="text" value={InputText_07} onChange={(e) => setInputText_07(e.target.value)} placeholder="Example: Drinks"/></div>
-                    <div className="alternative">Alternative 1:<input type="text" value={InputText_08} onChange={(e) => setInputText_08(e.target.value)}/></div>
-                    <div className="alternative">Alternative 2:<input type="text" value={InputText_09} onChange={(e) => setInputText_09(e.target.value)}/></div>                    
-                    <button className="move-button" name="Save" type="button" onClick={handleUpdate}>Save Changes</button>
-                    <button className="move-button" name="Display" type="button" onClick={handleUpdate}>Go To Display</button>
-                    <button className="move-button" name="Back" onClick={backToSlides}>Back</button>
-                </form>
-            </div>
+
         </div>
     );
 }

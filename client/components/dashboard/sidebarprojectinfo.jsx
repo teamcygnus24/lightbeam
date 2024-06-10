@@ -2,8 +2,6 @@ import React, {useContext, useEffect, useState} from 'react';
 import '../styles/view/dashboard.css';
 import {AppContext} from "../../application";
 import { useNavigate } from 'react-router-dom';
-import {Templates} from "./templates";
-import {Slides} from "./slides";
 
 /*
 ============================================================================================

@@ -36,7 +36,8 @@ body {
 .template-card:hover {
     border: 2px solid black;
     cursor: pointer;
-
+    position: relative;
+    top: -20px;
 }
 
 .template-btn {

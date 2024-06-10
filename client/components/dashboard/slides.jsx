@@ -4,9 +4,7 @@ import {AppContext} from "../../application";
 import MenuSlide from "../templates/menuslide";
 import InfoSlide from "../templates/infoslide";
 import {Templates} from "./templates";
-import EventSlide from "../templates/eventslide";
 import BirthdaySlide from "../templates/birthdayslide";
-import MeetingRoomSlide from "../templates/meetingroomslide";
 
 /*
 ============================================================================================
@@ -21,17 +19,14 @@ sliden som man har trykket på.
 */
 
 export function Slides() {
-    const { setSlideID, currentProject, setSlideSelected, setSlideInfo, slides, setSlides, removeSlideClicked, addSlideClicked, setAddSlideClicked } = useContext(AppContext)
+    const { setSlideID, currentProject, setSlideSelected, setSlideInfo, slides, setSlides, removeSlideClicked, addSlideClicked } = useContext(AppContext)
 
     const [loading, setLoading] = useState(false)
 
     const templateComponents = {
         "665625763da2eb37ed00af98": MenuSlide,
         "6656257b3da2eb37ed00af9a": InfoSlide,
-        "6656257e3da2eb37ed00af9c": EventSlide,
-        "665625813da2eb37ed00af9e": BirthdaySlide,
-        "66562773d3c067b2433f976e": MeetingRoomSlide
-
+        "665625813da2eb37ed00af9e": BirthdaySlide
     }
 
     const fetchSlidesFromProject = async () => {
@@ -48,10 +43,9 @@ export function Slides() {
 
     const handleClick = async (e) => {
 
-        const slideInfo = {
-            slideID: e.currentTarget.id,
-            templateID: e.currentTarget.dataset.template
-        }
+        const slideInfo = slides.find(slide => slide._id === e.currentTarget.id)
+        console.log(slideInfo)
+
 
         setSlideInfo(slideInfo)
         console.log("Slide ID Click " + e.currentTarget.id)

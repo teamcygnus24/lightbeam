@@ -1,6 +1,12 @@
 import React, {useContext, useEffect, useState} from 'react';
 import '../styles/view/dashboardslidepreview.css';
 import {AppContext} from "../../application";
+import MenuPreview from "../templates/menupreview";
+import Menu from "../templates/menu";
+import Info from "../templates/info";
+import Birthday from "../templates/birthday";
+import InfoPreview from "../templates/infopreview";
+import BirthdayPreview from "../templates/birthdaypreview";
 
 /*
 ============================================================================================
@@ -15,20 +21,20 @@ Knappene i sidebar editoren trigger en displayChange, som refresher denne previe
 */  
 
 export function Slidepreview() {
-    const { slideID, displayChange } = useContext(AppContext);
+    const { slideInfo } = useContext(AppContext);
 
-    const [iframeKey, setIframeKey] = useState(0);
+    const templateComponents = {
+        "665625763da2eb37ed00af98": MenuPreview,
+        "6656257b3da2eb37ed00af9a": InfoPreview,
+        "665625813da2eb37ed00af9e": BirthdayPreview
+    }
 
-    useEffect(() => {
-        setIframeKey(iframeKey + 1)
-    }, [displayChange, slideID]);
+    const TemplateComponent = templateComponents[slideInfo?.templateID]
+
+
+
 
     return (
-                <iframe
-                    key={iframeKey}
-                    src="https://lightbeam-smidig-dev-393006ce2df9.herokuapp.com/display" // Replace with the actual URL
-                    title="Embedded Page"
-                    id="frame"
-                />
+        <TemplateComponent slideInfo={ slideInfo }/>
     );
 }

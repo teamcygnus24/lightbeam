@@ -1,8 +1,13 @@
 const Birthday = ({ currentSlide }) => {
 
     return (
-        <div className="display-birthday-container">
-            Birthday Slide
+        <div className="display-slide-container">
+            <div className="preview-slide-box">
+                <h1 className="birthday-title">{currentSlide?.text_01}</h1>
+                <img src={currentSlide?.text_03} className="imagePerson"/>
+                <img src={currentSlide?.text_04} className="imageAnnouncement"/>
+                <h3 className="birthday-desc">{currentSlide?.text_02}</h3>
+            </div>
         </div>
     )
 }

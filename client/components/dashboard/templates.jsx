@@ -4,9 +4,7 @@ import "../styles/view/templates.css"
 import {AppContext} from "../../application";
 import MenuSlide from "../templates/menuslide";
 import InfoSlide from "../templates/infoslide";
-import EventSlide from "../templates/eventslide";
 import BirthdaySlide from "../templates/birthdayslide";
-import MeetingRoomSlide from "../templates/meetingroomslide";
 
 /*
 ============================================================================================
@@ -76,9 +74,7 @@ export function Templates() {
     const templateComponents = {
         "MenuSlide": MenuSlide,
         "InfoSlide": InfoSlide,
-        "EventSlide": EventSlide,
-        "BirthdaySlide": BirthdaySlide,
-        "MeetingRoomSlide": MeetingRoomSlide
+        "BirthdaySlide": BirthdaySlide
     }
 
 
