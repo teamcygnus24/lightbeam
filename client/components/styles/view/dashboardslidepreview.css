@@ -220,3 +220,8 @@
     font-size: xx-small;
     overflow: hidden;
 }
+
+.loading-text {
+    padding-left: 480px;
+    font-size: x-large;
+}
