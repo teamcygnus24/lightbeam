@@ -118,5 +118,5 @@ input[type=text] {
 
 .alternative-desc textarea {
     height: 250px;
-    width: 280px;
+    width: 100%;
 }
