@@ -18,7 +18,7 @@ export function Login() {
     const { validation, setValidation } = useContext(AppContext)
 
     const [password, setPassword] = useState("");
-    const [message, setMessage] = useState("Skriv inn passordet for å komme deg videre");
+    const [message, setMessage] = useState("Enter password to continue");
 
     const loginPOST = async () => {
 
@@ -71,7 +71,7 @@ export function Login() {
 
                 if (adminValidation.validation === "failed") {
                     setPassword("")
-                    setMessage("Ugyldig passord, prøv igjen")
+                    setMessage("Incorrect password, please try again")
                 }
             };
 
@@ -90,10 +90,10 @@ export function Login() {
 
                 <div className="login-div">
                     <form action="" className="login-form" onSubmit={handleLogin}>
-                        <h4 className="login-header">Logg inn</h4>
+                        <h4 className="login-header">Sign in</h4>
                         <p className="login-info">{message}</p>
                         <input className="login-input" placeholder="Passord" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                        <button className="login-btn">Logg inn</button>
+                        <button className="login-btn">Enter</button>
                     </form>
                     <p className="login-trademark">SMIDIG PRO202 <b>SPRING 2024</b></p>
                 </div>
