@@ -1,4 +1,4 @@
-const Info = ({ currentSlide }) => {
+const Info = ({currentSlide }) => {
 
     return (
         <div className="display-slide-container">

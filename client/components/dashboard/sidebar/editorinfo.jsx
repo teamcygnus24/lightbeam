@@ -1,10 +1,9 @@
-import React, {useState, useEffect, useContext} from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useContext} from 'react';
 import { AppContext } from "../../../application";
 
 const EditorInfo = () => {
 
-    const { slideInfo, setSlideInfo, displayChange, setDisplayChange, setSlideSelected, currentProject } = useContext(AppContext);
+    const {setSlideSelected } = useContext(AppContext);
 
     const backToSlides = async (e) => {
         e.preventDefault();

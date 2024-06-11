@@ -4,25 +4,20 @@ import { AppContext } from "../../../application";
 
 const EditorMenu = () => {
 
-    const { slideInfo, setSlideInfo, displayChange, setDisplayChange, setSlideSelected, currentProject } = useContext(AppContext);
+    const { slideInfo, setSlideInfo, displayChange, setDisplayChange, setSlideSelected, currentProject, setSlideUpdate } = useContext(AppContext);
 
     const navigate = useNavigate();
     const [ws, setWs] = useState();
-
-    //States
-    const [slideUpdate, setSlideUpdate] = useState(false);
 
     // Inputs
     const [InputText_01, setInputText_01] = useState("");
     const [InputText_02, setInputText_02] = useState("");
     const [InputText_03, setInputText_03] = useState("");
     const [InputText_04, setInputText_04] = useState("");
-    const [InputText_05, setInputText_05] = useState("");
-    const [InputText_06, setInputText_06] = useState("");
     const [InputText_07, setInputText_07] = useState("");
     const [InputText_08, setInputText_08] = useState("");
     const [InputText_09, setInputText_09] = useState("");
-    const [InputText_10, setInputText_10] = useState("");
+
 
     const handleUpdate = async (e) => {
         e.preventDefault();

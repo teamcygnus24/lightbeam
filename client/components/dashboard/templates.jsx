@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import "../styles/view/templates.css"
 import {AppContext} from "../../application";
@@ -86,7 +86,7 @@ export function Templates() {
         <div className="template-main">
             <h1>Templates:</h1>
             <div className="template-container">
-                {templates.map((t, index) => {
+                {templates.map((t) => {
                     const TemplateComponent = templateComponents[t.name]
                     return (
                     <div key={t._id} id={t._id} className="template-card" onClick={handleAddSlide}>

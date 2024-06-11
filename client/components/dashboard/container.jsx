@@ -1,5 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useEffect, useContext} from 'react';
 import '../styles/view/dashboard.css';
 import {Slidepreview} from "./slidepreview";
 import {Slides} from "./slides";
@@ -22,8 +21,6 @@ Så denne siden er i teorien delt i "to".
 
 export function Container() {
     const { displayChange, slideSelected } = useContext(AppContext);
-
-    const navigate = useNavigate();
 
     useEffect(() => {
         console.log("I rendered")

@@ -1,5 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useContext} from 'react';
 import '../styles/view/dashboard.css';
 import {AppContext} from "../../application";
 import EditorMenu from "./sidebar/editormenu.jsx";

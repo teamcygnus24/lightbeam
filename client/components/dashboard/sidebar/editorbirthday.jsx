@@ -4,12 +4,11 @@ import { AppContext } from "../../../application";
 
 const EditorBirthday = () => {
 
-    const { slideInfo, setSlideInfo, displayChange, setDisplayChange, setSlideSelected, currentProject } = useContext(AppContext);
+    const { slideInfo, setSlideInfo, displayChange, setDisplayChange, setSlideSelected, currentProject, setSlideUpdate } = useContext(AppContext);
 
     const navigate = useNavigate();
     const [ws, setWs] = useState();
 
-    const [slideUpdate, setSlideUpdate] = useState(false);
 
     const [InputText_01, setInputText_01] = useState("");
     const [InputImage_01, setInputImage_01] = useState("");
@@ -33,7 +32,6 @@ const EditorBirthday = () => {
                     "Content-Type": "application/json",
                 }
             });
-            const slideUpdate = await updateSlide.json();
             setDisplayChange(prev => !prev)
             setSlideUpdate(prev => !prev)
             await handleWS("Hi", currentProject._id)
@@ -76,7 +74,7 @@ const EditorBirthday = () => {
                     setInputImage_02(e.target.value);
                     setSlideInfo(prev => ({...prev, text_03: e.target.value}))
                 }}/></div>
-                <div className="alternative-desc">Description:<textarea type="text" value={InputText_02} onChange={(e) => {
+                <div className="alternative-desc">Description:<textarea value={InputText_02} onChange={(e) => {
                     setInputText_02(e.target.value);
                     setSlideInfo(prev => ({...prev, text_04: e.target.value}))
                 }}/></div>

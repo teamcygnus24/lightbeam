@@ -1,5 +1,4 @@
 import Slide from "../models/slideModel.js"
-import Project from "../models/projectModel.js";
 
 export {
     slidePOST,

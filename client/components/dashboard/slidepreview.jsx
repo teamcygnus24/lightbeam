@@ -1,10 +1,7 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext} from 'react';
 import '../styles/view/dashboardslidepreview.css';
 import {AppContext} from "../../application";
 import MenuPreview from "../templates/menupreview";
-import Menu from "../templates/menu";
-import Info from "../templates/info";
-import Birthday from "../templates/birthday";
 import InfoPreview from "../templates/infopreview";
 import BirthdayPreview from "../templates/birthdaypreview";
 
