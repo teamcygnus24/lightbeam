@@ -19,7 +19,7 @@ sliden som man har trykket på.
 */
 
 export function Slides() {
-    const { setSlideID, currentProject, setSlideSelected, setSlideInfo, slides, setSlides, removeSlideClicked, addSlideClicked } = useContext(AppContext)
+    const { setSlideID, currentProject, setSlideSelected, setSlideInfo, slides, setSlides, removeSlideClicked, addSlideClicked, setProjectUpdated } = useContext(AppContext)
 
     const [loading, setLoading] = useState(false)
 
@@ -55,6 +55,7 @@ export function Slides() {
     }
 
     const handleRemoveSlide = async (e) => {
+        e.preventDefault();
         try {
             const deleteSlide = await fetch(`/api/slide/${e.currentTarget.id}`, {
                 method: "DELETE"
@@ -64,6 +65,22 @@ export function Slides() {
             if (deleteSlide.ok) {
                 await fetchSlidesFromProject()
                 console.log(`Slide ${slideDeleted} deleted successfully`);
+
+                const updateProject = await fetch(`/api/project/${currentProject._id}`, {
+                    method: "PUT",
+                    body: JSON.stringify({
+                        slideCount: (currentProject.slideCount - 1)
+                    }),
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
+                });
+    
+                if (updateProject.ok) {
+                    setProjectUpdated(prev => !prev);
+                } else {
+                    console.log(`Failed to update project ${currentProject}`);
+                }
 
             } else {
                 console.log(`Failed to delete slide ${e.currentTarget.id}`);
@@ -83,7 +100,7 @@ export function Slides() {
         <div className="slides-main">
             {removeSlideClicked ? <h1 style={{color: "crimson"}}>Removing slides</h1> : <h1>Selecting slides</h1>}
             <div className="slides-container">
-                {addSlideClicked ? <Templates />: (loading ? <div>Loading</div> : (removeSlideClicked ? slides.map((s) => {
+                {addSlideClicked ? <Templates /> : (loading ? <div>Loading</div> : (removeSlideClicked ? slides.map((s) => {
                     const SlideComponent = templateComponents[s.templateID];
                     return (
                     <div key={s._id} className="remove-slides-card" id={s._id} data-template={s.templateID} onClick={handleRemoveSlide}>

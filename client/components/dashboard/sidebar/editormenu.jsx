@@ -99,8 +99,7 @@ const EditorMenu = () => {
                     setSlideInfo(prev => ({...prev, text_09: e.target.value}))
                 }}/></div>
                 <button className="move-button" name="Save" type="button" onClick={handleUpdate}>Save Changes</button>
-                <button className="move-button" name="Display" type="button" onClick={handleUpdate}>Go To Display
-                </button>
+                <button className="move-button" name="Display" type="button" onClick={handleUpdate}>Go To Display</button>
                 <button className="move-button" name="Back" onClick={backToSlides}>Back</button>
             </form>
         </div>

@@ -12,7 +12,7 @@ Bare en info side. ikke noe spess.
 */
 
 export function Sidebarprojectinfo() {
-    const { currentProject, setShowBackButton, removeSlideClicked, setRemoveSlideClicked, addSlideClicked, setAddSlideClicked} = useContext(AppContext)
+    const { currentProject, setShowBackButton, removeSlideClicked, setRemoveSlideClicked, addSlideClicked, setAddSlideClicked, projectUpdated} = useContext(AppContext)
 
     const [ws, setWs] = useState();
     const navigate = useNavigate();
@@ -48,7 +48,7 @@ export function Sidebarprojectinfo() {
         setShowBackButton(true);
         setRemoveSlideClicked(false);
         setWs(ws)
-    }, []);
+    }, [projectUpdated]);
 
     return (
         <div className="settings-sidebar">

@@ -19,7 +19,7 @@ Dette gir oss mulighet til å videreutvikle layout og innhold, spesifikk til den
 
 export function Templates() {
 
-    const { setProjectUpdated, templates, setTemplates, currentProject, showBackButton } = useContext(AppContext)
+    const { setProjectUpdated, templates, setTemplates, currentProject, showBackButton, setAddSlideClicked } = useContext(AppContext)
 
     const navigate = useNavigate();
 
@@ -61,7 +61,8 @@ export function Templates() {
                 });
 
                 if (updateProject.ok) {
-                    console.log("Project updated successfully!\n" + updateProject)
+                    console.log("Project updated successfully!\n" + updateProject);
+                    setAddSlideClicked(prev => !prev);
                     setProjectUpdated(prev => !prev);
                 }
             }
