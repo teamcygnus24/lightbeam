@@ -26,18 +26,24 @@ body {
 }
 
 .template-card {
-    color: white;
     width: 300px;
     height: 250px;
-    border-radius: 5px;
-    border: ghostwhite solid 2px;
+    color: ghostwhite;
     text-align: center;
+    border-radius: 5px;
+    font-size: 20px;
+    margin: auto;
+    transition: box-shadow .3s;
+    border-radius:10px;
+    border: 1px solid #ccc;
+    background: #fff;
+    float: left;
 }
 .template-card:hover {
-    border: 2px solid black;
+    border-radius: 10px;
     cursor: pointer;
     position: relative;
-    top: -20px;
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
 }
 
 .template-btn {
