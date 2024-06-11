@@ -1,9 +1,8 @@
 import React, {useContext} from 'react';
-import '../styles/view/dashboard.css';
-import {AppContext} from "../../application";
-import EditorMenu from "./sidebar/editormenu.jsx";
-import EditorInfo from "./sidebar/editorinfo.jsx";
-import EditorBirthday from "./sidebar/editorbirthday.jsx";
+import '../../styles/view/dashboard.css';
+import {AppContext} from "../../../application.jsx";
+import EditorMenu from "./editor/editormenu.jsx";
+import EditorBirthday from "./editor/editorbirthday.jsx";
 
 /*
 ============================================================================================
@@ -24,7 +23,6 @@ export function Sidebareditor() {
 
     const templateComponents = {
         "665625763da2eb37ed00af98": EditorMenu,
-        "6656257b3da2eb37ed00af9a": EditorInfo,
         "665625813da2eb37ed00af9e": EditorBirthday
     }
 

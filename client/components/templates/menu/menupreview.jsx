@@ -1,4 +1,4 @@
-import long_food from '../../resources/images/food.png'
+import long_food from '../../../resources/images/food.png'
 
 const MenuPreview = ({ slideInfo }) => {
 

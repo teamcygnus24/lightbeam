@@ -1,10 +1,9 @@
 import React, {useState, useEffect, useContext} from 'react';
 import '../styles/view/dashboardslidepreview.css';
 import {AppContext} from "../../application";
-import MenuSlide from "../templates/menuslide";
-import InfoSlide from "../templates/infoslide";
-import {Templates} from "./templates";
-import BirthdaySlide from "../templates/birthdayslide";
+import MenuSlide from "../templates/menu/menuslide";
+import { Templates } from "./templates";
+import BirthdaySlide from "../templates/birthday/birthdayslide";
 
 /*
 ============================================================================================
@@ -25,7 +24,6 @@ export function Slides() {
 
     const templateComponents = {
         "665625763da2eb37ed00af98": MenuSlide,
-        "6656257b3da2eb37ed00af9a": InfoSlide,
         "665625813da2eb37ed00af9e": BirthdaySlide
     }
 

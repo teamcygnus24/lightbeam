@@ -1,9 +1,8 @@
 import React, {useContext} from 'react';
 import '../styles/view/dashboardslidepreview.css';
 import {AppContext} from "../../application";
-import MenuPreview from "../templates/menupreview";
-import InfoPreview from "../templates/infopreview";
-import BirthdayPreview from "../templates/birthdaypreview";
+import MenuPreview from "../templates/menu/menupreview";
+import BirthdayPreview from "../templates/birthday/birthdaypreview";
 
 /*
 ============================================================================================
@@ -22,7 +21,6 @@ export function Slidepreview() {
 
     const templateComponents = {
         "665625763da2eb37ed00af98": MenuPreview,
-        "6656257b3da2eb37ed00af9a": InfoPreview,
         "665625813da2eb37ed00af9e": BirthdayPreview
     }
 

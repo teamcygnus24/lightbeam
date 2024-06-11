@@ -1,9 +1,8 @@
 import React, {useContext, useEffect, useState} from 'react';
 import "../components/styles/view/display.css"
 import { AppContext } from "../application";
-import Menu from "../components/templates/menu";
-import Birthday from "../components/templates/birthday";
-import Info from "../components/templates/info";
+import Menu from "../components/templates/menu/menu";
+import Birthday from "../components/templates/birthday/birthday";
 
 /*
 ============================================================================================
@@ -61,7 +60,7 @@ export function Display() {
     const slideRotation = async () => {
         if (prevProject !== displayProject) {
 
-            setArrayIndex(0)
+            setArrayIndex(-1)
             setPrevProject(displayProject)
             console.log("This shouldnt run when updating other projects that are not active")
             await fetchProject();
@@ -70,14 +69,14 @@ export function Display() {
 
         if (prevProject === displayProject && slideChange !== haveSlidesChanged) {
 
-            setArrayIndex(0)
+            setArrayIndex(-1)
             setHaveSlidesChanged(slideChange)
             console.log("This shouldnt run when updating other projects that are not active")
             await fetchProjectSlides();
         }
 
         if (arrayIndex === (projectSlides.length - 1)) {
-            setArrayIndex(0)
+            setArrayIndex(-1)
         } else {
             setArrayIndex(prev => prev + 1)
         }
@@ -85,7 +84,7 @@ export function Display() {
     }
 
     useEffect(() => {
-        const ws = new WebSocket("ws://localhost:3000/")
+        const ws = new WebSocket("wss://lightbeam-smidig-dev-393006ce2df9.herokuapp.com/")
         ws.onmessage = (event) => {
             const serverResponse = JSON.parse(event.data)
             console.log(`displayProject: ${displayProject}, projectUpdated: ${serverResponse.projectUpdated}`)
@@ -113,7 +112,6 @@ export function Display() {
 
     const templateComponents = {
         "665625763da2eb37ed00af98": Menu,
-        "6656257b3da2eb37ed00af9a": Info,
         "665625813da2eb37ed00af9e": Birthday
     }
 

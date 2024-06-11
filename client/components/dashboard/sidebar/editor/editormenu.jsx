@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AppContext } from "../../../application";
+import { AppContext } from "../../../../application";
 
 const EditorMenu = () => {
 
@@ -60,7 +60,7 @@ const EditorMenu = () => {
     }
 
     useEffect(() => {
-        const ws = new WebSocket("ws://localhost:3000/");
+        const ws = new WebSocket("wss://lightbeam-smidig-dev-393006ce2df9.herokuapp.com/");
         ws.onmessage = (event) => {
             console.log(event.data)
         }

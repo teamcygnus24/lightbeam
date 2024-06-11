@@ -2,8 +2,8 @@ import React, {useEffect, useContext} from 'react';
 import '../styles/view/dashboard.css';
 import {Slidepreview} from "./slidepreview";
 import {Slides} from "./slides";
-import {Sidebareditor} from "./sidebareditor";
-import {Sidebarprojectinfo} from "./sidebarprojectinfo";
+import {Sidebareditor} from "./sidebar/sidebareditor";
+import {Sidebarprojectinfo} from "./sidebar/sidebarprojectinfo";
 import { AppContext } from "../../application";
 
 /*

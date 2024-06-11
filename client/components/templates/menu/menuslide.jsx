@@ -1,5 +1,4 @@
-import long_food from '../../resources/images/food.png'
-import React from "react";
+import long_food from '../../../resources/images/food.png'
 
 const MenuSlide = ({ currentSlide }) => {
 

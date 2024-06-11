@@ -2,9 +2,8 @@ import React, {useContext, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import "../styles/view/templates.css"
 import {AppContext} from "../../application";
-import MenuSlide from "../templates/menuslide";
-import InfoSlide from "../templates/infoslide";
-import BirthdaySlide from "../templates/birthdayslide";
+import MenuSlide from "../templates/menu/menuslide";
+import BirthdaySlide from "../templates/birthday/birthdayslide";
 
 /*
 ============================================================================================
@@ -74,7 +73,6 @@ export function Templates() {
 
     const templateComponents = {
         "MenuSlide": MenuSlide,
-        "InfoSlide": InfoSlide,
         "BirthdaySlide": BirthdaySlide
     }
 
@@ -87,7 +85,7 @@ export function Templates() {
         <div className="template-main">
             <h1>Templates:</h1>
             <div className="template-container">
-                {templates.map((t) => {
+                {templates?.map((t) => {
                     const TemplateComponent = templateComponents[t.name]
                     return (
                     <div key={t._id} id={t._id} className="template-card" onClick={handleAddSlide}>
