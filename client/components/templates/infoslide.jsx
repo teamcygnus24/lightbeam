@@ -1,7 +1,7 @@
 const InfoSlide = ({ currentSlide }) => {
 
     return (
-        <div className="info-container">
+        <div className="thumbnail-container">
             I am Info Template
         </div>
     )

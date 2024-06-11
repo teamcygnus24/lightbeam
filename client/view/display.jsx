@@ -88,6 +88,7 @@ export function Display() {
         const ws = new WebSocket("wss://lightbeam-smidig-dev-393006ce2df9.herokuapp.com/")
         ws.onmessage = (event) => {
             const serverResponse = JSON.parse(event.data)
+            console.log(`displayProject: ${displayProject}, projectUpdated: ${serverResponse.projectUpdated}`)
             if (serverResponse.projectID !== null && serverResponse.projectID !== undefined) {
                 setDisplayProject(serverResponse.projectID)
                 console.log(`ProjectID Recieved: ${serverResponse.projectID}`)
@@ -106,8 +107,9 @@ export function Display() {
         return () => {
             console.log("Clearing Interval")
             clearInterval(i)
+            ws.close();
         };
-    }, [slideSwitch]);
+    }, [slideSwitch, slideChange]);
 
     const templateComponents = {
         "665625763da2eb37ed00af98": Menu,

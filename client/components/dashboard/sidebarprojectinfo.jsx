@@ -1,6 +1,6 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import '../styles/view/dashboard.css';
-import {AppContext} from "../../application";
+import { AppContext } from "../../application";
 import { useNavigate } from 'react-router-dom';
 
 /*
@@ -11,7 +11,6 @@ Bare en info side. ikke noe spess.
 ============================================================================================
 */
 
-/*{removeSlideClicked && <DashboardContainer project={project}/>}*/
 export function Sidebarprojectinfo() {
     const { currentProject, setShowBackButton, removeSlideClicked, setRemoveSlideClicked, addSlideClicked, setAddSlideClicked} = useContext(AppContext)
 

@@ -9,6 +9,8 @@ const EditorBirthday = () => {
     const navigate = useNavigate();
     const [ws, setWs] = useState();
 
+    const [slideUpdate, setSlideUpdate] = useState(false);
+
     const [InputText_01, setInputText_01] = useState("");
     const [InputImage_01, setInputImage_01] = useState("");
     const [InputImage_02, setInputImage_02] = useState("");
@@ -17,16 +19,16 @@ const EditorBirthday = () => {
     const handleUpdate = async (e) => {
         e.preventDefault();
 
+        let bodyContent = {}
+        if (InputText_01) bodyContent.text_01 = InputText_01
+        if (InputImage_01) bodyContent.text_02 = InputImage_01
+        if (InputImage_02) bodyContent.text_03 = InputImage_02
+        if (InputText_02) bodyContent.text_04 = InputText_02
+
         if (e.target.name === "Save") {
             const updateSlide = await fetch(`/api/slide/${slideInfo._id}`, {
                 method: "PUT",
-                body: JSON.stringify({
-                    text_01: InputText_01,
-                    text_02: InputImage_01,
-                    text_03: InputImage_02,
-                    text_04: InputText_02,
-
-                }),
+                body: JSON.stringify(bodyContent),
                 headers: {
                     "Content-Type": "application/json",
                 }
@@ -68,15 +70,15 @@ const EditorBirthday = () => {
                 }} placeholder="Example: Food"/></div>
                 <div className="alternative">Image 1:<input type="text" value={InputImage_01} onChange={(e) => {
                     setInputImage_01(e.target.value);
-                    setSlideInfo(prev => ({...prev, text_03: e.target.value}))
+                    setSlideInfo(prev => ({...prev, text_02: e.target.value}))
                 }}/></div>
                 <div className="alternative">Image 2:<input type="text" value={InputImage_02} onChange={(e) => {
                     setInputImage_02(e.target.value);
-                    setSlideInfo(prev => ({...prev, text_04: e.target.value}))
+                    setSlideInfo(prev => ({...prev, text_03: e.target.value}))
                 }}/></div>
                 <div className="alternative-desc">Description:<textarea type="text" value={InputText_02} onChange={(e) => {
                     setInputText_02(e.target.value);
-                    setSlideInfo(prev => ({...prev, text_02: e.target.value}))
+                    setSlideInfo(prev => ({...prev, text_04: e.target.value}))
                 }}/></div>
                  <button className="move-button" name="Save" type="button" onClick={handleUpdate}>Save Changes</button>
                 <button className="move-button" name="Display" type="button" onClick={handleUpdate}>Go To Display</button>

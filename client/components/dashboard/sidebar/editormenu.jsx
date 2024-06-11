@@ -27,22 +27,19 @@ const EditorMenu = () => {
     const handleUpdate = async (e) => {
         e.preventDefault();
 
+        let bodyContent = {}
+        if (InputText_01) bodyContent.text_01 = InputText_01
+        if (InputText_02) bodyContent.text_02 = InputText_02
+        if (InputText_03) bodyContent.text_03 = InputText_03
+        if (InputText_04) bodyContent.text_04 = InputText_04
+        if (InputText_07) bodyContent.text_07 = InputText_07
+        if (InputText_08) bodyContent.text_08 = InputText_08
+        if (InputText_09) bodyContent.text_09 = InputText_09
+
         if (e.target.name === "Save") {
             const updateSlide = await fetch(`/api/slide/${slideInfo._id}`, {
                 method: "PUT",
-                body: JSON.stringify({
-                    text_01: InputText_01,
-                    text_02: InputText_02,
-                    text_03: InputText_03,
-                    text_04: InputText_04,
-                    text_05: InputText_05,
-                    text_06: InputText_06,
-                    text_07: InputText_07,
-                    text_08: InputText_08,
-                    text_09: InputText_09,
-                    text_10: InputText_10
-
-                }),
+                body: JSON.stringify(bodyContent),
                 headers: {
                     "Content-Type": "application/json",
                 }
@@ -78,7 +75,7 @@ const EditorMenu = () => {
     return (
         <div className="buttons">
             <form>
-                <div className="type">Type 1:<input type="text" value={InputText_01} onChange={(e) => {
+                <div className="type">Title 1:<input type="text" value={InputText_01} onChange={(e) => {
                     setInputText_01(e.target.value);
                     setSlideInfo(prev => ({...prev, text_01: e.target.value}))
                 }} placeholder="Example: Food"/></div>
@@ -94,7 +91,7 @@ const EditorMenu = () => {
                     setInputText_04(e.target.value);
                     setSlideInfo(prev => ({...prev, text_04: e.target.value}))
                 }}/></div>
-                <div className="type">Type 2:<input type="text" value={InputText_07} onChange={(e) => {
+                <div className="type">Title 2:<input type="text" value={InputText_07} onChange={(e) => {
                     setInputText_07(e.target.value);
                     setSlideInfo(prev => ({...prev, text_07: e.target.value}))
                 }} placeholder="Example: Drinks"/></div>
