@@ -76,7 +76,7 @@ export function Display() {
         }
 
         if (arrayIndex === (projectSlides.length - 1)) {
-            setArrayIndex(-1)
+            setArrayIndex(0)
         } else {
             setArrayIndex(prev => prev + 1)
         }
