@@ -84,7 +84,7 @@ export function Display() {
     }
 
     useEffect(() => {
-        const ws = new WebSocket("wss://lightbeam-smidig-dev-393006ce2df9.herokuapp.com/")
+        const ws = new WebSocket(process.env.REACT_APP_WEBSOCKET)
         ws.onmessage = (event) => {
             const serverResponse = JSON.parse(event.data)
             console.log(`displayProject: ${displayProject}, projectUpdated: ${serverResponse.projectUpdated}`)
