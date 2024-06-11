@@ -83,7 +83,7 @@ export function Templates() {
 
     return(
         <div className="template-main">
-            <h1>Templates:</h1>
+            <h1>Choose a template:</h1>
             <div className="template-container">
                 {templates?.map((t) => {
                     const TemplateComponent = templateComponents[t.name]

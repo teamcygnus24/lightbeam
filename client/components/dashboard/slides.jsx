@@ -96,7 +96,7 @@ export function Slides() {
 
     return (
         <div className="slides-main">
-            {removeSlideClicked ? <h1 style={{color: "crimson"}}>Removing slides</h1> : <h1>Selecting slides</h1>}
+            {removeSlideClicked ? <h1 style={{color: "crimson"}}>Remove selected slides</h1> : <h1>Select a slide to edit</h1>}
             <div className="slides-container">
                 {addSlideClicked ? <Templates /> : (loading ? <div className="loading-text">Loading...</div> : (removeSlideClicked ? slides.map((s) => {
                     const SlideComponent = templateComponents[s.templateID];

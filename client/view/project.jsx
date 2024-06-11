@@ -43,9 +43,8 @@ export function Projects() {
                 {projects.map((p, index) => (
                     <div key={index} className="project-card" onClick={handleClick} id={p._id}>
                         <div className="project-header">
-                           ID: {p._id}
                         </div>
-                        <div className="project-footer">{p.name}</div>
+                        <div className="project-body">{p.name}</div>
                     </div>
                 ))}
             </div>
