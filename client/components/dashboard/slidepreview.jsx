@@ -30,6 +30,6 @@ export function Slidepreview() {
 
 
     return (
-        <TemplateComponent slideInfo={ slideInfo }/>
+        <TemplateComponent slideInfo={ slideInfo } />
     );
 }

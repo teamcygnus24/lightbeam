@@ -87,7 +87,7 @@
     border-radius: 5px;
 }
 
-.back-button:hover {
+.back-button:hover, .move-button:hover {
     background-color: #023fb2;
     cursor: pointer;
 }
