@@ -61,7 +61,7 @@ export function Templates() {
 
                 if (updateProject.ok) {
                     console.log("Project updated successfully!\n" + updateProject);
-                    setAddSlideClicked(prev => !prev);
+                    setAddSlideClicked(false);
                     setProjectUpdated(prev => !prev);
                 }
             }
