@@ -8,7 +8,7 @@
 }
 
 .slides-main h1 {
-    padding-top: 75px;
+    padding-top: 55px;
 }
 .slides-container {
     width: 100%;
@@ -52,10 +52,10 @@
 }
 
 .remove-slides-card:hover {
-    border: 2px solid crimson;
+    border-radius: 10px;
     cursor: pointer;
     position: relative;
-    top: -20px;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.294); 
 }
 
 #frame {
