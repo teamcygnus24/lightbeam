@@ -31,8 +31,6 @@ export function Sidebareditor() {
 
     return (
         <div className="settings-sidebar">
-            <h2>Slide: {slideInfo._id}</h2>
-            <h2>Template: {slideInfo.templateID}</h2>
             <TemplateComponent />
         </div>
     );
