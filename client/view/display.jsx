@@ -44,10 +44,10 @@ export function Display() {
             return;
         }
 
-            console.log("I was activated (fetchProject)")
-            const getProject = await fetch(`/api/project/${displayProject}`)
-            const newProject = await getProject.json();
-            setProjectName(newProject.name)
+        console.log("I was activated (fetchProject)")
+        const getProject = await fetch(`/api/project/${displayProject}`)
+        const newProject = await getProject.json();
+        setProjectName(newProject.name)
     }
 
     const fetchProjectSlides = async () => {
@@ -85,7 +85,7 @@ export function Display() {
     }
 
     useEffect(() => {
-        const ws = new WebSocket("wss://lightbeam-smidig-dev-393006ce2df9.herokuapp.com/")
+        const ws = new WebSocket("ws://localhost:3000/")
         ws.onmessage = (event) => {
             const serverResponse = JSON.parse(event.data)
             console.log(`displayProject: ${displayProject}, projectUpdated: ${serverResponse.projectUpdated}`)
@@ -122,7 +122,7 @@ export function Display() {
 
     return (
         <div>
-            {TemplateComponent ? <TemplateComponent currentSlide={ currentSlide }/> : <div>Loading</div>}
+            {displayProject ? (TemplateComponent ? <TemplateComponent currentSlide={ currentSlide }/> : <div className='loading-display'>Loading</div>) : <div className='inactive-display'>Waiting for Input</div>}
         </div>
     );
 }

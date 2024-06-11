@@ -12,7 +12,7 @@ Bare en info side. ikke noe spess.
 */
 
 export function Sidebarprojectinfo() {
-    const { currentProject, setShowBackButton, removeSlideClicked, setRemoveSlideClicked, addSlideClicked, setAddSlideClicked, projectUpdated} = useContext(AppContext)
+    const { currentProject, setShowBackButton, removeSlideClicked, setRemoveSlideClicked, addSlideClicked, setAddSlideClicked} = useContext(AppContext)
 
     const [ws, setWs] = useState();
     const navigate = useNavigate();
@@ -41,14 +41,14 @@ export function Sidebarprojectinfo() {
 
 
     useEffect(() => {
-        const ws = new WebSocket("wss://lightbeam-smidig-dev-393006ce2df9.herokuapp.com/");
+        const ws = new WebSocket("ws://localhost:3000/");
         ws.onmessage = (event) => {
             console.log(event.data)
         }
         setShowBackButton(true);
         setRemoveSlideClicked(false);
         setWs(ws)
-    }, [projectUpdated]);
+    }, []);
 
     return (
         <div className="settings-sidebar">

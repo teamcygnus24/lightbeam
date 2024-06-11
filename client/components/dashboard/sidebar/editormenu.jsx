@@ -60,7 +60,7 @@ const EditorMenu = () => {
     }
 
     useEffect(() => {
-        const ws = new WebSocket("wss://lightbeam-smidig-dev-393006ce2df9.herokuapp.com/");
+        const ws = new WebSocket("ws://localhost:3000/");
         ws.onmessage = (event) => {
             console.log(event.data)
         }

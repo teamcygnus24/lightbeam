@@ -25,7 +25,7 @@ export function Application() {
     //Project
     const [currentProject, setCurrentProject] = useState(null);
     const [projectUpdated, setProjectUpdated] = useState(false);
-    const [displayProject, setDisplayProject] = useState("6655f10157e8816e5eedbd55")
+    const [displayProject, setDisplayProject] = useState(null)
     const [prevProject, setPrevProject] = useState("")
 
     //Template
