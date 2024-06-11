@@ -45,7 +45,7 @@ const EditorMenu = () => {
             await handleWS("Hi", currentProject._id)
             console.log("Data: " + slideInfo._id + " " + displayChange)
         } else if (e.target.name === "Display") {
-            navigate("/Display")
+            window.open('/display','_blank');
         }
     };
 
@@ -99,7 +99,7 @@ const EditorMenu = () => {
                     setSlideInfo(prev => ({...prev, text_09: e.target.value}))
                 }}/></div>
                 <button className="move-button" name="Save" type="button" onClick={handleUpdate}>Save Changes</button>
-                <button className="move-button" name="Display" type="button" onClick={handleUpdate}>Go To Display</button>
+                <button className="move-button" name="Display" type="button" onClick={handleUpdate}>Open Display</button>
                 <button className="move-button" name="Back" onClick={backToSlides}>Back</button>
             </form>
         </div>

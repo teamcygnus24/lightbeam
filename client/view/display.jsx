@@ -120,7 +120,7 @@ export function Display() {
 
     return (
         <div>
-            {displayProject ? (TemplateComponent ? <TemplateComponent currentSlide={ currentSlide }/> : <div className='loading-display'>Loading</div>) : <div className='inactive-display'>Waiting for Input</div>}
+            {displayProject ? (TemplateComponent ? <TemplateComponent currentSlide={ currentSlide }/> : <div className='loading-display'>Loading...</div>) : <div className='inactive-display'>Please set active project...</div>}
         </div>
     );
 }

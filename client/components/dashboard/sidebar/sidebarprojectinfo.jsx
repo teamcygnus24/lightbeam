@@ -39,6 +39,9 @@ export function Sidebarprojectinfo() {
         setRemoveSlideClicked(prev => !prev);
     }
 
+    const handleUpdate = async (e) => {
+            window.open('/display','_blank');
+    };
 
     useEffect(() => {
         const ws = new WebSocket(process.env.REACT_APP_WEBSOCKET);
@@ -59,6 +62,7 @@ export function Sidebarprojectinfo() {
             {removeSlideClicked ? <button className="move-button" style={{background: "crimson"}} onClick={toggleRemoveSlide}>Remove slide</button> :
                 <button className="move-button" onClick={toggleRemoveSlide}>Remove slide</button>}
                 <button className="move-button" onClick={handleWS}>Set Active</button>
+                <button className="move-button" name="Display" type="button" onClick={handleUpdate}>Open Display</button>
             <button className="move-button" onClick={() => navigate('/projects')}>Back</button>
             </div>
         </div>
