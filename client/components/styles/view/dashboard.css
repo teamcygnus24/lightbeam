@@ -1,9 +1,0 @@
-.dashboard-container {
-    display: flex;
-    height: 100vh;
-    background: transparent;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-}

@@ -10,6 +10,7 @@
 .slides-main h1 {
     padding-top: 55px;
 }
+
 .slides-container {
     width: 100%;
     height: 100%;
@@ -18,6 +19,11 @@
     flex-wrap: wrap;
     align-items: center;
     justify-items: center;
+}
+
+.loading-text {
+    padding-left: 480px;
+    font-size: x-large;
 }
 
 .slides-card {
@@ -58,7 +64,9 @@
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.294); 
 }
 
-.slides-card-container {
+/* Menu Slide Card */
+
+.slides-menu-container {
     overflow: hidden;
     display: flex;
     width: 100%;
@@ -66,7 +74,7 @@
     height: 100%;
 }
 
-.slides-card-box {
+.slides-menu-box {
     width: 150%;
     padding: 10px;
     box-sizing: border-box;
@@ -75,13 +83,13 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.slides-card-box {
+.slides-menu-box {
     display: flex;
     flex-direction: column;
     margin-right: 0;
 }
 
-.slides-card-box h2 {
+.slides-menu-box h2 {
     font-family: 'helvetica';
     font-weight: 1000;
     font-size: 10px;
@@ -89,7 +97,7 @@
     color: #00102d;
 }
 
-.slides-card-box h3 {
+.slides-menu-box h3 {
     font-family: 'helvetica';
     font-weight: 1000;
     font-size: 6px;
@@ -97,14 +105,14 @@
     color: #00102d;
 }
 
-.slides-card-box .slides-card-input {
+.slides-menu-box .slides-menu-input {
     font-family: 'helvetica';
     font-size: 5px;
     margin-bottom: 4px;
     color: #00102d;
 }
 
-.slides-card-content {
+.slides-menu-content {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -112,11 +120,11 @@
     align-items: flex-start;
 }
 
-.slides-card-content .slides-card-input {
+.slides-menu-content .slides-menu-input {
     margin-bottom: 8px;
 }
 
-.slides-card-image-box {
+.slides-menu-image-box {
     display: flex;
     width: 100%;
     justify-content: center;
@@ -126,12 +134,14 @@
 
 }
 
-.slides-card-image-box img {
+.slides-menu-image-box img {
     height: 200%;
     width: 100%;
 }
 
-.thumbnail-container {
+/* Birthday Slide Card */
+
+.slides-birthday-container {
     width: 100%;
     height: 100%;
     color: black;
@@ -139,14 +149,7 @@
     font-size: 20px;
 }
 
-.slides-birthday-title {
-    width: 100%;
-    height: 10%;
-    text-align: center;
-    font-size: small;
-}
-
-.slides-slide-box {
+.slides-birthday-box {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
@@ -156,44 +159,33 @@
     flex-wrap: wrap;
 }
 
+.slides-birthday-title {
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    font-size: small;
+}
+
+.slides-birthday-image-person {
+    border: white 2px solid;
+    width: 50%;
+    height: 60%;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.slides-birthday-image-announcement {
+    border: white 2px solid;
+    width: 50%;
+    height: 60%;
+    border-radius: 5px;
+    text-align: center;
+}
+
 .slides-birthday-desc {
     width: 100%;
     height: 25%;
     word-break: break-all;
     font-size: xx-small;
     overflow: hidden;
-}
-
-.loading-text {
-    padding-left: 480px;
-    font-size: x-large;
-}
-
-.birthday-title {
-    width: 100%;
-    height: 10%;
-    text-align: center;
-}
-
-.imagePerson {
-    border: white 2px solid;
-    width: 50%;
-    height: 60%;
-    border-radius: 5px;
-    text-align: center;
-}
-
-.imageAnnouncement {
-    border: white 2px solid;
-    width: 50%;
-    height: 60%;
-    border-radius: 5px;
-    text-align: center;
-}
-
-.birthday-desc {
-    width: 100%;
-    height: 25%;
-    word-break: break-all;
-    overflow: auto;
 }

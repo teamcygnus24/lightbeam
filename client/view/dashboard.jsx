@@ -1,5 +1,4 @@
 import React, {useState, useEffect, useContext} from 'react';
-import '../components/styles/view/dashboard.css';
 import { Container } from "../components/dashboard/container";
 import { Templates } from "../components/dashboard/templates";
 import {AppContext} from "../application";
@@ -52,11 +51,7 @@ export function Dashboard() {
                 ) : (
                     // Passing the projectUpdated state setter, to trigger when a slidedisplay.jsx has been added and re-render
                     <Templates />
-
                 )}
-            <footer className="footer">
-            </footer>
-
         </div>
     );
 }

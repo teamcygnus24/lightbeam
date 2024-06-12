@@ -1,5 +1,5 @@
 import React, {useEffect, useContext} from 'react';
-import '../styles/view/dashboard.css';
+import '../styles/components/dashboard/container.css';
 import {Slidepreview} from "./slidepreview";
 import {Slides} from "./slides";
 import {Sidebareditor} from "./sidebar/sidebareditor";
