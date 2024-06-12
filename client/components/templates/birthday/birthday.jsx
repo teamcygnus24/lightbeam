@@ -1,5 +1,3 @@
-import '../../styles/templates/birthdaypreview.css'
-
 const Birthday = ({ currentSlide }) => {
 
     return (
