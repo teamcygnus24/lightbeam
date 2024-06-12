@@ -8,7 +8,7 @@ const BirthdayPreview = ({ slideInfo }) => {
     return (
         <div className="preview-birthday-container">
             <div className="preview-birthday-box">
-                <h1 className="birthday-title">{slideInfo?.text_01}</h1>
+                <h1 className="preview-birthday-title">{slideInfo?.text_01}</h1>
                 <img alt="image/video" src={slideInfo?.text_02} className="preview-birthday-imagePerson"/>
                 <img alt="image/video" src={slideInfo?.text_03} className="preview-birthday-imageAnnouncement"/>
                 <p className="preview-birthday-desc">{slideInfo?.text_04}</p>
