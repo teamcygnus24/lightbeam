@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
-import '../styles/view/dashboardslidepreview.css';
+import '../styles/components/dashboard/slides.css';
 import {AppContext} from "../../application";
 import MenuSlide from "../templates/menu/menuslide";
 import { Templates } from "./templates";

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import '../../styles/view/dashboard.css';
+import '../../styles/components/dashboard/sidebar.css'
 import { AppContext } from "../../../application";
 import { useNavigate } from 'react-router-dom';
 

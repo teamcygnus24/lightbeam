@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import '../styles/view/dashboardslidepreview.css';
+import '../styles/components/dashboard/slidepreview.css';
 import {AppContext} from "../../application";
 import MenuPreview from "../templates/menu/menupreview";
 import BirthdayPreview from "../templates/birthday/birthdaypreview";
