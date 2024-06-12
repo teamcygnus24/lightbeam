@@ -67,15 +67,15 @@ const EditorBirthday = () => {
             <div className="type">Title:<input type="text" value={InputText_01} onChange={(e) => {
                     setInputText_01(e.target.value);
                     setSlideInfo(prev => ({...prev, text_01: e.target.value}))
-                }} placeholder="Example: Food"/></div>
+                }} placeholder="Example: Birthday"/></div>
                 <div className="alternative">Image 1:<input type="text" value={InputImage_01} onChange={(e) => {
                     setInputImage_01(e.target.value);
                     setSlideInfo(prev => ({...prev, text_02: e.target.value}))
-                }}/></div>
+                }} placeholder="Link to <image.jpg>"/></div>
                 <div className="alternative">Image 2:<input type="text" value={InputImage_02} onChange={(e) => {
                     setInputImage_02(e.target.value);
                     setSlideInfo(prev => ({...prev, text_03: e.target.value}))
-                }}/></div>
+                }} placeholder="Link to <image.png>"/></div>
                 <div className="alternative-desc">Description:<textarea value={InputText_02} onChange={(e) => {
                     setInputText_02(e.target.value);
                     setSlideInfo(prev => ({...prev, text_04: e.target.value}))
