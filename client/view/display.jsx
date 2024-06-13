@@ -16,9 +16,9 @@ export function Display() {
     const [prevProject, setPrevProject] = useState("");
     const [haveSlidesChanged, setHaveSlidesChanged] = useState(false);
     const [slideChange, setSlideChange] = useState(false);
-    const [intervalDuration, setIntervalDuration] = useState(3000); // Default duration
+    const [intervalDuration, setIntervalDuration] = useState(10000); // Default duration
 
-    const DEFAULT_INTERVAL_DURATION = 3000; 
+    const DEFAULT_INTERVAL_DURATION = 10000; 
 
     const currentSlide = projectSlides[arrayIndex] || {};
 
