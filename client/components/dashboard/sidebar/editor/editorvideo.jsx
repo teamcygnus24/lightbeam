@@ -67,7 +67,7 @@ const EditorVideo = () => {
         <div className="buttons">
             <form>
                 <div className="type">
-                    Video Link:
+                    Insert Youtube link:
                     <input
                         type="text"
                         value={InputVideo_01}
