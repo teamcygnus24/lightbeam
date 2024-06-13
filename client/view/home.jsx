@@ -22,7 +22,7 @@ export function Home() {
                 <img src={kpmg_logo} alt="KPMG Logo" className="logo" />
             </header>
             <div><h3>
-                Real-time collaboration without hassle, quick off with 
+                Welcome! Watch our short onboarding video to get you started:
                 </h3>
                 <br></br>
             </div>
