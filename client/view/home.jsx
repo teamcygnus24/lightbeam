@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import '../components/styles/view/home.css';
 import kpmg_logo from '../resources/images/kpmg_logo.png';
 
+
 /*
 ============================================================================================
 HOME PAGE
@@ -19,15 +20,15 @@ export function Home() {
         <div className="container">
             <header className="header">
                 <img src={kpmg_logo} alt="KPMG Logo" className="logo" />
-                <h1 className="title">LIGHTBEAM</h1>
             </header>
             <div><h3>
-                Real-time collaboration without hassle: Work in an editor in real-time,
+                Real-time collaboration without hassle, quick off with 
                 </h3>
-                <h3>
-                making great changes in a super effective way, from wherever you are.
-                </h3>
+                <br></br>
             </div>
+
+            <div>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/oNHvVxg0HFM?si=lAXRdRw8F1c3YPoJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>            </div>
             <main className="main-content">
                 <button className="projects-btn" onClick={() => navigate('/projects')}>Go to Projects</button>
             </main>
