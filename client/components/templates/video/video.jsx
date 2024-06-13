@@ -4,7 +4,7 @@ import '../../styles/templates/video.css';
 
 const Video = ({ currentSlide, onDurationFetched }) => {
     const [videoDuration, setVideoDuration] = useState(0);
-    const videoLink = currentSlide?.text_01 ? `${currentSlide.text_01}?autoplay=1` : '';
+    const videoLink = currentSlide?.text_01 ? `${currentSlide.text_01}?autoplay=1&controls=0&modestbranding=1` : '';
 
     useEffect(() => {
         const fetchVideoDuration = async () => {
