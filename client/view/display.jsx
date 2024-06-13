@@ -16,8 +16,7 @@ export function Display() {
     const [prevProject, setPrevProject] = useState("");
     const [haveSlidesChanged, setHaveSlidesChanged] = useState(false);
     const [slideChange, setSlideChange] = useState(false);
-    const [intervalDuration, setIntervalDuration] = useState(4000); // Shorter initial duration (For demonstration purposes)
-    const [loading, setLoading] = useState(true);
+    const [intervalDuration, setIntervalDuration] = useState(10000); // Default duration
 
     const DEFAULT_INTERVAL_DURATION = 10000; 
 
@@ -40,7 +39,6 @@ export function Display() {
         const getSlides = await fetch(`/api/slide/${displayProject}`);
         const newSlides = await getSlides.json();
         setProjectSlides(newSlides);
-        setLoading(false); 
     };
 
     const slideRotation = async () => {
@@ -117,17 +115,7 @@ export function Display() {
 
     return (
         <div>
-            {loading ? (
-                <div className='loading-display'>Loading</div>
-            ) : displayProject ? (
-                TemplateComponent ? (
-                    <TemplateComponent currentSlide={currentSlide} />
-                ) : (
-                    <div className='loading-display'>Loading</div>
-                )
-            ) : (
-                <div className='inactive-display'>Please set active project...</div>
-            )}
+            {displayProject ? (TemplateComponent ? <TemplateComponent currentSlide={currentSlide} /> : <div className='loading-display'>Loading</div>) : <div className='inactive-display'>Please set active project...</div>}
         </div>
     );
 }
