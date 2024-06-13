@@ -19,10 +19,6 @@ const Birthday = ({ currentSlide }) => {
                     className="display-birthday-imagePerson"
                     style={{ display: imgSrc1 && !imgError1 ? 'block' : 'none' }}
                     onError={() => setImgError1(true)}/>
-                <img src={imgSrc2}
-                    className="display-birthday-imagePerson"
-                    style={{ display: imgSrc2 && !imgError2 ? 'block' : 'none' }}
-                    onError={() => setImgError2(true)}/>
                 <h3 className="display-birthday-desc">{currentSlide?.text_04}</h3>
             </div>
         </div>

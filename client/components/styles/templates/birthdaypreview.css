@@ -14,35 +14,43 @@
     background-color: white;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     display: flex;
-    flex-wrap: wrap;
-    margin-right: 0;
+    flex-direction: column; /* Ensure vertical stacking of title and content */
+    background: linear-gradient(rgba(255, 255, 255, 0.81), rgba(255, 255, 255, 0.81)), url("../../../resources/images/birthday_background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .preview-birthday-title {
     width: 100%;
-    height: 10%;
     text-align: center;
+    margin-bottom: 20px; /* Space between title and content */
+    font-size: 3em;
+}
+
+.preview-birthday-content {
+    display: flex;
+    width: 100%;
+    flex-direction: row; /* Arrange image and description side by side */
 }
 
 .preview-birthday-imagePerson {
+    flex: 1; /* Image takes up half the space */
     border: white 2px solid;
-    width: 50%;
-    height: 60%;
-    border-radius: 5px;
-    text-align: center;
-}
-
-.preview-birthday-imageAnnouncement {
-    border: white 2px solid;
-    width: 50%;
-    height: 60%;
-    border-radius: 5px;
-    text-align: center;
+    max-width: 30%;
+    max-height: 100%;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+    margin-right: 10%; /* Space between image and description */   
 }
 
 .preview-birthday-desc {
-    width: 100%;
-    height: 25%;
-    word-break: break-all;
+    font-size: 2.5em;
+    flex: 1; /* Description takes up the other half */
+    word-break: keep-all;
     overflow: auto;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    padding: 10px;
 }

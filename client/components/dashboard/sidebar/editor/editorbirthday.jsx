@@ -72,10 +72,6 @@ const EditorBirthday = () => {
                     setInputImage_01(e.target.value);
                     setSlideInfo(prev => ({...prev, text_02: e.target.value}))
                 }} placeholder="Link to <image.jpg>"/></div>
-                <div className="alternative">Image 2:<input type="text" value={InputImage_02} onChange={(e) => {
-                    setInputImage_02(e.target.value);
-                    setSlideInfo(prev => ({...prev, text_03: e.target.value}))
-                }} placeholder="Link to <image.png>"/></div>
                 <div className="alternative-desc">Description:<textarea value={InputText_02} onChange={(e) => {
                     setInputText_02(e.target.value);
                     setSlideInfo(prev => ({...prev, text_04: e.target.value}))
