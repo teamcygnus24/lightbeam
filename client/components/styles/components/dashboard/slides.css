@@ -154,7 +154,7 @@
     height: 100%;
     box-sizing: border-box;
     border-radius: 10px;
-    background-color: white;
+    background: url("../../../../resources/images/birthday_background.png");
     display: flex;
     flex-wrap: wrap;
 }
@@ -183,11 +183,14 @@
 }
 
 .slides-birthday-desc {
-    width: 100%;
-    height: 25%;
-    word-break: break-all;
+    flex: 1; /* Description takes up the other half */
     font-size: xx-small;
-    overflow: hidden;
+    word-break: keep-all;
+    overflow: auto;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    padding: 10px;
 }
 
 /* Video Slide Card */

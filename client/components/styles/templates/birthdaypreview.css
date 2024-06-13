@@ -11,14 +11,11 @@
     padding: 30px;
     box-sizing: border-box;
     border-radius: 10px;
-    background-color: white;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column; /* Ensure vertical stacking of title and content */
-    background: linear-gradient(rgba(255, 255, 255, 0.81), rgba(255, 255, 255, 0.81)), url("../../../resources/images/birthday_background.png");
     background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background: white url("../../../resources/images/birthday_background.png") no-repeat center;
 }
 
 .preview-birthday-title {
