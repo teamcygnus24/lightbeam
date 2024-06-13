@@ -9,7 +9,6 @@ const EditorVideo = () => {
 
     const navigate = useNavigate();
     const [ws, setWs] = useState();
-
     const [InputVideo_01, setInputVideo_01] = useState("");
 
     const handleUpdate = async (e) => {
@@ -53,12 +52,15 @@ const EditorVideo = () => {
     }, []);
 
     const formatYouTubeUrl = (url) => {
-        const urlParts = url.split('/');
-        if (urlParts.length >= 4 && urlParts[2].includes('youtube.com') && url.includes('watch?v=')) {
-            const videoId = url.split('watch?v=')[1].split('&')[0];
-            return `${urlParts[0]}//${urlParts[2]}/embed/${videoId}`;
+        let videoId = null;
+
+        if (url.includes('youtube.com/watch?v=')) {
+            videoId = url.split('watch?v=')[1].split('&')[0];
+        } else if (url.includes('youtu.be/')) {
+            videoId = url.split('youtu.be/')[1].split('?')[0];
         }
-        return url;
+
+        return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
     };
 
     return (
@@ -71,7 +73,7 @@ const EditorVideo = () => {
                         value={InputVideo_01}
                         onChange={(e) => {
                             const inputValue = e.currentTarget.value;
-                            const formattedUrl = inputValue.includes('youtube.com') ? formatYouTubeUrl(inputValue) : inputValue;
+                            const formattedUrl = formatYouTubeUrl(inputValue);
                             setInputVideo_01(formattedUrl);
                             setSlideInfo(prev => ({
                                 ...prev,

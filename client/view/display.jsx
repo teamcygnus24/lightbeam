@@ -1,24 +1,12 @@
-import React, {useContext, useEffect, useState} from 'react';
-import "../components/styles/view/display.css"
+import React, { useContext, useEffect, useState } from 'react';
+import "../components/styles/view/display.css";
 import { AppContext } from "../application";
 import Menu from "../components/templates/menu/menu";
 import Birthday from "../components/templates/birthday/birthday";
 import Video from '../components/templates/video/video';
 
-/*
-============================================================================================
-DISPLAY PAGE
------------------
-Dette er siden som skal legges i fullskjerm modus hos kunden på TV'en.
-Den henter data fra databasen og styles med en CSS.
-Pr. 30.05.2024 så rendrer den kun 1 spesifikk slidedisplay.jsx.
-Vi skal utvikle det slik at displaypage skal rendre alle slides i et prosjekt med status "aktiv"
-Jokubas ordner dette.
-============================================================================================
-*/
-
 export function Display() {
-    const { displayProject, setDisplayProject } = useContext(AppContext)
+    const { displayProject, setDisplayProject } = useContext(AppContext);
 
     const [ws, setWs] = useState();
     const [projectName, setProjectName] = useState("");
@@ -26,99 +14,108 @@ export function Display() {
     const [slideSwitch, setSlideSwitch] = useState(false);
     const [arrayIndex, setArrayIndex] = useState(0);
     const [prevProject, setPrevProject] = useState("");
-    const [haveSlidesChanged, setHaveSlidesChanged] = useState(false)
+    const [haveSlidesChanged, setHaveSlidesChanged] = useState(false);
     const [slideChange, setSlideChange] = useState(false);
+    const [intervalDuration, setIntervalDuration] = useState(3000); // Default duration
 
-    const [updatedProjectID, setUpdatedProjectID] = useState("")
+    const DEFAULT_INTERVAL_DURATION = 3000; 
 
     const currentSlide = projectSlides[arrayIndex] || {};
 
     const fetchProject = async () => {
-
         if (!displayProject) {
-            console.log("displayProject is undefined or null")
+            console.log("displayProject is undefined or null");
             return;
         }
 
-        console.log("I was activated (fetchProject)")
-        const getProject = await fetch(`/api/project/${displayProject}`)
+        console.log("I was activated (fetchProject)");
+        const getProject = await fetch(`/api/project/${displayProject}`);
         const newProject = await getProject.json();
-        setProjectName(newProject.name)
-    }
+        setProjectName(newProject.name);
+    };
 
     const fetchProjectSlides = async () => {
-        console.log("I was activated (fetchProjectSlides)")
-        const getSlides = await fetch(`/api/slide/${displayProject}`)
+        console.log("I was activated (fetchProjectSlides)");
+        const getSlides = await fetch(`/api/slide/${displayProject}`);
         const newSlides = await getSlides.json();
-
-        setProjectSlides(newSlides)
-    }
+        setProjectSlides(newSlides);
+    };
 
     const slideRotation = async () => {
         if (prevProject !== displayProject) {
-
-            setArrayIndex(-1)
-            setPrevProject(displayProject)
-            console.log("This shouldnt run when updating other projects that are not active")
+            setArrayIndex(-1);
+            setPrevProject(displayProject);
+            console.log("This shouldnt run when updating other projects that are not active");
             await fetchProject();
             await fetchProjectSlides();
         }
 
         if (prevProject === displayProject && slideChange !== haveSlidesChanged) {
-
-            setArrayIndex(-1)
-            setHaveSlidesChanged(slideChange)
-            console.log("This shouldnt run when updating other projects that are not active")
+            setArrayIndex(-1);
+            setHaveSlidesChanged(slideChange);
+            console.log("This shouldnt run when updating other projects that are not active");
             await fetchProjectSlides();
         }
 
         if (arrayIndex === (projectSlides.length - 1)) {
-            setArrayIndex(0)
+            setArrayIndex(0);
         } else {
-            setArrayIndex(prev => prev + 1)
+            setArrayIndex(prev => prev + 1);
         }
-        setSlideSwitch(prev => !prev)
-    }
+
+        setSlideSwitch(prev => !prev);
+
+        // Reset interval duration to default if current slide is the last video slide
+        if (currentSlide.templateID === '666aa2e404584674c0049310' && arrayIndex === (projectSlides.length - 1)) {
+            setIntervalDuration(DEFAULT_INTERVAL_DURATION);
+        }
+    };
 
     useEffect(() => {
-        const ws = new WebSocket(process.env.REACT_APP_WEBSOCKET)
+        const ws = new WebSocket(process.env.REACT_APP_WEBSOCKET);
         ws.onmessage = (event) => {
-            const serverResponse = JSON.parse(event.data)
-            console.log(`displayProject: ${displayProject}, projectUpdated: ${serverResponse.projectUpdated}`)
+            const serverResponse = JSON.parse(event.data);
+            console.log(`displayProject: ${displayProject}, projectUpdated: ${serverResponse.projectUpdated}`);
             if (serverResponse.projectID !== null && serverResponse.projectID !== undefined) {
-                setDisplayProject(serverResponse.projectID)
-                console.log(`ProjectID Recieved: ${serverResponse.projectID}`)
+                setDisplayProject(serverResponse.projectID);
+                console.log(`ProjectID Recieved: ${serverResponse.projectID}`);
             }
-            if (serverResponse.slideChange !== null && serverResponse.projectUpdated === displayProject){
-                setSlideChange(prev => !prev)
-                console.log(`Project Updated: ${serverResponse.projectUpdated}`)
+            if (serverResponse.slideChange !== null && serverResponse.projectUpdated === displayProject) {
+                setSlideChange(prev => !prev);
+                console.log(`Project Updated: ${serverResponse.projectUpdated}`);
             }
-        }
-        setWs(ws)
+        };
+        setWs(ws);
         const i = setInterval(() => {
             slideRotation();
-        }, 3000)
+        }, intervalDuration);
 
-        console.log("Display Rendering Project: " + JSON.stringify(displayProject))
+        console.log("Display Rendering Project: " + JSON.stringify(displayProject));
         return () => {
-            console.log("Clearing Interval")
-            clearInterval(i)
+            console.log("Clearing Interval");
+            clearInterval(i);
             ws.close();
         };
-    }, [slideSwitch, slideChange]);
+    }, [slideSwitch, slideChange, intervalDuration]);
+
+    const handleVideoDurationFetched = (duration) => {
+        console.log(`Setting interval duration to: ${duration * 1000} milliseconds`);
+        if (currentSlide.templateID === '666aa2e404584674c0049310') {
+            setIntervalDuration(duration * 1000); 
+        }
+    };
 
     const templateComponents = {
         "665625763da2eb37ed00af98": Menu,
         "665625813da2eb37ed00af9e": Birthday,
-        "666aa2e404584674c0049310": Video
-    }
+        "666aa2e404584674c0049310": (props) => <Video {...props} onDurationFetched={handleVideoDurationFetched} />
+    };
 
-    const TemplateComponent = templateComponents[currentSlide?.templateID]
-
+    const TemplateComponent = templateComponents[currentSlide?.templateID];
 
     return (
         <div>
-            {displayProject ? (TemplateComponent ? <TemplateComponent currentSlide={ currentSlide }/> : <div className='loading-display'>Loading</div>) : <div className='inactive-display'>Please set active project...</div>}
+            {displayProject ? (TemplateComponent ? <TemplateComponent currentSlide={currentSlide} /> : <div className='loading-display'>Loading</div>) : <div className='inactive-display'>Please set active project...</div>}
         </div>
     );
 }
