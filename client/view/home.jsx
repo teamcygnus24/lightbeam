@@ -27,6 +27,7 @@ export function Home() {
                 <br></br>
             </div>
             <div>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/fOAXnHE71Ic?si=z2NcAQEnVJS2yUEq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
            </div>
             <main className="main-content">
                 <button className="projects-btn" onClick={() => navigate('/projects')}>Go to Projects</button>
