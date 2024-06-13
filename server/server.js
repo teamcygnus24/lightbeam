@@ -1,5 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
+import { WebSocketServer } from "ws";
 import cookieParser from "cookie-parser";
 import loginRoutes from "./routes/loginRoutes.js";
 import projectRoutes from "./routes/projectRoutes.js";
@@ -48,13 +49,34 @@ mongoose
     .connect(process.env.MONGO_URI)
     .then(() => {
         console.log("Connected to the database");
-
-        // Start the server
-        app.listen(process.env.PORT, () => {
-            console.log(`Listening to port ${process.env.PORT}`);
-        });
     })
     .catch((error) => {
         console.error("Error connecting to the database", error);
         process.exit(1); // Exit the process with an error code
     });
+
+const sockets = [];
+
+const wsServer = new WebSocketServer({ noServer: true });
+
+wsServer.on("connect", (socket) => {
+    sockets.push(socket);
+
+    socket.on("message", (buffer) => {
+        const message = buffer.toString();
+        for (const recipient of sockets) {
+            recipient.send(message)
+        }
+    })
+})
+// Start the server
+
+const server = app.listen(process.env.PORT, () => {
+    console.log(`Listening to port ${process.env.PORT}`);
+});
+
+server.on("upgrade", (req, socket, head) => {
+    wsServer.handleUpgrade(req, socket, head, (socket) => {
+        wsServer.emit("connect", socket, req)
+    });
+});
