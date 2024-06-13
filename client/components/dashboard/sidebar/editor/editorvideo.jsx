@@ -78,7 +78,7 @@ const EditorVideo = () => {
                                 text_01: formattedUrl
                             }));
                         }}
-                        placeholder=""
+                        placeholder="https://www.youtube.com/..."
                     />
                 </div>
                 <button className="move-button" name="Save" type="button" onClick={handleUpdate}>Save Changes</button>
