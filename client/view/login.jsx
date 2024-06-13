@@ -4,15 +4,6 @@ import '../components/styles/view/login.css';
 import kpmg_logo from '../resources/images/kpmg_logo.png';
 import { AppContext } from "../application.jsx";
 
-/*
-============================================================================================
-LOG IN
------------------
-Autentifisering med bruk av passord.
-Det kjøres en API til databasen for å sjekke om passordet stemmer.
-============================================================================================
-*/ 
-
 export function Login() {
     const navigate = useNavigate();
     const { validation, setValidation } = useContext(AppContext)

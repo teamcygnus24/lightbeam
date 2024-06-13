@@ -3,16 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import '../components/styles/view/home.css';
 import kpmg_logo from '../resources/images/kpmg_logo.png';
 
-
-/*
-============================================================================================
-HOME PAGE
------------------
-Dette er siden brukeren lander på etter at han har autentifisert.
-Formålet og innhold skal diskuteres til neste sprint.
-============================================================================================
-*/ 
-
 export function Home() {
     const navigate = useNavigate();
 

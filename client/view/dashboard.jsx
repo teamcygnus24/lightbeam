@@ -3,18 +3,6 @@ import { Container } from "../components/dashboard/container";
 import { Templates } from "../components/dashboard/templates";
 import {AppContext} from "../application";
 
-/*
-============================================================================================
-DASHBOARD PAGE
------------------
-Denne siden åpner det valgte prosjektets slides og editor.
-Dersom prosjektet ikke harslides, så viser den templates for at bruker skal velge og lage første slidedisplay.jsx.
-I return, så er det en "IF-statement" som sjekker slidedisplay.jsx count til prosjektet
-Editor renderes gjennom en container kalt "Dashboard Container" og templates gjennom "Templates"
-Disse ligger i Utility mappen.
-============================================================================================
-*/ 
-
 export function Dashboard() {
     const { currentProject, setCurrentProject, projectUpdated } = useContext(AppContext)
 
