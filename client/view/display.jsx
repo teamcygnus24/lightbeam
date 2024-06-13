@@ -3,6 +3,7 @@ import "../components/styles/view/display.css"
 import { AppContext } from "../application";
 import Menu from "../components/templates/menu/menu";
 import Birthday from "../components/templates/birthday/birthday";
+import Video from '../components/templates/video/video';
 
 /*
 ============================================================================================
@@ -108,7 +109,8 @@ export function Display() {
 
     const templateComponents = {
         "665625763da2eb37ed00af98": Menu,
-        "665625813da2eb37ed00af9e": Birthday
+        "665625813da2eb37ed00af9e": Birthday,
+        "666aa2e404584674c0049310": Video
     }
 
     const TemplateComponent = templateComponents[currentSlide?.templateID]

@@ -3,6 +3,7 @@ import '../../styles/components/dashboard/sidebar.css'
 import {AppContext} from "../../../application.jsx";
 import EditorMenu from "./editor/editormenu.jsx";
 import EditorBirthday from "./editor/editorbirthday.jsx";
+import EditorVideo from "./editor/editorvideo.jsx"
 
 /*
 ============================================================================================
@@ -23,7 +24,8 @@ export function Sidebareditor() {
 
     const templateComponents = {
         "665625763da2eb37ed00af98": EditorMenu,
-        "665625813da2eb37ed00af9e": EditorBirthday
+        "665625813da2eb37ed00af9e": EditorBirthday,
+        "666aa2e404584674c0049310": EditorVideo
     }
 
     const TemplateComponent = templateComponents[slideInfo?.templateID]

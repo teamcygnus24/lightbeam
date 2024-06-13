@@ -4,6 +4,7 @@ import {AppContext} from "../../application";
 import MenuSlide from "../templates/menu/menuslide";
 import { Templates } from "./templates";
 import BirthdaySlide from "../templates/birthday/birthdayslide";
+import VideoSlide from '../templates/video/videoslide';
 
 /*
 ============================================================================================
@@ -24,7 +25,8 @@ export function Slides() {
 
     const templateComponents = {
         "665625763da2eb37ed00af98": MenuSlide,
-        "665625813da2eb37ed00af9e": BirthdaySlide
+        "665625813da2eb37ed00af9e": BirthdaySlide,
+        "666aa2e404584674c0049310": VideoSlide
     }
 
     const fetchSlidesFromProject = async () => {

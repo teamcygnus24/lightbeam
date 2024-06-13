@@ -4,6 +4,7 @@ import "../styles/view/templates.css"
 import {AppContext} from "../../application";
 import MenuSlide from "../templates/menu/menuslide";
 import BirthdaySlide from "../templates/birthday/birthdayslide";
+import VideoSlide from "../templates/video/videoslide";
 
 /*
 ============================================================================================
@@ -72,7 +73,8 @@ export function Templates() {
 
     const templateComponents = {
         "MenuSlide": MenuSlide,
-        "BirthdaySlide": BirthdaySlide
+        "BirthdaySlide": BirthdaySlide,
+        "VideoSlide": VideoSlide
     }
 
 

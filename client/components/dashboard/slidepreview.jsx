@@ -3,6 +3,7 @@ import '../styles/components/dashboard/slidepreview.css';
 import {AppContext} from "../../application";
 import MenuPreview from "../templates/menu/menupreview";
 import BirthdayPreview from "../templates/birthday/birthdaypreview";
+import VideoPreview from '../templates/video/videopreview';
 
 /*
 ============================================================================================
@@ -21,13 +22,11 @@ export function Slidepreview() {
 
     const templateComponents = {
         "665625763da2eb37ed00af98": MenuPreview,
-        "665625813da2eb37ed00af9e": BirthdayPreview
+        "665625813da2eb37ed00af9e": BirthdayPreview,
+        "666aa2e404584674c0049310": VideoPreview
     }
 
     const TemplateComponent = templateComponents[slideInfo?.templateID]
-
-
-
 
     return (
         <TemplateComponent slideInfo={ slideInfo } />
