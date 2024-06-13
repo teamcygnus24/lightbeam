@@ -43,6 +43,13 @@ export function Sidebarprojectinfo() {
             window.open('/display','_blank');
     };
 
+    const backToProjects = async (e) => {
+        e.preventDefault();
+
+        setAddSlideClicked(false)
+        navigate('/projects')
+    }
+
     useEffect(() => {
         const ws = new WebSocket(process.env.REACT_APP_WEBSOCKET);
         ws.onmessage = (event) => {
@@ -63,7 +70,7 @@ export function Sidebarprojectinfo() {
                 <button className="move-button" onClick={toggleRemoveSlide}>Remove slide</button>}
                 <button className="move-button" onClick={handleWS}>Set Active</button>
                 <button className="move-button" name="Display" type="button" onClick={handleUpdate}>Open Display</button>
-            <button className="move-button" onClick={() => navigate('/projects')}>Back</button>
+            <button className="move-button" onClick={backToProjects}>Back</button>
             </div>
         </div>
     );
