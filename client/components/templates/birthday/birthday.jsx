@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../styles/templates/birthday.css'
+import '../../styles/templates/birthday.css';
 
 const Birthday = ({ currentSlide }) => {
 

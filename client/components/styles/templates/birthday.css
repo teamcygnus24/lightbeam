@@ -1,47 +1,54 @@
-.display-birthday-container {
+.preview-birthday-container {
     display: flex;
-    width: 90%;
-    height: 90vh;
+    width: 100%;
     box-sizing: border-box;
     margin: 50px;
     padding-left: 100px;
 }
 
-.display-birthday-box {
-    width: 98%;
+.preview-birthday-box {
+    width: 100%;
     padding: 30px;
     box-sizing: border-box;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     display: flex;
-    flex-wrap: wrap;
-    margin-right: 0;
-    background: linear-gradient(rgba(255, 255, 255, 0.81), rgba(255, 255, 255, 0.81)), url("../../../resources/images/birthday_background.png");
+    flex-direction: column; /* Ensure vertical stacking of title and content */
     background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
-    padding: 30px;
-    box-sizing: border-box;
+    background: white url("../../../resources/images/birthday_background.png") no-repeat center;
 }
 
-.display-birthday-title {
+.preview-birthday-title {
     width: 100%;
     height: 10%;
     text-align: center;
+    margin-bottom: 20px; /* Space between title and content */
+    font-size: 3em;
 }
 
-.display-birthday-imagePerson {
-    border: white 2px solid;
-    width: 50%;
-    border-radius: 5px;
-    text-align: center;
-}
-
-
-.display-birthday-desc {
+.preview-birthday-content {
+    display: flex;
     width: 100%;
-    height: 25%;
-    word-break: break-all;
+    flex-direction: row; /* Arrange image and description side by side */
+}
+
+.preview-birthday-imagePerson {
+    flex: 1; /* Image takes up half the space */
+    border: white 2px solid;
+    max-width: 30%;
+    max-height: 100%;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+    margin-right: 10%; /* Space between image and description */   
+}
+
+.preview-birthday-desc {
+    font-size: 1.5em;
+    flex: 1; /* Description takes up the other half */
+    word-break: keep-all;
     overflow: auto;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    padding: 10px;
 }
