@@ -42,7 +42,7 @@
 }
 
 .preview-birthday-desc {
-    font-size: 2.5em;
+    font-size: 1.5em;
     flex: 1; /* Description takes up the other half */
     word-break: keep-all;
     overflow: auto;
