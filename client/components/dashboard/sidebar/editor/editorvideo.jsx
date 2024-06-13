@@ -54,8 +54,8 @@ const EditorVideo = () => {
 
     const formatYouTubeUrl = (url) => {
         const urlParts = url.split('/');
-        if (urlParts.length >= 4 && urlParts[2] === 'www.youtube.com' && url.includes('watch?v=')) {
-            const videoId = urlParts.pop().split('=')[1].split('&')[0];
+        if (urlParts.length >= 4 && urlParts[2].includes('youtube.com') && url.includes('watch?v=')) {
+            const videoId = url.split('watch?v=')[1].split('&')[0];
             return `${urlParts[0]}//${urlParts[2]}/embed/${videoId}`;
         }
         return url;
@@ -65,12 +65,13 @@ const EditorVideo = () => {
         <div className="buttons">
             <form>
                 <div className="type">
-                    Paste in Youtube Link:
+                    Video Link:
                     <input
                         type="text"
                         value={InputVideo_01}
                         onChange={(e) => {
-                            const formattedUrl = formatYouTubeUrl(e.currentTarget.value);
+                            const inputValue = e.currentTarget.value;
+                            const formattedUrl = inputValue.includes('youtube.com') ? formatYouTubeUrl(inputValue) : inputValue;
                             setInputVideo_01(formattedUrl);
                             setSlideInfo(prev => ({
                                 ...prev,
