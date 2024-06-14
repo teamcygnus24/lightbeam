@@ -1,1 +1,1 @@
-# lightbeam - A project by Team Cygnus
+# Lightbeam - A project by Team Cygnus
